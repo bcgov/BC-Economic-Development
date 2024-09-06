@@ -1,33 +1,47 @@
+# Copyright 2019 Province of British Columbia
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at 
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 
 active_tabs <- list(
-  mission1 = TRUE,
+  mission1 = FALSE,
               m1_PI =  FALSE,
-              m1_CHN = TRUE,
-              m1_GC =  TRUE,
-              m1_UR =  TRUE,
-              m1_FE =  TRUE,
-              m1_TS =  TRUE,
+              m1_CHN = FALSE,
+              m1_GC =  FALSE,
+              m1_UR =  FALSE,
+              m1_FE =  FALSE,
+              m1_TS =  FALSE,
               m1_MI =  FALSE,
-              m1_SB =  TRUE,
-              m1_LE =  TRUE,
-              m1_MH =  TRUE,
-  mission2 = TRUE,
-              m2_NBO = TRUE,
-              m2_HA  = TRUE,
-              m2_LMPR= TRUE,
-              m2_OVC = TRUE,
-              m2_GII = TRUE,
-              m2_PRHC= TRUE,
-  mission3 = TRUE,
-  mission4 = TRUE,
-  mission5 = TRUE,
-              m5_CEG = TRUE,
+              m1_SB =  FALSE,
+              m1_LE =  FALSE,
+              m1_MH =  FALSE,
+  mission2 = FALSE,
+              m2_NBO = FALSE,
+              m2_HA  = FALSE,
+              m2_LMPR= FALSE,
+              m2_OVC = FALSE,
+              m2_GII = FALSE,
+              m2_PRHC= FALSE,
+  mission3 = FALSE,
+  mission4 = FALSE,
+  mission5 = FALSE,
+              m5_CEG = FALSE,
   mission6 = TRUE,
-              m6_RnD = TRUE,
-              m6_VAEX= TRUE,
-              m6_nRinv= TRUE,
-              m6_LP = TRUE,
-              m6_EXP = TRUE
+              m6_RnD = FALSE,
+              m6_VAEX= FALSE,
+              m6_nRinv= FALSE,
+              m6_LP = FALSE,
+              m6_EXP = FALSE
 )
 
 ## load libraries ----
@@ -245,7 +259,7 @@ ui <- function() {
               padding:0 0px 0 0px; display:flex; height:60px;width:100%; justify-content:space-between; align-items:center;",
                 tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center;  margin: 0 10px 0 10px",
                          a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
-                           img(src = 'https://raw.githubusercontent.com/mehdi-naji/StrongerBC-Project/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
+                           img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
                            onclick="gtag"
                          ),
                          h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
