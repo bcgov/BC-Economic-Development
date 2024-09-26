@@ -1,0 +1,46 @@
+/* styles.css */
+.main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    margin-top: 60px;
+    
+}
+
+.content-wrapper, .right-side, .main-footer {
+    margin-top: 50px; /* Adjust this value based on your header's height */
+}
+
+
+
+/* Adjust the full-page sections to account for the fixed header */
+.full-page {
+        height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 120px; 
+}
+
+.scroll-button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn-custom {
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.btn-custom .fa-cloud-download-alt {
+  color: white;
+}

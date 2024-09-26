@@ -38,11 +38,11 @@ active_tabs <- list(
   mission5 = FALSE,
               m5_CEG = FALSE,
   mission6 = TRUE,
-              m6_RnD = FALSE,
+              m6_RnD = TRUE,
               m6_VAEX= FALSE,
-              m6_nRinv= FALSE,
-              m6_LP = FALSE,
-              m6_EXP = FALSE
+              m6_nRinv= TRUE,
+              m6_LP = TRUE,
+              m6_EXP = TRUE
 )
 
 ## load libraries ----
@@ -190,6 +190,9 @@ ui <- function() {
   )
   
   body <- dashboardBody(
+    tags$head(
+      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+    ),
     do.call(tabItems, c(
       Filter(Negate(is.null), list(
         ### Home tab ----
@@ -256,20 +259,38 @@ ui <- function() {
   ## UI environment ----
   
   ui <- tagList(
-    tags$header(class="header", style="background-color:#003366; border-bottom:2px solid #fcba19;
-              padding:0 0px 0 0px; display:flex; height:60px;width:100%; justify-content:space-between; align-items:center;",
-                tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center;  margin: 0 10px 0 10px",
-                         a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
-                           img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
-                           onclick="gtag"
-                         ),
-                         h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
-                         h2("Work in progress, subject to change!", style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;")
-                ),
-                tags$div(style="margin-right:10px;",
-                         a(href="https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/", class="btn btn-primary", style="color:white; background-color:#fcba19; border:none;", "BC Economy Snapshot")
-                )
+    ui <- tagList(
+      tags$header(class="header", style="background-color:#003366; border-bottom:2px solid #fcba19;
+              padding:0 0px 0 0px; display:flex; height:60px; width:100%; justify-content:space-between; align-items:center;
+              position:fixed; top:0; left:0; z-index:1000;",
+                  tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center; margin: 0 10px 0 10px;",
+                           a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
+                             img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
+                             onclick="gtag"
+                           ),
+                           h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
+                           h2("Work in progress, subject to change!", style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;")
+                  ),
+                  tags$div(style="margin-right:10px;",
+                           a(href="https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/", class="btn btn-primary", style="color:white; background-color:#fcba19; border:none;", "BC Economy Snapshot")
+                  )
+      )
     ),
+    
+    # tags$header(class="header", style="background-color:#003366; border-bottom:2px solid #fcba19;
+    #           padding:0 0px 0 0px; display:flex; height:60px;width:100%; justify-content:space-between; align-items:center;",
+    #           tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center;  margin: 0 10px 0 10px",
+    #                      a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
+    #                        img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
+    #                        onclick="gtag"
+    #                      ),
+    #                      h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
+    #                      h2("Work in progress, subject to change!", style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;")
+    #             ),
+    #             tags$div(style="margin-right:10px;",
+    #                      a(href="https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/", class="btn btn-primary", style="color:white; background-color:#fcba19; border:none;", "BC Economy Snapshot")
+    #             )
+    # ),
 
     dashboardPage(header = header, 
                   sidebar = sidebar,

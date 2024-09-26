@@ -14,51 +14,275 @@
 
 
 # Main Chart UI----
-
-
-ui_main_chart <- function(title, chart_name, button_name, source, summary  ){
+ui_main_chart <- function(title, chart_name, button_name, source, summary){
   fluidPage(
+    style = "height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 120px;",
+    
     fluidRow(
-      style = "background-color: white; color:black; margin: 40px",
+      style = "background-color: white; color:black; margin: 40px; height: 100vh;",
       column(9,
-             style = "background-color: #003366; color:white;",
-             fluidRow(
-                 h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold;")
-               ),
-               
-             fluidRow(
-               plotlyOutput(chart_name)
-             ),
-             fluidRow(
-               column(10, paste0("Source:", source) , style = "margin-left: 45px;"),
-               style = "background-color: #003366; height: 100px; display: flex; justify-content: center; align-items: center;",
-               tags$style(HTML(".btn-custom {
-                          background-color: transparent;
-                          border: none;
-                          color: white;
-                        }
-                        .btn-custom .fa-cloud-download-alt {
-                          color: white;
-                        }
-        ")),
-               column(2,
-                      downloadButton(button_name , label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
-               )
-             )
-      ),
-      column(3,
-             style = "height: 480px; display: flex; align-items: center;",
-             div(
-               style = "width: 100%; display: flex; justify-content: center;",
-               div(
-                 style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
-                 h3("Summary"),
-                 uiOutput(summary)
-               )
-             )
+                          style = "background-color: #003366; color:white; display: flex; flex-direction: column;",
+
+                          fluidRow(
+                            h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold; flex-shrink: 0;")
+                          ),
+
+                          fluidRow(
+                            style = "flex-grow: 1; display: flex; justify-content: center; align-items: center;",
+                            plotlyOutput(chart_name, height = "100%")
+                          ),
+
+                          fluidRow(
+                            style = "background-color: #003366; height: 20px; display: flex; align-items: center;",
+
+                            column(7,
+                                   paste0("Source:", source),
+                                   style = "margin-left: 45px;"
+                            ),
+
+                            tags$style(HTML(".btn-custom {
+                                       background-color: transparent;
+                                       border: none;
+                                       color: white;
+                                     }
+                                     .btn-custom .fa-cloud-download-alt {
+                                       color: white;
+                                     }
+                                   ")),
+                            column(3,
+                                   actionButton("go_to_deep_dive", 
+                                                label = tagList(icon("angle-double-down"), ""),                                                
+                                                class = "scroll-button", 
+                                                style = "background-color: #003366; height: 18px; text-align: left; color: white; margin-top: 0px; margin-bottom: 0px; padding : 0px;"),
+                            ),
+
+                            column(2,
+                                   downloadButton(button_name, label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
+                            )
+                          )
+                   ),
+
+                   column(3,
+                          style = "height: 100%; display: flex; align-items: center;",
+                          div(
+                            style = "width: 100%; display: flex; justify-content: center;",
+                            div(
+                              style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
+                              h3("Summary"),
+                              uiOutput(summary)
+                            )
+                          )
+      
       )
     )
-  )}
+      
+      
+    
+  )
+}
+
+# ui_main_chart <- function(title, chart_name, button_name, source, summary){
+#   fluidPage(
+#     style = "height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-top: 120px; padding-bottom: 120px;",
+#     
+#     fluidRow(
+#       style = "background-color: white; color:black; margin: 40px; height: calc(100vh - 240px);",
+#       
+#       column(9,
+#              style = "background-color: #003366; color:white; display: flex; flex-direction: column;",
+#              
+#              fluidRow(
+#                h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold; flex-shrink: 0;")
+#              ),
+#              
+#              fluidRow(
+#                style = "flex-grow: 1; display: flex; justify-content: center; align-items: center;",
+#                plotlyOutput(chart_name, height = "100%")
+#              ),
+#              
+#              fluidRow(
+#                style = "background-color: #003366; height: 20px; display: flex; align-items: center;",
+#                
+#                column(10, 
+#                       paste0("Source:", source), 
+#                       style = "margin-left: 45px;"
+#                ),
+#                
+#                tags$style(HTML(".btn-custom {
+#                           background-color: transparent;
+#                           border: none;
+#                           color: white;
+#                         }
+#                         .btn-custom .fa-cloud-download-alt {
+#                           color: white;
+#                         }
+#                       ")),
+#                
+#                column(2,
+#                       downloadButton(button_name, label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
+#                )
+#              )
+#       ),
+#       
+#       column(3,
+#              style = "height: 100%; display: flex; align-items: center;",
+#              div(
+#                style = "width: 100%; display: flex; justify-content: center;",
+#                div(
+#                  style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
+#                  h3("Summary"),
+#                  uiOutput(summary)
+#                )
+#              )
+#       )
+#     )
+#   )
+# }
+
+# ui_main_chart <- function(title, chart_name, button_name, source, summary) {
+#   fluidPage(
+#     fluidRow(
+#       style = "background-color: white; color: black; min-height: calc(100vh - 240px);",  
+#       column(9,
+#              style = "background-color: #003366; color: white;",
+#              fluidRow(
+#                h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold;")
+#              ),
+#              fluidRow(
+#                plotlyOutput(chart_name)
+#              ),
+#              fluidRow(
+#                column(10, paste0("Source:", source), style = "margin-left: 45px;"),
+#                style = "background-color: #003366; height: 20px; display: flex; justify-content: center; align-items: center;",
+#                tags$style(HTML(".btn-custom {
+#                           background-color: transparent;
+#                           border: none;
+#                           color: white;
+#                         }
+#                         .btn-custom .fa-cloud-download-alt {
+#                           color: white;
+#                         }
+#         ")),
+#                column(2,
+#                       downloadButton(button_name, label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
+#                )
+#              )
+#       ),
+#       column(3,
+#              style = "height: 480px; display: flex; align-items: center;",
+#              div(
+#                style = "width: 100%; display: flex; justify-content: center;",
+#                div(
+#                  style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
+#                  h3("Summary"),
+#                  uiOutput(summary)
+#                )
+#              )
+#       )
+#     )
+#   )
+# }
+
+
+
+
+# ui_main_chart <- function(title, chart_name, button_name, source, summary){
+#   fluidPage(
+#     tags$style(HTML("
+#       .full-page {
+#         height: 100vh;
+#         display: flex;
+#         justify-content: center;
+#         align-items: center;
+#         flex-direction: column;
+#       }
+#     ")),
+#     div(class = "full-page",
+#         fluidRow(
+#           style = "background-color: white; color:black; margin: 40px",
+#           column(9,
+#                  style = "background-color: #003366; color:white;",
+#                  fluidRow(
+#                    h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold;")
+#                  ),
+#                  fluidRow(
+#                    plotlyOutput(chart_name, height = "500px")
+#                  ),
+#                  fluidRow(
+#                    column(10, paste0("Source:", source) , style = "margin-left: 45px;"),
+#                    style = "background-color: #003366; height: 100px; display: flex; justify-content: center; align-items: center;",
+#                    tags$style(HTML(".btn-custom {
+#                           background-color: transparent;
+#                           border: none;
+#                           color: white;
+#                         }
+#                         .btn-custom .fa-cloud-download-alt {
+#                           color: white;
+#                         }
+#         ")),
+#                    column(2,
+#                           downloadButton(button_name , label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
+#                    )
+#                  )
+#           ),
+#           column(3,
+#                  style = "height: 480px; display: flex; align-items: center;",
+#                  div(
+#                    style = "width: 100%; display: flex; justify-content: center;",
+#                    div(
+#                      style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
+#                      h3("Summary"),
+#                      uiOutput(summary)
+#                    )
+#                  )
+#           )
+#         )
+#     )
+#   )
+# }
+# ui_main_chart <- function(title, chart_name, button_name, source, summary  ){
+#   fluidPage(
+#     fluidRow(
+#       style = "background-color: white; color:black; margin: 40px",
+#       column(9,
+#              style = "background-color: #003366; color:white;",
+#              fluidRow(
+#                  h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold;")
+#                ),
+# 
+#              fluidRow(
+#                plotlyOutput(chart_name)
+#              ),
+#              fluidRow(
+#                column(10, paste0("Source:", source) , style = "margin-left: 45px;"),
+#                style = "background-color: #003366; height: 100px; display: flex; justify-content: center; align-items: center;",
+#                tags$style(HTML(".btn-custom {
+#                           background-color: transparent;
+#                           border: none;
+#                           color: white;
+#                         }
+#                         .btn-custom .fa-cloud-download-alt {
+#                           color: white;
+#                         }
+#         ")),
+#                column(2,
+#                       downloadButton(button_name , label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
+#                )
+#              )
+#       ),
+#       column(3,
+#              style = "height: 480px; display: flex; align-items: center;",
+#              div(
+#                style = "width: 100%; display: flex; justify-content: center;",
+#                div(
+#                  style = "background-color: #f0f0f0; border-radius: 15px; padding: 20px; width: 100%;",
+#                  h3("Summary"),
+#                  uiOutput(summary)
+#                )
+#              )
+#       )
+#     )
+#   )}
 
 # boxes in mission pages ----
 plot_and_triangle <- function(data, plot_data_func, plot_output_id, button_input_id, tab_name, triangle_output_id, output, input, session) {
@@ -388,123 +612,137 @@ get_triangle_class <- function(Sign) {
 
 
 
-ui_indicatorpage_generalcss <- function(){
-  tags$head(
-    tags$style(HTML("
-    .chart-container {
-      height: 400px;
-      background-color: #f0f0f0;
-    }
-    .content-container {
-      display: flex;
-      position: relative;
-    }
-    .fixed-box {
-      position: absolute;
-      top: 0px;
-      right: 20px;
-      width: 400px;
-      background-color: #003366;
-      padding: 0px;
-      /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-      z-index: 1;
-      transition: top 0.3s;
-    }
-    .scrollable-boxes {
-      padding: 10px;
-      width: calc(100% - 440px); /* Adjust the width to make space for the fixed box */
-      margin-right: 20px;
-      background-color: #e9ecef;
-    }
-    .selectize-input, .selectize-dropdown {
-      background-color: #003366 !important;
-      color: white !important;
-      border-color: #00336 !important;
-      text-align: center; /* Center text horizontally */
-      padding-left: 0 !important; /* Minimize left padding */
-      padding-right: 0 !important; /* Minimize right padding */
-    }
-    .selectize-dropdown-content .option {
-      color: white !important;
-      text-align: center; /* Center text horizontally */
-    }
-    .selectize-input::after {
-      display: none !important;
-    }
-
-    .blue-dropdown .selectize-input, .blue-dropdown .selectize-dropdown {
-      background-color: #003366 !important;
-      color: white !important;
-      padding: 5px;
-      font-size: 10px;
-      border-color: #004e93 !important;
-      text-align: center; /* Center text horizontally */
-      padding-left: 0 !important; /* Minimize left padding */
-      padding-right: 0 !important; /* Minimize right padding */
-    }
-    .blue-dropdown .selectize-dropdown-content .option {
-      color: white !important;
-      text-align: center; /* Center text horizontally */
-
-
-    }
-    .grey-dropdown .selectize-input, .grey-dropdown .selectize-dropdown {
-      background-color: #f2f2f2 !important;
-      color: black !important;
-      border-color: #cccccc !important;
-      text-align: center; /* Center text horizontally */
-      padding-left: 0 !important; /* Minimize left padding */
-      padding-right: 0 !important; /* Minimize right padding */
-    }
-    .grey-dropdown .selectize-dropdown-content .option {
-      color: black !important;
-      text-align: center; /* Center text horizontally */
-    }
-    .btn-custom {
-      background-color: transparent;
-      border: none;
-    }
-
-    .btn-custom .fa-cloud-download-alt {
-      color: white;
-    }
-    .btn-custom-black {
-      background-color: transparent;
-      border: none;
-      color: black;
-    }
-    .btn-custom-black .fa-cloud-download-alt {
-      color: black;
-    }
-  "))  ,
-  tags$script(HTML("
-  document.addEventListener('scroll', function() {
-    const fixedBox = document.querySelector('.fixed-box');
-    const contentContainer = document.querySelector('.content-container');
-    const containerRect = contentContainer.getBoundingClientRect();
-    const middleScreen = window.innerHeight / 2;
-
-    if (containerRect.top < middleScreen - fixedBox.offsetHeight / 2) {
-      fixedBox.style.position = 'fixed';
-      fixedBox.style.top = middleScreen - fixedBox.offsetHeight / 2 + 'px';
-      fixedBox.style.right = (window.innerWidth - contentContainer.offsetWidth) / 2 + 20 + 'px';
-    } else {
-      fixedBox.style.position = 'absolute';
-      fixedBox.style.top = '20px';
-      fixedBox.style.right = '20px';
-    }
-  });
-"))
-  
-  
-    
-    
-    
-    
-  
-  
-  
-            ) }
+# # ui_indicatorpage_generalcss <- function(){
+#   tags$head(
+#     tags$style(HTML("
+#     .chart-container {
+#       height: 400px;
+#       background-color: #f0f0f0;
+#     }
+#     .content-container {
+#       display: flex;
+#       position: relative;
+#     }
+#     .fixed-box {
+#       position: absolute;
+#       top: 0px;
+#       right: 20px;
+#       width: 400px;
+#       background-color: #003366;
+#       padding: 0px;
+#       /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+#       z-index: 1;
+#       transition: top 0.3s;
+#     }
+#     .scrollable-boxes {
+#       padding: 10px;
+#       width: calc(100% - 440px); /* Adjust the width to make space for the fixed box */
+#       margin-right: 20px;
+#       background-color: #e9ecef;
+#     }
+#     .selectize-input, .selectize-dropdown {
+#       background-color: #003366 !important;
+#       color: white !important;
+#       border-color: #00336 !important;
+#       text-align: center; /* Center text horizontally */
+#       padding-left: 0 !important; /* Minimize left padding */
+#       padding-right: 0 !important; /* Minimize right padding */
+#     }
+#     .selectize-dropdown-content .option {
+#       color: white !important;
+#       text-align: center; /* Center text horizontally */
+#     }
+#     .selectize-input::after {
+#       display: none !important;
+#     }
+# 
+#     .blue-dropdown .selectize-input, .blue-dropdown .selectize-dropdown {
+#       background-color: #003366 !important;
+#       color: white !important;
+#       padding: 5px;
+#       font-size: 10px;
+#       border-color: #004e93 !important;
+#       text-align: center; /* Center text horizontally */
+#       padding-left: 0 !important; /* Minimize left padding */
+#       padding-right: 0 !important; /* Minimize right padding */
+#     }
+#     .blue-dropdown .selectize-dropdown-content .option {
+#       color: white !important;
+#       text-align: center; /* Center text horizontally */
+# 
+# 
+#     }
+#     .grey-dropdown .selectize-input, 
+#     .grey-dropdown .selectize-dropdown {
+#       top: auto !important;
+#       bottom: 100% !important;
+# 
+#       background-color: #f2f2f2 !important;
+#       color: black !important;
+#       border-color: #cccccc !important;
+#       text-align: center; /* Center text horizontally */
+#       padding-left: 0 !important; /* Minimize left padding */
+#       padding-right: 0 !important; /* Minimize right padding */
+#     }
+#     .grey-dropdown .selectize-dropdown-content .option {
+#       color: black !important;
+#       text-align: center; /* Center text horizontally */
+#     }
+#     
+# 
+# .grey-dropdown .selectize-dropdown {
+#       top: auto !important;
+#       bottom: 100% !important;
+#       margin-bottom: 5px !important;
+#     }
+# 
+# 
+# 
+#     .btn-custom {
+#       background-color: transparent;
+#       border: none;
+#     }
+# 
+#     .btn-custom .fa-cloud-download-alt {
+#       color: white;
+#     }
+#     .btn-custom-black {
+#       background-color: transparent;
+#       border: none;
+#       color: black;
+#     }
+#     .btn-custom-black .fa-cloud-download-alt {
+#       color: black;
+#     }
+#   "))  ,
+#   tags$script(HTML("
+#   document.addEventListener('scroll', function() {
+#     const fixedBox = document.querySelector('.fixed-box');
+#     const contentContainer = document.querySelector('.content-container');
+#     const containerRect = contentContainer.getBoundingClientRect();
+#     const middleScreen = window.innerHeight / 2;
+# 
+#     if (containerRect.top < middleScreen - fixedBox.offsetHeight / 2) {
+#       fixedBox.style.position = 'fixed';
+#       fixedBox.style.top = middleScreen - fixedBox.offsetHeight / 2 + 'px';
+#       fixedBox.style.right = (window.innerWidth - contentContainer.offsetWidth) / 2 + 20 + 'px';
+#     } else {
+#       fixedBox.style.position = 'absolute';
+#       fixedBox.style.top = '20px';
+#       fixedBox.style.right = '20px';
+#     }
+#   });
+# "))
+#   
+#   
+#     
+#     
+#     
+#     
+#   
+#   
+#   
+#             ) }
 
 
 # Map chart----
@@ -581,6 +819,28 @@ go_to_button <- function(name1, label1, name2, label2) {
     column(1, actionButton(name2, label2, style = style1 )),
     column(1)
 )}
-  
 
+
+feature_tab <- function(df, tab_name, title, tab_feature_chart, chart){  
+  tabPanel(tab_name, 
+           fluidPage(
+             style = "background-color: white; padding-left: 20px; padding-top: 0px; margin: 0px;",
+             fluidRow(
+               column(8, h3(title )),
+               column(1, actionButton("go_to_main_chart", 
+                                      label = tagList(icon("angle-double-up"), ""), 
+                                      class = "scroll-button", 
+                                      style = "background-color: white; color: #003366; margin-bottom: 0px; text-align: right; padding-right: 0px;"),
+                      column(3))),
+             fluidRow(
+               style = "display: flex; flex-direction: row; align-items: stretch; height: calc(100vh - 300px); margin-buttom : 20px",
+               
+               tab_feature_chart(chart, df),
+               column(3,
+                      div(style = "background-color: #003366; color: white; padding: 15px; border-radius: 5px; font-size: 14px; height: 95%;",
+                          h4("Highlights"),
+                          p("Here is a summary or insight related to the Labour Productivity growth rate.")
+                      )
+               )
+             )))}
 
