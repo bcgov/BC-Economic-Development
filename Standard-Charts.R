@@ -19,21 +19,22 @@ ui_main_chart <- function(title, chart_name, button_name, source, summary){
     style = "height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 120px;",
     
     fluidRow(
-      style = "background-color: white; color:black; margin: 40px; height: 100vh;",
+      style = "background-color: white; color:black; margin-top: -10px; margin-buttom:0px; height: 100vh;",
       column(9,
-                          style = "background-color: #003366; color:white; display: flex; flex-direction: column;",
+             fluidRow(
+               style = "background-color: #003366; color:white; display: flex; flex-direction: column; ",
 
                           fluidRow(
                             h1(title, style = "margin-left: 45px; font-family: 'Century Gothic'; font-size: 40px; font-weight: bold; flex-shrink: 0;")
                           ),
 
                           fluidRow(
-                            style = "flex-grow: 1; display: flex; justify-content: center; align-items: center;",
+                            style = "flex-grow: 1; display: flex; justify-content: center; align-items: center;height: calc(100vh - 280px);margin-left: 45px; margin-right: 45px;",
                             plotlyOutput(chart_name, height = "100%")
                           ),
 
                           fluidRow(
-                            style = "background-color: #003366; height: 20px; display: flex; align-items: center;",
+                            style = "background-color: #003366; height: 20px; display: flex; align-items: center;margin-left: 45px; margin-right: 45px;",
 
                             column(7,
                                    paste0("Source:", source),
@@ -60,6 +61,7 @@ ui_main_chart <- function(title, chart_name, button_name, source, summary){
                                    downloadButton(button_name, label = NULL, class = "btn-custom", icon = icon("cloud-download-alt"))
                             )
                           )
+             )
                    ),
 
                    column(3,

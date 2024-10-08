@@ -24,8 +24,9 @@ ui_m6_home <- function(df_m6_RnD_1, df_m6_VAEX_1, df_m6_nRinv_1, df_m6_LP_1, df_
         color: black;
         font-size: 40px;
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        padding:0px;
+        margin-top: -30px;
+        margin-bottom: 0px;
       }
       .custom-box {
         background-color: #f2f2f2;
@@ -38,6 +39,7 @@ ui_m6_home <- function(df_m6_RnD_1, df_m6_VAEX_1, df_m6_nRinv_1, df_m6_LP_1, df_
       .custom-title {
         font-weight: bold;
         text-align: center;
+        margin-top:0px;
         margin-bottom: 30px; /* Space below the title */
         cursor: pointer; /* Change cursor to pointer on hover */
         color: black; 
@@ -108,7 +110,7 @@ ui_m6_home <- function(df_m6_RnD_1, df_m6_VAEX_1, df_m6_nRinv_1, df_m6_LP_1, df_
             div(
               actionButton("m6_to_homepage", label = "Fostering Innovation Across the Economy", class = "main-title")
             ),
-            div(style = "height: 20px;"),  # Space between title and first row of boxes
+            div(style = "height: 10px;"),  # Space between title and first row of boxes
             fluidRow(
               wormchart_ui(df = df_m6_RnD_1, 
                            button = "m6_homepage_button_RnD",
@@ -444,16 +446,9 @@ ui_m6_LP_feature_treemap <- function(chart, df){
                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_LP_treemap_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt"))))
   )
 }
-ui_m6_LP <- function(df){
 
+ui_m6_LP <- function(df) {
   tabItem(tabName = "LP",
-          go_to_button("LP_mission6", "Mission 6", "LP_home", "Home Page"),
-          tags$style(HTML("
-    .upward-dropdown .selectize-dropdown {
-      top: auto !important;
-      bottom: 100% !important;
-    }
-  ")),
           ##### Main Chart ----
           ui_main_chart(
             title = "Labour productivity",
@@ -461,28 +456,38 @@ ui_m6_LP <- function(df){
             button_name = "m6_LP_lineplot_dwnbtt",
             source = "Statistics Canada, Table 36-10-0480-01",
             summary = "Exesum_m6_LP_main"),
-          fluidPage(
-            navbarPage("Deep-Dive Charts",
+          
+          # Replacing the navbarPage for deep dives with tabsetPanel
+          fluidRow(
+            h3("Labour Productivity Deep-dive", style = "text-align: center;"),  # Title for the tabsetPanel
+            
+            tabsetPanel(
+              tabPanel("Growth",
                        feature_tab(df,
                                    tab_name = "Growth",
                                    title = "Labour productivity growth rate",
                                    tab_feature_chart = ui_m6_LP_feature_lines,
-                                   chart = "m6_LP_lines"),
+                                   chart = "m6_LP_lines")
+              ),
+              tabPanel("Sectors",
                        feature_tab(df,
                                    tab_name = "Sectors",
                                    title = "Labour productivity SECTOR growth rate",
                                    tab_feature_chart = ui_m6_LP_feature_growthsectors,
-                                   chart = "m6_LP_growthsectors"),
+                                   chart = "m6_LP_growthsectors")
+              ),
+              tabPanel("TREEMAP",
                        feature_tab(df,
                                    tab_name = "TREEMAP",
                                    title = "Labour productivity TREEMAP",
                                    tab_feature_chart = ui_m6_LP_feature_treemap,
                                    chart = "m6_LP_treemap")
-                       
-                       
-                       
-            ),
-            tags$script(HTML("
+              )
+            )
+          ),
+          
+          # Scroll buttons for navigation
+          tags$script(HTML("
             $(document).on('click', '#go_to_main_chart', function() {
               $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
             });
@@ -491,8 +496,51 @@ ui_m6_LP <- function(df){
               $('html, body').animate({scrollTop: $(document).height()}, 800);
             });
           "))
-          ))
+  )
 }
+
+# ui_m6_LP <- function(df){
+# 
+#   tabItem(tabName = "LP",
+#           ##### Main Chart ----
+#           ui_main_chart(
+#             title = "Labour productivity",
+#             chart_name = "m6_LP_lineplot",
+#             button_name = "m6_LP_lineplot_dwnbtt",
+#             source = "Statistics Canada, Table 36-10-0480-01",
+#             summary = "Exesum_m6_LP_main"),
+#           fluidPage(
+#             navbarPage("Deep-Dive Charts",
+#                        feature_tab(df,
+#                                    tab_name = "Growth",
+#                                    title = "Labour productivity growth rate",
+#                                    tab_feature_chart = ui_m6_LP_feature_lines,
+#                                    chart = "m6_LP_lines"),
+#                        feature_tab(df,
+#                                    tab_name = "Sectors",
+#                                    title = "Labour productivity SECTOR growth rate",
+#                                    tab_feature_chart = ui_m6_LP_feature_growthsectors,
+#                                    chart = "m6_LP_growthsectors"),
+#                        feature_tab(df,
+#                                    tab_name = "TREEMAP",
+#                                    title = "Labour productivity TREEMAP",
+#                                    tab_feature_chart = ui_m6_LP_feature_treemap,
+#                                    chart = "m6_LP_treemap")
+#                        
+#                        
+#                        
+#             ),
+#             tags$script(HTML("
+#             $(document).on('click', '#go_to_main_chart', function() {
+#               $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
+#             });
+# 
+#             $(document).on('click', '#go_to_deep_dive', function() {
+#               $('html, body').animate({scrollTop: $(document).height()}, 800);
+#             });
+#           "))
+#           ))
+# }
 
 
 #### EXP ----

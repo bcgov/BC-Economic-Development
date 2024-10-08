@@ -15,7 +15,7 @@
 
 
 active_tabs <- list(
-  mission1 = FALSE,
+  mission1 = TRUE,
               m1_PI =  FALSE,
               m1_CHN = FALSE,
               m1_GC =  FALSE,
@@ -26,16 +26,16 @@ active_tabs <- list(
               m1_SB =  FALSE,
               m1_LE =  FALSE,
               m1_MH =  FALSE,
-  mission2 = FALSE,
+  mission2 = TRUE,
               m2_NBO = FALSE,
               m2_HA  = FALSE,
               m2_LMPR= FALSE,
               m2_OVC = FALSE,
               m2_GII = FALSE,
               m2_PRHC= FALSE,
-  mission3 = FALSE,
-  mission4 = FALSE,
-  mission5 = FALSE,
+  mission3 = TRUE,
+  mission4 = TRUE,
+  mission5 = TRUE,
               m5_CEG = FALSE,
   mission6 = TRUE,
               m6_RnD = TRUE,
@@ -133,185 +133,265 @@ if (active_tabs$mission6) {
   df_m6_EXP_3 <- load_m6_EXP3()
   df_m6_EXP_4 <- load_m6_EXP4()}
 
-
-
-# UI ----
+# # UI ----
 ui <- function() {
-  header <- dashboardHeader()
-  ## Sidebar ----
-  sidebar <- dashboardSidebar(
-    disable = TRUE,
-    collapsed = TRUE,
-    sidebarMenu(id = "tabs",
-                menuItem("Home", tabName = "home", icon = icon("home")),
-                if (active_tabs$mission1) {
-                menuItem("Mission 1", tabName = "mission1", icon = icon("bullseye"),
-                         menuSubItem("mission1", tabName = "m1_home"),
-                         if (active_tabs$m1_PI) menuSubItem("Poverty Incidence", tabName = "PI"),
-                         if (active_tabs$m1_CHN) menuSubItem("Core Housing Need", tabName = "CHN"),
-                         if (active_tabs$m1_GC) menuSubItem("Gini Coefficient", tabName = "GC"),
-                         if (active_tabs$m1_FE) menuSubItem("Food Expenditure", tabName = "FE"),
-                         if (active_tabs$m1_TS) menuSubItem("Spending on Transportation", tabName = "TS"),
-                         # menuSubItem("Income", tabName = "MI"),
-                         if (active_tabs$m1_SB) menuSubItem("Sense of Belongings", tabName = "SB"),
-                         if (active_tabs$m1_LE) menuSubItem("Life Expectancy", tabName = "LE"),
-                         if (active_tabs$m1_MH) menuSubItem("Mental Health", tabName = "MH")
-                )},
-                if (active_tabs$mission2) {
-                menuItem("Mission 2", tabName = "mission2", icon = icon("bullseye"),
-                         menuSubItem("mission2", tabName = "m2_home"),
-                         if (active_tabs$m2_NBO) menuSubItem("New Business Openings", tabName = "NBO"),
-                         if (active_tabs$m2_HA) menuSubItem("Housing Availability", tabName = "HA"),
-                         if (active_tabs$m2_LMPR) menuSubItem("Labour Market Participation Rate", tabName = "LMPR"),
-                         if (active_tabs$m2_OVC) menuSubItem("Occurances of Violent Crime", tabName = "OVC"),
-                         if (active_tabs$m2_GII) menuSubItem("Government Investment in Infrastructure", tabName = "GII"),
-                         if (active_tabs$m2_PRHC) menuSubItem("Police_reported Hate Crime", tabName = "PRHC")
-                )},
-                if (active_tabs$mission3) {
-                menuItem("Mission 3", tabName = "mission3", icon = icon("bullseye"))},
-                if (active_tabs$mission4) {
-                menuItem("Mission 4", tabName = "mission4", icon = icon("bullseye"))},
-                if (active_tabs$mission5) {
-                menuItem("Mission 5", tabName = "mission5", icon = icon("bullseye"),
-                         if (active_tabs$m5_CEG) menuSubItem("Clean Energy Generated", tabName = "CEG")
-                )},
-                if (active_tabs$mission6) {
-                menuItem("Mission 6", tabName = "mission6", icon = icon("bullseye"),
-                         menuSubItem("mission6", tabName = "m6_home"),
-                         if (active_tabs$m6_RnD) menuSubItem("Investment in Innovation", tabName = "RnD"),
-                         if (active_tabs$m6_VAEX) menuSubItem("Value-added Export", tabName = "VAEX"),
-                         if (active_tabs$m6_nRinv) menuSubItem("Non-residential Investment", tabName = "nRinv"),
-                         if (active_tabs$m6_LP) menuSubItem("Labour productivity", tabName = "LP"),
-                         if (active_tabs$m6_EXP) menuSubItem("Export", tabName = "EXP"))},
-                menuItem("Data Source", tabName = "data_source", icon = icon("database"))
-
-
+  # Include CSS----
+  header_content <- tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "styles.css"),
+    tags$style(HTML("
+    .navbar.navbar-default.navbar-static-top {
+      position: fixed;
+      top: 60px; /* Adjust the position to be 100px lower */
+      width: 100%;
+      z-index: 999; /* Ensure it stays on top */
+    }
+    
+    body {
+      padding-top: 160px; /* Adjust the body padding to avoid content being hidden under the navbar */
+    }
+  "))
+  )
+  
+  
+  
+ 
+  
+  # Custom header----
+  custom_header <- tags$header(
+    class = "header",
+    style = "background-color:#003366; border-bottom:2px solid #fcba19;
+             padding:0 0px 0 0px; display:flex; height:60px; width:100%; 
+             justify-content:space-between; align-items:center;
+             position:fixed; top:0; left:0; z-index:1000;",
+    tags$div(
+      class = "banner",
+      style = "display:flex; justify-content:flex-start; align-items:center; margin: 0 10px 0 10px;",
+      a(
+        href = "https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
+        img(
+          src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg',
+          title = "StrongerBC",
+          height = "30px",
+          alt = "British Columbia - StrongerBC"
+        )
+      ),
+      h1(
+        "BC Economic Development Indicators",
+        style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"
+      ),
+      h2(
+        "Work in progress, subject to change!",
+        style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;"
+      )
+    ),
+    tags$div(
+      style = "margin-right:10px;",
+      a(
+        href = "https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/",
+        class = "btn btn-primary",
+        style = "color:white; background-color:#fcba19; border:none;",
+        "BC Economy Snapshot"
+      )
     )
   )
   
-  body <- dashboardBody(
-    tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
-    ),
-    do.call(tabItems, c(
-      Filter(Negate(is.null), list(
-        ### Home tab ----
-        ui_home(),
-        ## Mission1 ----
-        if (active_tabs$mission1)
-            {ui_m1_home(m1_PI_lineplot_data(df_m1_PI_1),
-                       m1_CHN_lineplot_data(df_m1_CHN_1),
-                       m1_GC_lineplot_data(df_m1_GC_1),
-                       m1_UR_lineplot_data(df_m1_UR_1),
-                       m1_FE_lineplot_data(df_m1_FE_1),
-                       m1_TS_lineplot_data(df_m1_TS_1),
-                       m1_SB_lineplot_data(df_m1_SB_1),
-                       m1_LE_lineplot_data(df_m1_LE_1),
-                       m1_MH_lineplot_data(df_m1_MH_1))} else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_PI ) ui_m1_PI(df1 = df_m1_PI_1, df2 = df_m1_PI_2) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_UR ) ui_m1_UR(df1 = df_m1_UR_1, df2 = df_m1_UR_2, df3= df_m1_UR_3, df4 = df_m1_UR_4, df5 = df_m1_UR_5) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_CHN ) ui_m1_CHN(df1 = df_m1_CHN_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_GC ) ui_m1_GC(df1 = df_m1_GC_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_FE ) ui_m1_FE(df1 = df_m1_FE_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_TS ) ui_m1_TS(df1 = df_m1_TS_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_MI ) ui_m1_MI(df1 = df_m1_MI_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_SB ) ui_m1_SB(df1 = df_m1_SB_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_LE ) ui_m1_LE(df1 = df_m1_LE_1) else NULL,
-        if (active_tabs$mission1 * active_tabs$m1_MH ) ui_m1_MH(df1 = df_m1_MH_1) else NULL,
-            # )},
-
-      ### Mission2 ----
-      if (active_tabs$mission2)
-      ui_m2_home(m2_NBO_lineplot_data(df_m2_NBO_1),
-                 m2_HA_lineplot_data(df_m2_HA_1),
-                 m2_LMPR_lineplot_data(df_m2_LMPR_1),
-                 m2_OVC_lineplot_data(df_m2_OVC_1),
-                 m2_GII_lineplot_data(df_m2_GII_1),
-                 m2_PRHC_lineplot_data(df_m2_PRHC_1)) else NULL,
-
-      if (active_tabs$mission2 * active_tabs$m2_NBO ) ui_m2_NBO(df_m2_NBO_1) else NULL,
-      if (active_tabs$mission2 * active_tabs$m2_HA ) ui_m2_HA(df_m2_HA_1) else NULL,
-      if (active_tabs$mission2 * active_tabs$m2_LMPR ) ui_m2_LMPR(df_m2_LMPR_1) else NULL,
-      if (active_tabs$mission2 * active_tabs$m2_OVC ) ui_m2_OVC(df_m2_OVC_1) else NULL,
-      if (active_tabs$mission2 * active_tabs$m2_PRHC ) ui_m2_PRHC(df_m2_PRHC_1) else NULL,
-      if (active_tabs$mission2 * active_tabs$m2_GII ) ui_m2_GII(df_m2_GII_1) else NULL,
-
-      ## Mission5 ----
-      if (active_tabs$mission5) ui_m5_CEG(df_m5_CEG_1) else NULL,
-      # Mission6 ----
-      if (active_tabs$mission6)
-      ui_m6_home(m6_RnD_lineplot_data(df_m6_RnD_1),
-                 m6_VAEX_lineplot_data(df_m6_VAEX_1),
-                 m6_nRinv_lineplot_data(df_m6_nRinv_1),
-                 m6_LP_lineplot_data(df_m6_LP_1),
-                 m6_EXP_lineplot_data(df_m6_EXP_1)) else NULL,
-      if (active_tabs$mission6 * active_tabs$m6_RnD ) ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2) else NULL,
-      if (active_tabs$mission6 * active_tabs$m6_VAEX ) ui_m6_VAEX(df_m6_VAEX_1) else NULL,
-      if (active_tabs$mission6 * active_tabs$m6_nRinv ) ui_m6_nRinv(df_m6_nRinv_1) else NULL,
-      if (active_tabs$mission6 * active_tabs$m6_LP ) ui_m6_LP(df_m6_LP_1) else NULL,
-      if (active_tabs$mission6 * active_tabs$m6_EXP ) ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3) else NULL,
-      #### Data Source Tab----
-      tabItem(tabName = "data_source",
-              h3("Data Sources & Permissions", style="margin-left:15px;margin-bottom:20px"))
-    ) ))
-  )) # This closes dashboard body
+  # Custom footer----
+  custom_footer <- column(
+    width = 12,
+    style = "background-color:#003366; border-top:2px solid #fcba19;",
+    tags$footer(
+      class = "footer",
+      tags$div(
+        class = "container",
+        style = "display:flex; justify-content:center; flex-direction:column; text-align:center; height:46px;",
+        tags$ul(
+          style = "display:flex; flex-direction:row; flex-wrap:wrap; margin:0; list-style:none; align-items:center; height:100%;",
+          tags$li(
+            a(
+              href = "https://www2.gov.bc.ca/gov/content/home",
+              "Home",
+              style = "font-size:1em; font-weight:normal; color:white; padding-left:5px; padding-right:5px; border-right:1px solid #4b5e7e;"
+            )
+          ),
+          tags$li(
+            a(
+              href = "https://www2.gov.bc.ca/gov/content/home/disclaimer",
+              "Disclaimer",
+              style = "font-size:1em; font-weight:normal; color:white; padding-left:5px; padding-right:5px; border-right:1px solid #4b5e7e;"
+            )
+          )
+        )
+      )
+    )
+  )
   
-  ## UI environment ----
-  
+  # Build the navbarPage----
   ui <- tagList(
-    ui <- tagList(
-      tags$header(class="header", style="background-color:#003366; border-bottom:2px solid #fcba19;
-              padding:0 0px 0 0px; display:flex; height:60px; width:100%; justify-content:space-between; align-items:center;
-              position:fixed; top:0; left:0; z-index:1000;",
-                  tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center; margin: 0 10px 0 10px;",
-                           a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
-                             img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
-                             onclick="gtag"
-                           ),
-                           h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
-                           h2("Work in progress, subject to change!", style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;")
-                  ),
-                  tags$div(style="margin-right:10px;",
-                           a(href="https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/", class="btn btn-primary", style="color:white; background-color:#fcba19; border:none;", "BC Economy Snapshot")
-                  )
+    tags$style(HTML("
+    .navbar-default {
+      background-color: #337ab7; /* Background color */
+      border-color: #337ab7; /* Border color */
+    }
+    .navbar-default .navbar-nav > li > a {
+      color: #fff; /* Link color */
+    }
+    .navbar-default .navbar-brand {
+      color: #fff; /* Brand text color */
+    }
+    .navbar-default .navbar-nav > li > a:hover {
+      background-color: #fcba19; /* Hover color */
+    }
+  ")),
+    header_content,
+    custom_header,
+    navbarPage(
+      title = NULL,
+      id = "tabs",
+      # Home tab
+      tabPanel("Home", ui_home()),
+      # Mission 1
+      if (active_tabs$mission1) {
+        navbarMenu(
+          "Mission 1",
+          tabPanel(
+            "Mission 1 Home",
+            ui_m1_home(
+              m1_PI_lineplot_data(df_m1_PI_1),
+              m1_CHN_lineplot_data(df_m1_CHN_1),
+              m1_GC_lineplot_data(df_m1_GC_1),
+              m1_UR_lineplot_data(df_m1_UR_1),
+              m1_FE_lineplot_data(df_m1_FE_1),
+              m1_TS_lineplot_data(df_m1_TS_1),
+              m1_SB_lineplot_data(df_m1_SB_1),
+              m1_LE_lineplot_data(df_m1_LE_1),
+              m1_MH_lineplot_data(df_m1_MH_1)
+            )
+          ),
+          if (active_tabs$m1_PI) {
+            tabPanel("Poverty Incidence", ui_m1_PI(df1 = df_m1_PI_1, df2 = df_m1_PI_2))
+          },
+          if (active_tabs$m1_CHN) {
+            tabPanel("Core Housing Need", ui_m1_CHN(df1 = df_m1_CHN_1))
+          },
+          if (active_tabs$m1_GC) {
+            tabPanel("Gini Coefficient", ui_m1_GC(df1 = df_m1_GC_1))
+          },
+          if (active_tabs$m1_FE) {
+            tabPanel("Food Expenditure", ui_m1_FE(df1 = df_m1_FE_1))
+          },
+          if (active_tabs$m1_TS) {
+            tabPanel("Spending on Transportation", ui_m1_TS(df1 = df_m1_TS_1))
+          },
+          if (active_tabs$m1_SB) {
+            tabPanel("Sense of Belongings", ui_m1_SB(df1 = df_m1_SB_1))
+          },
+          if (active_tabs$m1_LE) {
+            tabPanel("Life Expectancy", ui_m1_LE(df1 = df_m1_LE_1))
+          },
+          if (active_tabs$m1_MH) {
+            tabPanel("Mental Health", ui_m1_MH(df1 = df_m1_MH_1))
+          }
+        )
+      },
+      # Mission 2
+      if (active_tabs$mission2) {
+        navbarMenu(
+          "Mission 2",
+          tabPanel(
+            "Mission 2 Home",
+            ui_m2_home(
+              m2_NBO_lineplot_data(df_m2_NBO_1),
+              m2_HA_lineplot_data(df_m2_HA_1),
+              m2_LMPR_lineplot_data(df_m2_LMPR_1),
+              m2_OVC_lineplot_data(df_m2_OVC_1),
+              m2_GII_lineplot_data(df_m2_GII_1),
+              m2_PRHC_lineplot_data(df_m2_PRHC_1)
+            )
+          ),
+          if (active_tabs$m2_NBO) {
+            tabPanel("New Business Openings", ui_m2_NBO(df_m2_NBO_1))
+          },
+          if (active_tabs$m2_HA) {
+            tabPanel("Housing Availability", ui_m2_HA(df_m2_HA_1))
+          },
+          if (active_tabs$m2_LMPR) {
+            tabPanel("Labour Market Participation Rate", ui_m2_LMPR(df_m2_LMPR_1))
+          },
+          if (active_tabs$m2_OVC) {
+            tabPanel("Occurrences of Violent Crime", ui_m2_OVC(df_m2_OVC_1))
+          },
+          if (active_tabs$m2_GII) {
+            tabPanel("Government Investment in Infrastructure", ui_m2_GII(df_m2_GII_1))
+          },
+          if (active_tabs$m2_PRHC) {
+            tabPanel("Police-reported Hate Crime", ui_m2_PRHC(df_m2_PRHC_1))
+          }
+        )
+      },
+      # Mission 3
+      if (active_tabs$mission3) {
+        tabPanel("Mission 3", "Content for Mission 3")
+      },
+      # Mission 4
+      if (active_tabs$mission4) {
+        tabPanel("Mission 4", "Content for Mission 4")
+      },
+      # Mission 5
+      if (active_tabs$mission5) {
+        navbarMenu(
+          "Mission 5",
+          if (active_tabs$m5_CEG) {
+            tabPanel("Clean Energy Generated", ui_m5_CEG(df_m5_CEG_1))
+          }
+        )
+      },
+      # Mission 6
+      if (active_tabs$mission6) {
+        navbarMenu(
+          "Mission 6",
+          tabPanel(
+            "Mission 6 Home",
+            ui_m6_home(
+              m6_RnD_lineplot_data(df_m6_RnD_1),
+              m6_VAEX_lineplot_data(df_m6_VAEX_1),
+              m6_nRinv_lineplot_data(df_m6_nRinv_1),
+              m6_LP_lineplot_data(df_m6_LP_1),
+              m6_EXP_lineplot_data(df_m6_EXP_1)
+            )
+          ),
+          if (active_tabs$m6_RnD) {
+            tabPanel("Investment in Innovation", ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2))
+          },
+          if (active_tabs$m6_VAEX) {
+            tabPanel("Value-added Export", ui_m6_VAEX(df_m6_VAEX_1))
+          },
+          if (active_tabs$m6_nRinv) {
+            tabPanel("Non-residential Investment", ui_m6_nRinv(df_m6_nRinv_1))
+          },
+          if (active_tabs$m6_LP) {
+            tabPanel("Labour Productivity", ui_m6_LP(df_m6_LP_1))
+          },
+          if (active_tabs$m6_EXP) {
+            tabPanel("Export", ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3))
+          }
+        )
+      },
+      # Data Source tab
+      tabPanel(
+        "Data Source",
+        h3(
+          "Data Sources & Permissions",
+          style = "margin-left:15px;margin-bottom:20px"
+        )
       )
     ),
-    
-    # tags$header(class="header", style="background-color:#003366; border-bottom:2px solid #fcba19;
-    #           padding:0 0px 0 0px; display:flex; height:60px;width:100%; justify-content:space-between; align-items:center;",
-    #           tags$div(class="banner", style="display:flex; justify-content:flex-start; align-items:center;  margin: 0 10px 0 10px",
-    #                      a(href="https://www2.gov.bc.ca/gov/content/data/about-data-management/bc-stats",
-    #                        img(src = 'https://raw.githubusercontent.com/bcgov/BC-Economic-Development/main/bc_logo.svg', title = "StrongerBC", height = "30px", alt = "British Columbia - StrongerBC"),
-    #                        onclick="gtag"
-    #                      ),
-    #                      h1("BC Economic Development Indicators", style = "font-weight:400; color:white; margin: 5px 5px 0 18px;"),
-    #                      h2("Work in progress, subject to change!", style = "font-size: 16px; color: white; margin: 0 5px 5px 18px;")
-    #             ),
-    #             tags$div(style="margin-right:10px;",
-    #                      a(href="https://mehdinaji.shinyapps.io/BC-Economy-Snapshot/", class="btn btn-primary", style="color:white; background-color:#fcba19; border:none;", "BC Economy Snapshot")
-    #             )
-    # ),
-
-    dashboardPage(header = header, 
-                  sidebar = sidebar,
-                  body = body, 
-                  skin = "blue"),
-    column(width = 12,
-           style = "background-color:#003366; border-top:2px solid #fcba19;",
-           tags$footer(class="footer",
-                       tags$div(class="container", style="display:flex; justify-content:center; flex-direction:column; text-align:center; height:46px;",
-                                tags$ul(style="display:flex; flex-direction:row; flex-wrap:wrap; margin:0; list-style:none; align-items:center; height:100%;",
-                                        tags$li(a(href="https://www2.gov.bc.ca/gov/content/home", "Home", style="font-size:1em; font-weight:normal; color:white; padding-left:5px; padding-right:5px; border-right:1px solid #4b5e7e;")),
-                                        tags$li(a(href="https://www2.gov.bc.ca/gov/content/home/disclaimer", "Disclaimer", style="font-size:1em; font-weight:normal; color:white; padding-left:5px; padding-right:5px; border-right:1px solid #4b5e7e;"))
-                                        
-                                )
-                       )
-           )
-    ))
+    custom_footer
+  )
   
-  
-  
+  return(ui)
 }
+
+
 
 # Server----
 server <- function(input, output, session) {
