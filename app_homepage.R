@@ -26,16 +26,16 @@ active_tabs <- list(
               m1_SB =  FALSE,
               m1_LE =  FALSE,
               m1_MH =  FALSE,
-  mission2 = TRUE,
+  mission2 = FALSE,
               m2_NBO = FALSE,
               m2_HA  = FALSE,
               m2_LMPR= FALSE,
               m2_OVC = FALSE,
               m2_GII = FALSE,
               m2_PRHC= FALSE,
-  mission3 = TRUE,
-  mission4 = TRUE,
-  mission5 = TRUE,
+  mission3 = FALSE,
+  mission4 = FALSE,
+  mission5 = FALSE,
               m5_CEG = FALSE,
   mission6 = TRUE,
               m6_RnD = TRUE,
@@ -229,8 +229,8 @@ ui <- function() {
   ui <- tagList(
     tags$style(HTML("
     .navbar-default {
-      background-color: #337ab7; /* Background color */
-      border-color: #337ab7; /* Border color */
+      background-color: #3C8DBC; /* Background color */
+      border-color: #3C8DBC; /* Border color */
     }
     .navbar-default .navbar-nav > li > a {
       color: #fff; /* Link color */
@@ -254,7 +254,7 @@ ui <- function() {
         navbarMenu(
           "Mission 1",
           tabPanel(
-            "Mission 1 Home",
+            "Mission 1 Overview",
             ui_m1_home(
               m1_PI_lineplot_data(df_m1_PI_1),
               m1_CHN_lineplot_data(df_m1_CHN_1),
@@ -298,7 +298,7 @@ ui <- function() {
         navbarMenu(
           "Mission 2",
           tabPanel(
-            "Mission 2 Home",
+            "Mission 2 Overview",
             ui_m2_home(
               m2_NBO_lineplot_data(df_m2_NBO_1),
               m2_HA_lineplot_data(df_m2_HA_1),
@@ -350,7 +350,7 @@ ui <- function() {
         navbarMenu(
           "Mission 6",
           tabPanel(
-            "Mission 6 Home",
+            "Mission 6 Overview",
             ui_m6_home(
               m6_RnD_lineplot_data(df_m6_RnD_1),
               m6_VAEX_lineplot_data(df_m6_VAEX_1),
@@ -360,31 +360,23 @@ ui <- function() {
             )
           ),
           if (active_tabs$m6_RnD) {
-            tabPanel("Investment in Innovation", ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2))
+            tabPanel("\xE2\x96\xB6 Investment in Innovation", ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2))
           },
           if (active_tabs$m6_VAEX) {
-            tabPanel("Value-added Export", ui_m6_VAEX(df_m6_VAEX_1))
+            tabPanel("\xE2\x96\xB6 Value-added Export", ui_m6_VAEX(df_m6_VAEX_1))
           },
           if (active_tabs$m6_nRinv) {
-            tabPanel("Non-residential Investment", ui_m6_nRinv(df_m6_nRinv_1))
+            tabPanel("\xE2\x96\xB6 Non-residential Investment", ui_m6_nRinv(df_m6_nRinv_1))
           },
           if (active_tabs$m6_LP) {
-            tabPanel("Labour Productivity", ui_m6_LP(df_m6_LP_1))
+            tabPanel("\xE2\x96\xB6 Labour Productivity", ui_m6_LP(df_m6_LP_1))
           },
           if (active_tabs$m6_EXP) {
-            tabPanel("Export", ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3))
+            tabPanel("\xE2\x96\xB6 Export", ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3))
           }
         )
       },
-      # Data Source tab
-      tabPanel(
-        "Data Source",
-        h3(
-          "Data Sources & Permissions",
-          style = "margin-left:15px;margin-bottom:20px"
-        )
-      )
-    ),
+      ),
     custom_footer
   )
   
@@ -396,53 +388,53 @@ ui <- function() {
 # Server----
 server <- function(input, output, session) {
   ##HOMEPAGE----
-  observeEvent(input$RnD_mission6, {updateTabItems(session, "tabs", "m6_home")})
-  observeEvent(input$VAEX_mission6, {updateTabItems(session, "tabs", "m6_home")})
-  observeEvent(input$nRinv_mission6, {updateTabItems(session, "tabs", "m6_home")})
-  observeEvent(input$LP_mission6, {updateTabItems(session, "tabs", "m6_home")})
-  observeEvent(input$EXP_mission6, {updateTabItems(session, "tabs", "m6_home")})
-  
-  observeEvent(input$PI_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$CHN_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$GC_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$UR_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$FE_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$TS_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$SB_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$LE_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$MI_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  observeEvent(input$MH_mission1, {updateTabItems(session, "tabs", "m1_home")})
-  
-  observeEvent(input$NBO_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  observeEvent(input$HA_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  observeEvent(input$LMPR_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  observeEvent(input$OVC_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  observeEvent(input$GII_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  observeEvent(input$PRHC_mission2, {updateTabItems(session, "tabs", "m2_home")})
-  
-  observeEvent(input$RnD_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$VAEX_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$nRinv_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$LP_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$EXP_home, {updateTabItems(session, "tabs", "home")})
-  
-  observeEvent(input$PI_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$CHN_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$GC_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$UR_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$FE_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$TS_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$SB_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$LE_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$MI_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$MH_home, {updateTabItems(session, "tabs", "home")})
-
-  observeEvent(input$NBO_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$HA_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$LMPR_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$OVC_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$GII_home, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$PRHC_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$RnD_mission6, {updateTabItems(session, "tabs", "m6_home")})
+  # observeEvent(input$VAEX_mission6, {updateTabItems(session, "tabs", "m6_home")})
+  # observeEvent(input$nRinv_mission6, {updateTabItems(session, "tabs", "m6_home")})
+  # observeEvent(input$LP_mission6, {updateTabItems(session, "tabs", "m6_home")})
+  # observeEvent(input$EXP_mission6, {updateTabItems(session, "tabs", "m6_home")})
+  # 
+  # observeEvent(input$PI_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$CHN_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$GC_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$UR_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$FE_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$TS_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$SB_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$LE_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$MI_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # observeEvent(input$MH_mission1, {updateTabItems(session, "tabs", "m1_home")})
+  # 
+  # observeEvent(input$NBO_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # observeEvent(input$HA_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # observeEvent(input$LMPR_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # observeEvent(input$OVC_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # observeEvent(input$GII_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # observeEvent(input$PRHC_mission2, {updateTabItems(session, "tabs", "m2_home")})
+  # 
+  # observeEvent(input$RnD_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$VAEX_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$nRinv_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$LP_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$EXP_home, {updateTabItems(session, "tabs", "home")})
+  # 
+  # observeEvent(input$PI_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$CHN_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$GC_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$UR_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$FE_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$TS_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$SB_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$LE_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$MI_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$MH_home, {updateTabItems(session, "tabs", "home")})
+  # 
+  # observeEvent(input$NBO_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$HA_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$LMPR_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$OVC_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$GII_home, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$PRHC_home, {updateTabItems(session, "tabs", "home")})
   
   observeEvent(input$m1_to_homepage, {updateTabItems(session, "tabs", "home")})
   observeEvent(input$m2_to_homepage, {updateTabItems(session, "tabs", "home")})

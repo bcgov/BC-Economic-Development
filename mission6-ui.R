@@ -406,7 +406,7 @@ ui_m6_nRinv <- function(df){
 
 ui_m6_LP_feature_lines <- function(chart, df){
   column(9,
-         plotlyOutput(chart , height = "75%"),
+         plotlyOutput(chart, height = "calc(100vh - 420px)" ),
          # Source
          fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
                   "Source: Statistics Canada, Table 36-10-0480-01"),
@@ -420,7 +420,7 @@ ui_m6_LP_feature_lines <- function(chart, df){
 }
 ui_m6_LP_feature_growthsectors <- function(chart, df){
   column(9,
-         plotlyOutput(chart , height = "75%"),
+         plotlyOutput(chart , height = "calc(100vh - 420px)"),
          # Source
          fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
                   "Source: Statistics Canada, Table 36-10-0480-01"),
@@ -434,7 +434,7 @@ ui_m6_LP_feature_growthsectors <- function(chart, df){
 }
 ui_m6_LP_feature_treemap <- function(chart, df){
   column(9,
-         plotlyOutput(chart , height = "75%"),
+         plotlyOutput(chart , height = "calc(100vh - 420px)"),
          # Source
          fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
                   "Source: Statistics Canada, Table 36-10-0480-01"),

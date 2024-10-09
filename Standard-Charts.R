@@ -835,7 +835,7 @@ feature_tab <- function(df, tab_name, title, tab_feature_chart, chart){
                                       style = "background-color: white; color: #003366; margin-bottom: 0px; text-align: right; padding-right: 0px;"),
                       column(3))),
              fluidRow(
-               style = "display: flex; flex-direction: row; align-items: stretch; height: calc(100vh - 300px); margin-buttom : 20px",
+               style = "display: flex; flex-direction: row; align-items: stretch; height: calc(100vh - 300px);",
                
                tab_feature_chart(chart, df),
                column(3,
