@@ -16,17 +16,17 @@
 
 active_tabs <- list(
   mission1 = TRUE,
-              m1_PI =  FALSE,
-              m1_CHN = FALSE,
-              m1_GC =  FALSE,
-              m1_UR =  FALSE,
-              m1_FE =  FALSE,
-              m1_TS =  FALSE,
-              m1_MI =  FALSE,
-              m1_SB =  FALSE,
-              m1_LE =  FALSE,
-              m1_MH =  FALSE,
-  mission2 = FALSE,
+              m1_PI =  TRUE,
+              m1_CHN = TRUE,
+              m1_GC =  TRUE,
+              m1_UR =  TRUE,
+              m1_FE =  TRUE,
+              m1_TS =  TRUE,
+              m1_MI =  TRUE,
+              m1_SB =  TRUE,
+              m1_LE =  TRUE,
+              m1_MH =  TRUE,
+  mission2 = TRUE,
               m2_NBO = FALSE,
               m2_HA  = FALSE,
               m2_LMPR= FALSE,
@@ -38,11 +38,11 @@ active_tabs <- list(
   mission5 = FALSE,
               m5_CEG = FALSE,
   mission6 = TRUE,
-              m6_RnD = TRUE,
+              m6_RnD = FALSE,
               m6_VAEX= FALSE,
-              m6_nRinv= TRUE,
-              m6_LP = TRUE,
-              m6_EXP = TRUE
+              m6_nRinv= FALSE,
+              m6_LP = FALSE,
+              m6_EXP = FALSE
 )
 
 ## load libraries ----
