@@ -350,60 +350,129 @@ ui_m6_VAEX <- function(df){
   )}
 
 #### Non residential investment ----
-ui_m6_nRinv <- function(df){
+# ui_m6_nRinv <- function(df){
+#   tabItem(tabName = "nRinv",
+#           go_to_button("nRinv_mission6", "Mission 6","nRinv_home", "Home Page"),
+#           
+#           ##### Line Plot----
+#           ui_main_chart(title = "Non-residential investment as a share of GDP", 
+#                         chart_name = "m6_nRinv_lineplot", 
+#                         button_name = "m6_nRinv_lineplot_dwnbtt", 
+#                         source = "Statistics Canada, Table 36-10-0480-01", 
+#                         summary = "Exesum_m6_nRinv_main"), 
+#           ##### EXESUM ----
+#           fluidPage(
+#             style = "background-color: aliceblue ; margin: 20px;",
+#             fluidRow(
+#               column(12, h2("Executive Summary"))
+#             ),
+#             fluidRow(
+#               column(12, uiOutput("Exesum_m6_nRinv"))
+#             )
+#           ),
+#           ##### Lines plot ----
+#           fluidPage(
+#             style = "background-color: white;margin: 20px;",
+#             fluidRow(
+#               column(9, h3("Figure 6-3-2: Gross fixed capital formation breakdown " ))
+#             ),
+#             fluidRow(
+#               column(9,plotlyOutput("m6_nRinv_lines")),
+#               column(3,
+#                      selectInput("m6_nRinv_lines_geo", "Region", choices = unique(df$GEO), selected = "British Columbia"),
+#                      selectInput("m6_nRinv_lines_prices", "Price Type", choices = unique(df$Prices)),
+#                      downloadButton("m6_nRinv_lines_dwnbtt", "Download Filtered Data in CSV"))
+#             )    
+#           ),
+#           ##### Bar Plot ----
+#           fluidPage(
+#             style = "background-color: white;margin: 20px;",
+#             fluidRow(
+#               column(9, h3("Figure 6-3-3: Non-residential investment breakdown by jurisdictions" ))
+#             ),
+#             fluidRow(
+#               column(9,plotlyOutput("m6_nRinv_barplot")),
+#               column(3, 
+#                      selectInput("m6_nRinv_barplot_year", "Year", choices = unique(df$Year), selected = 2019),
+#                      downloadButton("m6_nRinv_barplot_dwnbtt", "Download Filtered Data in CSV"))
+#             )    
+#           )
+#   )}
+
+
+
+ui_m6_nRinv_feature_lines <- function(chart, df){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m6_nRinv_lines_geo", "", choices = unique(df$GEO), selected = "British Columbia"))),
+                  column(4, div(class = "upward-dropdown", selectInput("m6_nRinv_lines_prices", "", choices = unique(df$Prices)))),
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_nRinv_lines_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m6_nRinv_feature_barplot <- function(chart, df){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m6_nRinv_barplot_year", "", choices = unique(df$Year), selected = 2019))),
+                  column(4), 
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_nRinv_barplot_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m6_nRinv <- function(df) {
   tabItem(tabName = "nRinv",
-          go_to_button("nRinv_mission6", "Mission 6","nRinv_home", "Home Page"),
-          
-          ##### Line Plot----
-          ui_main_chart(title = "Non-residential investment as a share of GDP", 
-                        chart_name = "m6_nRinv_lineplot", 
-                        button_name = "m6_nRinv_lineplot_dwnbtt", 
-                        source = "Statistics Canada, Table 36-10-0480-01", 
-                        summary = "Exesum_m6_nRinv_main"), 
-          ##### EXESUM ----
-          fluidPage(
-            style = "background-color: aliceblue ; margin: 20px;",
-            fluidRow(
-              column(12, h2("Executive Summary"))
-            ),
-            fluidRow(
-              column(12, uiOutput("Exesum_m6_nRinv"))
+          ui_main_chart(title = "Non-residential investment as a share of GDP",
+                        chart_name = "m6_nRinv_lineplot",
+                        button_name = "m6_nRinv_lineplot_dwnbtt",
+                        source = "Statistics Canada, Table 36-10-0480-01",
+                        summary = "Exesum_m6_nRinv_main"),
+          fluidRow(
+            h3("Non-residential investment Deep-dive", style = "text-align: center;"),
+
+            tabsetPanel(
+              tabPanel("Capital Breakdown",
+                       feature_tab(df,
+                                   tab_name = "Capital Breakdown",
+                                   title = "Gross fixed capital formation breakdown",
+                                   tab_feature_chart = ui_m6_nRinv_feature_lines,
+                                   chart = "m6_nRinv_lines")
+              ),
+              tabPanel("Jurisdictions",
+                       feature_tab(df,
+                                   tab_name = "Jurisdictions",
+                                   title = "Non-residential investment breakdown by jurisdictions",
+                                   tab_feature_chart = ui_m6_nRinv_feature_barplot,
+                                   chart = "m6_nRinv_barplot")
+              )
             )
           ),
-          ##### Lines plot ----
-          fluidPage(
-            style = "background-color: white;margin: 20px;",
-            fluidRow(
-              column(9, h3("Figure 6-3-2: Gross fixed capital formation breakdown " ))
-            ),
-            fluidRow(
-              column(9,plotlyOutput("m6_nRinv_lines")),
-              column(3,
-                     selectInput("m6_nRinv_lines_geo", "Region", choices = unique(df$GEO), selected = "British Columbia"),
-                     selectInput("m6_nRinv_lines_prices", "Price Type", choices = unique(df$Prices)),
-                     downloadButton("m6_nRinv_lines_dwnbtt", "Download Filtered Data in CSV"))
-            )    
-          ),
-          ##### Bar Plot ----
-          fluidPage(
-            style = "background-color: white;margin: 20px;",
-            fluidRow(
-              column(9, h3("Figure 6-3-3: Non-residential investment breakdown by jurisdictions" ))
-            ),
-            fluidRow(
-              column(9,plotlyOutput("m6_nRinv_barplot")),
-              column(3, 
-                     selectInput("m6_nRinv_barplot_year", "Year", choices = unique(df$Year), selected = 2019),
-                     downloadButton("m6_nRinv_barplot_dwnbtt", "Download Filtered Data in CSV"))
-            )    
-          )
-  )}
+
+          # Scroll buttons for navigation
+          tags$script(HTML("
+            $(document).on('click', '#go_to_main_chart', function() {
+              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
+            });
+
+            $(document).on('click', '#go_to_deep_dive', function() {
+              $('html, body').animate({scrollTop: $(document).height()}, 800);
+            });
+          "))
+  )
+}
 
 
 
-
-# #### Labour Productivity ----
-
+#### Labour Productivity ----
 ui_m6_LP_feature_lines <- function(chart, df){
   column(9,
          plotlyOutput(chart, height = "calc(100vh - 420px)" ),
@@ -446,21 +515,19 @@ ui_m6_LP_feature_treemap <- function(chart, df){
                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_LP_treemap_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt"))))
   )
 }
-
 ui_m6_LP <- function(df) {
   tabItem(tabName = "LP",
-          ##### Main Chart ----
           ui_main_chart(
             title = "Labour productivity",
             chart_name = "m6_LP_lineplot",
             button_name = "m6_LP_lineplot_dwnbtt",
             source = "Statistics Canada, Table 36-10-0480-01",
             summary = "Exesum_m6_LP_main"),
-          
+
           # Replacing the navbarPage for deep dives with tabsetPanel
           fluidRow(
             h3("Labour Productivity Deep-dive", style = "text-align: center;"),  # Title for the tabsetPanel
-            
+
             tabsetPanel(
               tabPanel("Growth",
                        feature_tab(df,
@@ -485,6 +552,97 @@ ui_m6_LP <- function(df) {
               )
             )
           ),
+
+          # Scroll buttons for navigation
+          tags$script(HTML("
+            $(document).on('click', '#go_to_main_chart', function() {
+              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
+            });
+
+            $(document).on('click', '#go_to_deep_dive', function() {
+              $('html, body').animate({scrollTop: $(document).height()}, 800);
+            });
+          "))
+  )
+}
+
+#### EXP ----
+ui_m6_EXP_feature_heatmap <- function(chart, df){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4),
+                  column(4),
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_heatmap_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m6_EXP_feature_stackbar <- function(chart, df){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m6_EXP_stackbar_year", "", choices = unique(df$Year), selected = 2022))),
+                  column(4),
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_stackbar_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m6_EXP_feature_bubble <- function(chart, df){
+  column(9,
+         plotlyOutput(chart , height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4),
+                  column(4),
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_bubble_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m6_EXP <- function(df1, df3) {
+  tabItem(tabName = "EXP",
+          ui_main_chart(title= "Exports as a share of total Canadian exports",
+                        chart_name = "m6_EXP_lineplot",
+                        button_name= "m6_EXP_lineplot_dwnbtt",
+                        source= "Statistics Canada, Table 36-10-0480-01",
+                        summary = "Exesum_m6_EXP_main"),
+          fluidRow(
+            h3("Exports Deep-dive", style = "text-align: center;"),  
+            
+            tabsetPanel(
+              tabPanel("Heatmap",
+                       feature_tab(df3,
+                                   tab_name = "Heatmap",
+                                   title = "Exports as a share of total Canadian exports by commodity types",
+                                   tab_feature_chart = ui_m6_EXP_feature_heatmap,
+                                   chart = "m6_EXP_heatmap")
+              ),
+              tabPanel("stackbar",
+                       feature_tab(df3,
+                                   tab_name = "stackbar",
+                                   title = "Environmental and clean technology products exports",
+                                   tab_feature_chart = ui_m6_EXP_feature_stackbar,
+                                   chart = "m6_EXP_stackbar")
+              ),
+              tabPanel("TREEMAP",
+                       feature_tab(df3,
+                                   tab_name = "bubble",
+                                   title = "Exports by destinations",
+                                   tab_feature_chart = ui_m6_EXP_feature_bubble,
+                                   chart = "m6_EXP_bubble")
+              )
+            )
+          ),
           
           # Scroll buttons for navigation
           tags$script(HTML("
@@ -499,198 +657,5 @@ ui_m6_LP <- function(df) {
   )
 }
 
-# ui_m6_LP <- function(df){
-# 
-#   tabItem(tabName = "LP",
-#           ##### Main Chart ----
-#           ui_main_chart(
-#             title = "Labour productivity",
-#             chart_name = "m6_LP_lineplot",
-#             button_name = "m6_LP_lineplot_dwnbtt",
-#             source = "Statistics Canada, Table 36-10-0480-01",
-#             summary = "Exesum_m6_LP_main"),
-#           fluidPage(
-#             navbarPage("Deep-Dive Charts",
-#                        feature_tab(df,
-#                                    tab_name = "Growth",
-#                                    title = "Labour productivity growth rate",
-#                                    tab_feature_chart = ui_m6_LP_feature_lines,
-#                                    chart = "m6_LP_lines"),
-#                        feature_tab(df,
-#                                    tab_name = "Sectors",
-#                                    title = "Labour productivity SECTOR growth rate",
-#                                    tab_feature_chart = ui_m6_LP_feature_growthsectors,
-#                                    chart = "m6_LP_growthsectors"),
-#                        feature_tab(df,
-#                                    tab_name = "TREEMAP",
-#                                    title = "Labour productivity TREEMAP",
-#                                    tab_feature_chart = ui_m6_LP_feature_treemap,
-#                                    chart = "m6_LP_treemap")
-#                        
-#                        
-#                        
-#             ),
-#             tags$script(HTML("
-#             $(document).on('click', '#go_to_main_chart', function() {
-#               $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-#             });
-# 
-#             $(document).on('click', '#go_to_deep_dive', function() {
-#               $('html, body').animate({scrollTop: $(document).height()}, 800);
-#             });
-#           "))
-#           ))
-# }
 
 
-#### EXP ----
-ui_m6_EXP_feature_heatmap <- function(chart, df){
-  column(9,
-         plotlyOutput(chart , height = "75%"),
-         # Source
-         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
-                  "Source: Statistics Canada, Table 36-10-0480-01"),
-         # inputs
-         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
-                  column(4),
-                  column(4),
-                  column(2),
-                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_heatmap_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
-  )
-}
-ui_m6_EXP_feature_stackbar <- function(chart, df){
-  column(9,
-         plotlyOutput(chart , height = "75%"),
-         # Source
-         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
-                  "Source: Statistics Canada, Table 36-10-0480-01"),
-         # inputs
-         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
-                  column(4, div(class = "upward-dropdown", selectInput("m6_EXP_stackbar_year", "", choices = unique(df$Year), selected = 2022))),
-                  column(4),
-                  column(2),
-                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_stackbar_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
-  )
-}
-ui_m6_EXP_feature_bubble <- function(chart, df){
-  column(9,
-         plotlyOutput(chart , height = "75%"),
-         # Source
-         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
-                  "Source: Statistics Canada, Table 36-10-0480-01"),
-         # inputs
-         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
-                  column(4),
-                  column(4),
-                  column(2),
-                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_EXP_bubble_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
-  )
-}
-
-
-ui_m6_EXP <- function(df1, df3){
-  
-  tabItem(tabName = "EXP",
-          tags$style(HTML("
-    .upward-dropdown .selectize-dropdown {
-      top: auto !important;
-      bottom: 100% !important;
-    }
-  ")),
-          ##### Main Chart ----
-          ui_main_chart(title= "Exports as a share of total Canadian exports",
-                        chart_name = "m6_EXP_lineplot",
-                        button_name= "m6_EXP_lineplot_dwnbtt",
-                        source= "Statistics Canada, Table 36-10-0480-01",
-                        summary = "Exesum_m6_EXP_main"),
-          fluidPage(
-            navbarPage("Deep-Dive Charts",
-                       feature_tab(df3,
-                                   tab_name = "Heatmap",
-                                   title = "Exports as a share of total Canadian exports by commodity types",
-                                   tab_feature_chart = ui_m6_EXP_feature_heatmap,
-                                   chart = "m6_EXP_heatmap"),
-                       feature_tab(df3,
-                                   tab_name = "stackbar",
-                                   title = "Environmental and clean technology products exports",
-                                   tab_feature_chart = ui_m6_EXP_feature_stackbar,
-                                   chart = "m6_EXP_stackbar"),
-                       feature_tab(df3,
-                                   tab_name = "bubble",
-                                   title = "Exports by destinations",
-                                   tab_feature_chart = ui_m6_EXP_feature_bubble,
-                                   chart = "m6_EXP_bubble")
-                       
-                       
-                       
-            ),
-            tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
-          ))
-}
-# ui_m6_EXP <- function(df1, df3){
-#   tabItem(tabName = "EXP",
-#           go_to_button("EXP_mission6", "Mission 6", "EXP_home", "Home Page"),
-#           ##### Line Plot----
-#           ui_main_chart(title= "Exports as a share of total Canadian exports",
-#                         chart_name = "m6_EXP_lineplot", 
-#                         button_name= "m6_EXP_lineplot_dwnbtt",
-#                         source= "Statistics Canada, Table 36-10-0480-01",
-#                         summary = "Exesum_m6_EXP_main"), 
-#           
-#           ##### EXESUM ----
-#           fluidPage(
-#             style = "background-color: aliceblue ; margin: 20px;",
-#             fluidRow(
-#               column(12, h2("Executive Summary"))
-#             ),
-#             fluidRow(
-#               column(12, uiOutput("Exesum_m6_EXP"))
-#             )
-#           ),
-#           ##### Heatmap Plot----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 6-5-2: Exports as a share of total Canadian exports by commodity types " ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m6_EXP_heatmap")),
-#               column(3, 
-#                      downloadButton("m6_EXP_heatmap_dwnbtt", "Download Filtered Data in CSV"))
-#             )
-#           ),
-#           ##### Stacked Bar----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 6-5-4: Environmental and clean technology products exports  " ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m6_EXP_stackbar")),
-#               column(3, 
-#                      selectInput("m6_EXP_stackbar_year", "Year", choices = unique(df3$Year), selected = 2022),
-#                      downloadButton("m6_EXP_stackbar_dwnbtt", "Download Filtered Data in CSV"))
-#             )
-#           ),
-#           ##### Bubble plot----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 6-5-5: Exports by destinations" ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m6_EXP_bubble")),
-#               column(3,
-#                      downloadButton("m6_EXP_bubble_dwnbtt", "Download Filtered Data in CSV"))
-#             )
-#           )
-#           
-#   )}
