@@ -274,7 +274,9 @@
           value = links$value
         ))
       
-      fig <- fig %>% layout(
+       fig <- fig |> layout(
+         plot_bgcolor = '#F2F2F2',
+         paper_bgcolor = '#F2F2F2', 
         font = list(size = 14, color = "black", weight = "bold"),
         hoverlabel = list(font = list(size = 14, color = "lightgrey")),
         updatemenus = list(font = list(color = "black") 
@@ -290,9 +292,8 @@
     m6_RnD_map_data <- function(df, year){
       df |>
         filter(
-          # GEO  c("British Columbia", ),
-          Year == year,
-        ) |>
+          Year == year
+          ) |>
         select(
           GEO, VALUE
         )}

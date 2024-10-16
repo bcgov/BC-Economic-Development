@@ -748,67 +748,133 @@ get_triangle_class <- function(Sign) {
 
 
 # Map chart----
-mapchart <- function(df_map, input){
+mapchart <- function(df_map, input) {
+  # Load the Canada map (assuming the function load_canada_map() is available)
   canada_map <- load_canada_map()
   
-  merged_df <- merge(canada_map, df_map, by.x="prov_name_en", by.y="GEO", all.x = TRUE)
-  canada_map$VALUE <- merged_df$VALUE
-  
-  # Create a color palette
-  # pal <- colorNumeric(palette = "YlOrBr", domain = canada_map$VALUE)
-  library(RColorBrewer)
+  # Merge data based on province names
+  canada_map <- merge(canada_map, df_map, by.x = "prov_name_en", by.y = "GEO", all.x = TRUE)
   
   # Define the color palette from light yellow to dark yellow
+  library(RColorBrewer)
   colors <- colorRampPalette(c("#FFFCE6", "#D4AF37"))(n = 20)
   
-  # Create a colorNumeric function with the defined colors and your data range
-  pal <- colorNumeric(
-    palette = colors,
-    domain = c(min(canada_map$VALUE, na.rm = TRUE), max(canada_map$VALUE, na.rm = TRUE))
-  )
+  # Create color palette based on the value range
+  pal <- colorNumeric(palette = colors, domain = range(canada_map$VALUE, na.rm = TRUE))
   
-  
-  p2 <- leaflet(data = canada_map, 
-                options = leafletOptions(minZoom = 1.6, maxZoom = 1.6, dragging = FALSE, zoomControl = FALSE, scrollWheelZoom = FALSE, doubleClickZoom = FALSE, boxZoom = FALSE, attributionControl = FALSE)) %>%
-    # Add a white background by adding a blank tile layer
-    addProviderTiles("Stamen.TonerLite") %>%
-    addPolygons(fillColor = ~pal(canada_map$VALUE),
-                fillOpacity = 0.8,
-                color = "#003366",
-                weight = 1,
-                popup = ~paste0("<b>", prov_name_en, "</b><br>Value: ", round(canada_map$VALUE, 2))) %>%
-    # Remove zoom controls
-    leaflet::addControl(html = "", position = "topright", className = "leaflet-control-zoom") %>%
-    leaflet::addControl(html = "", position = "topleft", className = "leaflet-control-zoom")
-  
-  validate(need(nrow(df_map) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
-  
-  # Specify the size of the leaflet map
-  p2 <- p2 %>% htmlwidgets::onRender("
-    function(el, x) {
-      el.style.width = '300px'; 
-      el.style.height = '250px'; 
-      el.style.backgroundColor = 'rgb(0, 51, 102)';
-
-      // Remove zoom controls
-      var zoomControl = document.getElementsByClassName('leaflet-control-zoom')[0];
-      if (zoomControl) {
-        zoomControl.parentNode.removeChild(zoomControl);
-      }
-
-      var css = '.custom-legend .legend-scale { font-size: 5px; } .custom-legend .legend-labels { font-size: 5px; padding: 4px; }';
-      var style = document.createElement('style');
-      if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-      } else {
-        style.appendChild(document.createTextNode(css));
-      }
-      document.head.appendChild(style);
-    }
-  ")
+  # Create the leaflet map focused on Canada
+  p2 <- leaflet(data = canada_map) %>%
+    # Add default map tiles
+    addProviderTiles("CartoDB.PositronNoLabels") %>%
+    
+    # Add polygons with province borders and color fill based on values
+    addPolygons(
+      fillColor = ~pal(VALUE),
+      fillOpacity = 0.8,
+      color = "#003366",   # Province border color
+      weight = 1,
+      popup = ~paste0("<b>", prov_name_en, "</b><br>Value: ", round(VALUE, 2))
+    ) %>%
+    
+    # Add a legend for the values
+    addLegend(
+      pal = pal,
+      values = ~VALUE,
+      opacity = 0.7,
+      title = "Values by Province",
+      position = "bottomright"
+    ) %>%
+    
+    # Restrict the view to Canada by specifying latitude and longitude bounds
+    setView(lng = -106.3468, lat = 56.1304, zoom = 4) %>%
+    
+    # Limit the map to focus only on Canada
+    setMaxBounds(lng1 = -141, lat1 = 83, lng2 = -52, lat2 = 40)
   
   return(p2)
 }
+
+# mapchart <- function(df_map, input){
+#   canada_map <- load_canada_map()
+#   
+#   merged_df <- merge(canada_map, df_map, by.x="prov_name_en", by.y="GEO", all.x = TRUE)
+#   canada_map <- merged_df
+#   
+#   # Create a color palette
+#   # pal <- colorNumeric(palette = "YlOrBr", domain = canada_map$VALUE)
+#   library(RColorBrewer)
+#   
+#   # Define the color palette from light yellow to dark yellow
+#   colors <- colorRampPalette(c("#FFFCE6", "#D4AF37"))(n = 20)
+#   
+#   # Create a colorNumeric function with the defined colors and your data range
+#   pal <- colorNumeric(
+#     palette = colors,
+#     domain = c(min(canada_map$VALUE, na.rm = TRUE), max(canada_map$VALUE, na.rm = TRUE))
+#   )
+#   
+#   # Create the leaflet map
+#   p2 <- leaflet(data = canada_map) %>%
+#     addTiles() %>%  # Add default OpenStreetMap tiles
+#     addPolygons(fillColor = ~pal(VALUE),
+#                 fillOpacity = 0.8,
+#                 color = "#003366",  # Border color for provinces
+#                 weight = 1,  # Border weight
+#                 popup = ~paste0("<b>", prov_name_en, "</b><br>Value: ", round(VALUE, 2))) %>%
+#     addLegend(pal = pal, values = ~VALUE, opacity = 0.7, title = "Values by Province", position = "bottomright")%>%
+#       # Add a white background by adding a blank tile layer
+#       addProviderTiles("Stamen.TonerLite") %>%
+#       addPolygons(fillColor = ~pal(canada_map$VALUE),
+#                   fillOpacity = 0.5,
+#                   color = "#003366",
+#                   weight = 1,
+#                   popup = ~paste0("<b>", prov_name_en, "</b><br>Value: ", round(canada_map$VALUE, 2))) %>%
+#       # Remove zoom controls
+#       leaflet::addControl(html = "", position = "topright", className = "leaflet-control-zoom") %>%
+#       leaflet::addControl(html = "", position = "topleft", className = "leaflet-control-zoom")
+#   
+#   # p2 <- leaflet(data = canada_map,
+#   #               options = leafletOptions(minZoom = 1.6, maxZoom = 1.6, dragging = FALSE, zoomControl = FALSE, scrollWheelZoom = FALSE, doubleClickZoom = FALSE, boxZoom = FALSE, attributionControl = FALSE)) %>%
+#   #   addTiles()%>%
+#   #   # Add a white background by adding a blank tile layer
+#   #   addProviderTiles("Stamen.TonerLite") %>%
+#   #   addPolygons(fillColor = ~pal(canada_map$VALUE),
+#   #               fillOpacity = 0.5,
+#   #               color = "#003366",
+#   #               weight = 1,
+#   #               popup = ~paste0("<b>", prov_name_en, "</b><br>Value: ", round(canada_map$VALUE, 2))) %>%
+#   #   # Remove zoom controls
+#   #   leaflet::addControl(html = "", position = "topright", className = "leaflet-control-zoom") %>%
+#   #   leaflet::addControl(html = "", position = "topleft", className = "leaflet-control-zoom")
+# 
+#   validate(need(nrow(df_map) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
+# 
+#   # Specify the size of the leaflet map
+#   # p2 <- p2 %>% htmlwidgets::onRender("
+#   #   function(el, x) {
+#   #     el.style.width = '300px';
+#   #     el.style.height = '250px';
+#   #     el.style.backgroundColor = 'rgb(0, 51, 102)';
+#   # 
+#   #     // Remove zoom controls
+#   #     var zoomControl = document.getElementsByClassName('leaflet-control-zoom')[0];
+#   #     if (zoomControl) {
+#   #       zoomControl.parentNode.removeChild(zoomControl);
+#   #     }
+#   # 
+#   #     var css = '.custom-legend .legend-scale { font-size: 5px; } .custom-legend .legend-labels { font-size: 5px; padding: 4px; }';
+#   #     var style = document.createElement('style');
+#   #     if (style.styleSheet) {
+#   #       style.styleSheet.cssText = css;
+#   #     } else {
+#   #       style.appendChild(document.createTextNode(css));
+#   #     }
+#   #     document.head.appendChild(style);
+#   #   }
+#   # ")
+# # 
+# #   return(p2)
+# # }
 
 
 

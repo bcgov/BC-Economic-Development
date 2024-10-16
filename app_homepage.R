@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
+#activetabs----
 active_tabs <- list(
   mission1 = TRUE,
               m1_PI =  TRUE,
@@ -27,22 +27,22 @@ active_tabs <- list(
               m1_LE =  TRUE,
               m1_MH =  TRUE,
   mission2 = TRUE,
-              m2_NBO = FALSE,
-              m2_HA  = FALSE,
-              m2_LMPR= FALSE,
-              m2_OVC = FALSE,
-              m2_GII = FALSE,
-              m2_PRHC= FALSE,
-  mission3 = FALSE,
-  mission4 = FALSE,
-  mission5 = FALSE,
-              m5_CEG = FALSE,
+              m2_NBO = TRUE,
+              m2_HA  = TRUE,
+              m2_LMPR= TRUE,
+              m2_OVC = TRUE,
+              m2_GII = TRUE,
+              m2_PRHC= TRUE,
+  mission3 = TRUE,
+  mission4 = TRUE,
+  mission5 = TRUE,
+              m5_CEG = TRUE,
   mission6 = TRUE,
-              m6_RnD = FALSE,
-              m6_VAEX= FALSE,
-              m6_nRinv= FALSE,
-              m6_LP = FALSE,
-              m6_EXP = FALSE
+              m6_RnD = TRUE,
+              m6_VAEX= TRUE,
+              m6_nRinv= TRUE,
+              m6_LP = TRUE,
+              m6_EXP = TRUE
 )
 
 ## load libraries ----
@@ -436,9 +436,9 @@ server <- function(input, output, session) {
   # observeEvent(input$GII_home, {updateTabItems(session, "tabs", "home")})
   # observeEvent(input$PRHC_home, {updateTabItems(session, "tabs", "home")})
   
-  observeEvent(input$m1_to_homepage, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$m2_to_homepage, {updateTabItems(session, "tabs", "home")})
-  observeEvent(input$m6_to_homepage, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$m1_to_homepage, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$m2_to_homepage, {updateTabItems(session, "tabs", "home")})
+  # observeEvent(input$m6_to_homepage, {updateTabItems(session, "tabs", "home")})
   
   
   observeEvent(input$button1, {

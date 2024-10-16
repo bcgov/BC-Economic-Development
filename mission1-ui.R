@@ -174,97 +174,68 @@ ui_m1_home <- function(df_m1_PI_1, df_m1_CHN_1,df_m1_GC_1,
           ))}
 
 
-# ### Home ----
-# ui_m1_home <- function(df_m1_PI, df_m1_CHN, df_m1_GC, df_m1_UR, df_m1_FE, df_m1_TS, df_m1_SB, df_m1_LE, df_m1_MH){
-#   style2 <- "background-color:white; height: 130px; padding: 2px; border-radius: 15px; border: 6px solid #ecf0f5;font-size: 18px;text-align: center;"
-#   style1 <- "background-color:#156082; color:white; height: 80px; width:98%; padding: 6px; border-radius: 15px; border: 6px solid white;font-size: 24px; text-align: center;margin: 0 auto;"
-#   tabItem(tabName = "m1_home",
-#           fluidPage(
-#             fluidRow(
-#                 style = "border: 20px solid #ecf0f5;",
-#                 column(3,
-#                        style = "height:100px;"
-#                 ), 
-#                 column(3, style = style2,
-#                        actionButton("m1_PI_Button", 
-#                                     label = HTML(Extract_Status(df_m1_PI, "%")), 
-#                                     style = style1),
-#                        "Poverty Incidence"
-#                 ),
-#                 column(3, style = style2,
-#                        actionButton("m1_CHN_Button", 
-#                                     label = HTML(Extract_Status(df_m1_CHN, "%")), 
-#                                     style = style1),
-#                        "Core Housing Need"
-#                 ),
-#                 column(3, style = style2,
-#                        actionButton("m1_GC_Button", 
-#                                     label = HTML(Extract_Status(df_m1_GC, "")), 
-#                                     style = style1),
-#                        "Gini Coefficinet"
-#                 )),
-#               fluidRow(
-#                   style = "border: 20px solid #ecf0f5;",
-#                   column(3,
-#                          style = "height:100px;"
-#                   ), 
-#                   column(3, style = style2,
-#                          actionButton("m1_UR_Button", 
-#                                       label = HTML(Extract_Status(df_m1_UR, "")), 
-#                                       style = style1),
-#                          "Underemployment Rate"
-#                   ),
-#                   column(3, style = style2,
-#                          actionButton("m1_FE_Button", 
-#                                       label = HTML(Extract_Status(df_m1_FE, "%")), 
-#                                       style = style1),
-#                          "Food Expenditure"
-#                   ),
-#                   column(3, style = style2,
-#                          actionButton("m1_TS_Button", 
-#                                       label = HTML(Extract_Status(df_m1_TS, "%")), 
-#                                       style = style1),
-#                          "Spending on Transportation"
-#                   )
-#                 ),
-#             fluidRow(
-#                   style = "border: 20px solid #ecf0f5;",
-#                   column(3,
-#                          fluidRow(h2(HTML("MISSION1:<br/>SUPPORTING<br/>PEOPLE<br/>FAMILIES"))),
-#                          style = "background-color:#156082; color:white; height:400px; padding: 10px 20px; border-radius: 15px; border: 4px solid #ecf0f5;font-size: 36px;text-align: center;"
-#                   ), 
-#                   column(3, style = style2,
-#                          actionButton("m1_SB_Button", 
-#                                       label = HTML(Extract_Status(df_m1_SB, "%")), 
-#                                       style = style1),
-#                          "Sense of Belongings"
-#                   ),
-#                   column(3, style = style2,
-#                          actionButton("m1_LE_Button", 
-#                                       label = HTML(Extract_Status(df_m1_LE, "years")), 
-#                                       style = style1),
-#                          "Life Expectancy"
-#                   ),
-#                   column(3, style = style2,
-#                          actionButton("m1_MH_Button", 
-#                                       label = HTML(Extract_Status(df_m1_MH, "%")), 
-#                                       style = style1), "Mental Health"
-#                   )
-#                 )
-#             ))}
-
-
 
 ### PI: Povery Incidence ----
+# ui_m1_PI_feature_GB <- function(chart, df2){
+#   column(9,
+#          plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+#          # Source
+#          fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+#                   "Source: Statistics Canada, Table 36-10-0480-01"),
+#          # inputs
+#          fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+#                   column(4, div(class = "upward-dropdown", selectInput("m1_PI_GB_geo", "", choices = unique(df2$GEO), selected = "British Columbia"))),
+#                   column(3, div(class = "upward-dropdown", selectInput("m1_PI_GB_year", "", choices = unique(df2$Year), selected = 2021))),
+#                   column(3),
+#                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m1_PI_GB_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+#   )
+# }
+# ui_m1_PI <- function(df1, df2) {
+#   tabItem(tabName = "PI",
+#           ui_main_chart(title = "Poverty Incidence", 
+#                         chart_name = "m1_PI_lineplot", 
+#                         button_name = "m1_PI_lineplot_dwnbtt", 
+#                         source = "Statistics Canada, Table 36-10-0480-01", 
+#                         summary = "Exesum_m1_PI_main"),
+#           fluidRow(
+#             h3("Poverty Incidence Deep-dive", style = "text-align: center;"),
+#             
+#             tabsetPanel(
+#               tabPanel("Gender Bias",
+#                        feature_tab(df1,
+#                                    tab_name = "Gender Bias",
+#                                    title = "Poverty Incidence Gender Bias",
+#                                    tab_feature_chart = ui_m1_PI_feature_GB,
+#                                    chart = "m1_PI_GB")
+#               )
+#             )
+#           ),
+#           
+#           # Scroll buttons for navigation
+#           tags$script(HTML("
+#             $(document).on('click', '#go_to_main_chart', function() {
+#               $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
+#             });
+# 
+#             $(document).on('click', '#go_to_deep_dive', function() {
+#               $('html, body').animate({scrollTop: $(document).height()}, 800);
+#             });
+#           "))
+#   )
+# }
+
+
+
+
 ui_m1_PI <- function(df1, df2){
   tabItem(tabName = "PI",
           go_to_button("PI_mission1", "Mission 1", "PI_home", "Home Page"),
           ##### Line Plot----
-          ui_main_chart(title = "Poverty Incidence", 
-                        chart_name = "m1_PI_lineplot", 
-                        button_name = "m1_PI_lineplot_dwnbtt", 
-                        source = "Statistics Canada, Table 36-10-0480-01", 
-                        summary = "Exesum_m1_PI_main"), 
+          ui_main_chart(title = "Poverty Incidence",
+                        chart_name = "m1_PI_lineplot",
+                        button_name = "m1_PI_lineplot_dwnbtt",
+                        source = "Statistics Canada, Table 36-10-0480-01",
+                        summary = "Exesum_m1_PI_main"),
           ##### EXESUM ----
           fluidPage(
             style = "background-color: aliceblue ; margin: 20px;",
@@ -289,10 +260,46 @@ ui_m1_PI <- function(df1, df2){
                      downloadButton("m1_PI_GB_dwnbtt", "Download Filtered Data in CSV"))
             )
           )
-          
+
   )}
 
 ### CHN: Core Housing Needs ----
+
+# ui_m1_CHN <- function(df1, df2) {
+#   tabItem(tabName = "PI",
+#           ui_main_chart(title = "Poverty Incidence", 
+#                         chart_name = "m1_PI_lineplot", 
+#                         button_name = "m1_PI_lineplot_dwnbtt", 
+#                         source = "Statistics Canada, Table 36-10-0480-01", 
+#                         summary = "Exesum_m1_PI_main"),
+#           fluidRow(
+#             h3("Poverty Incidence Deep-dive", style = "text-align: center;"),
+#             
+#             tabsetPanel(
+#               tabPanel("Gender Bias",
+#                        feature_tab(df2,
+#                                    tab_name = "Gender Bias",
+#                                    title = "Poverty Incidence Gender Bias",
+#                                    tab_feature_chart = ui_m1_PI_feature_GB,
+#                                    chart = "m1_PI_GB")
+#               )
+#             )
+#           ),
+#           
+#           # Scroll buttons for navigation
+#           tags$script(HTML("
+#             $(document).on('click', '#go_to_main_chart', function() {
+#               $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
+#             });
+# 
+#             $(document).on('click', '#go_to_deep_dive', function() {
+#               $('html, body').animate({scrollTop: $(document).height()}, 800);
+#             });
+#           "))
+#   )
+# }
+
+
 ui_m1_CHN <- function(df1){
   tabItem(tabName = "CHN",
           go_to_button("CHN_mission1", "Mission 1", "CHN_home", "Home Page"),

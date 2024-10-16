@@ -182,6 +182,21 @@ ui_m6_RnD_feature_table <- function(chart, df1){
                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_RnD_table_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
   )
 }
+ui_m6_RnD_feature_map <- function(chart, df2){
+  column(9,
+         leafletOutput(chart ,height = "calc(100vh - 460px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m6_RnD_map_year", "Year", choices = unique(df2$Year), selected = 2020 ))),
+                  column(4), 
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_RnD_map_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+
 ui_m6_RnD_feature_barplot <- function(chart, df2){
   column(9,
          plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
@@ -206,10 +221,10 @@ ui_m6_RnD <- function(df1, df2) {
             h3("R&D Deep-dive", style = "text-align: center;"),
             
             tabsetPanel(
-              tabPanel("Flows",
+              tabPanel("Funding flows",
                        feature_tab(df1,
-                                   tab_name = "Flows",
-                                   title = "R&D funding flows",
+                                   tab_name = "Funding flows",
+                                   title = "Research and Develoment funding flows",
                                    tab_feature_chart = ui_m6_RnD_feature_sankey,
                                    chart = "m6_RnD_sankey")
               ),
@@ -219,6 +234,13 @@ ui_m6_RnD <- function(df1, df2) {
                                    title = "Research and Development Spending Growth",
                                    tab_feature_chart = ui_m6_RnD_feature_table,
                                    chart = "m6_RnD_table")
+              ),
+              tabPanel("R&D by jurisdiction",
+                       feature_tab(df2,
+                                   tab_name = "R&D by jurisdiction",
+                                   title = "Research and Development Spending Growth",
+                                   tab_feature_chart = ui_m6_RnD_feature_map,
+                                   chart = "m6_RnD_map")
               ),
               tabPanel("barplot",
                        feature_tab(df2,
