@@ -44,6 +44,11 @@ mission6_RnD_server <- function(Exesum_m6_RnD_main, Exesum_m6_RnD, df_m6_RnD_1, 
 
   ### Executive Summary----
   output$Exesum_m6_RnD <- renderUI(Exesum_m6_RnD)
+  output$Exesum_m6_RnD_flows <- renderUI(Exesum_m6_RnD_flows)
+  output$Exesum_m6_RnD_table <- renderUI(Exesum_m6_RnD_table)
+  output$Exesum_m6_RnD_jurisdictions <- renderUI(Exesum_m6_RnD_jurisdictions)
+  output$Exesum_m6_RnD_barplot <- renderUI(Exesum_m6_RnD_barplot)
+  
   ### Line Plot----
   output$m6_RnD_lineplot <- renderPlotly({
     p1 <- m6_RnD_render_lineplot(df_m6_RnD_1, input)
@@ -116,6 +121,9 @@ mission6_VAEX_server <- function(Exesum_m6_VAEX_main, Exesum_m6_VAEX, df_m6_VAEX
   
   ### Executive Summary----
   output$Exesum_m6_VAEX <- renderUI(Exesum_m6_VAEX)
+  output$Exesum_m6_VAEX_pie <- renderUI(Exesum_m6_VAEX_pie)
+  output$Exesum_m6_VAEX_barplot <- renderUI(Exesum_m6_VAEX_barplot)
+  
   ### Line plot----
   output$m6_VAEX_lineplot <- renderPlotly({
     p1 <- m6_VAEX_render_lineplot(df_m6_VAEX_1, input)
@@ -166,6 +174,9 @@ mission6_nRinv_server <- function(Exesum_m6_nRiv_main, Exesum_m6_nRinv, df_m6_nR
   
   ### Executive Summary----
   output$Exesum_m6_nRinv <- renderUI(Exesum_m6_nRinv)
+  output$Exesum_m6_nRinv_lines <- renderUI(Exesum_m6_nRinv_lines)
+  output$Exesum_m6_nRinv_barplot <- renderUI(Exesum_m6_nRinv_barplot)
+  
   ### Line plot----
   output$m6_nRinv_lineplot <- renderPlotly({
     p1 <- m6_nRinv_render_lineplot(df_m6_nRinv_1, input)
@@ -216,7 +227,10 @@ mission6_nRinv_server <- function(Exesum_m6_nRiv_main, Exesum_m6_nRinv, df_m6_nR
 mission6_LP_server <- function(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, output, input){
   
   output$Exesum_m6_LP_main <- renderUI(Exesum_m6_LP_main)
-  
+  output$Exesum_m6_LP_growth <- renderUI(Exesum_m6_LP_growth)
+  output$Exesum_m6_LP_sectors <- renderUI(Exesum_m6_LP_sectors)
+  output$Exesum_m6_LP_map <- renderUI(Exesum_m6_LP_map)
+
   ### Executive Summary----
   output$Exesum_m6_LP <- renderUI(Exesum_m6_LP)
   ### Line plot----
@@ -291,10 +305,11 @@ mission6_LP_server <- function(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, outp
     p1
   })
   
+  
   output$m6_LP_map_dwnbtt <- downloadHandler(
     filename = "StrongerBC_Mission6_LabourProductivity_filteredData.csv",
     content = function(file) {
-      df <-  m6_LP_map_data(df_m6_LP_1, input$m6_LP_map_year, input$m6_LP_map_labourtype, input$m6_LP_map_industry)
+      df <-  m6_LP_map_data(df_m6_LP_1, input$m6_LP_map_year, input$m6_LP_map_industry)
       
       write.csv(df, file)
     }
@@ -317,6 +332,9 @@ mission6_LP_server <- function(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, outp
 ## EXPORT----
 mission6_EXP_server <- function(Exesum_m6_EXP_main, Exesum_m6_EXP, df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input){
   output$Exesum_m6_EXP_main <- renderUI(Exesum_m6_EXP_main)
+  output$Exesum_m6_EXP_heatmap <- renderUI(Exesum_m6_EXP_heatmap)
+  output$Exesum_m6_EXP_stackbar <- renderUI(Exesum_m6_EXP_stackbar)
+  output$Exesum_m6_EXP_bubble <- renderUI(Exesum_m6_EXP_bubble)
   
   ### Executive Summary----
   output$Exesum_m6_EXP <- renderUI(Exesum_m6_EXP)

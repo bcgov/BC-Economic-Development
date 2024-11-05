@@ -360,19 +360,19 @@ ui <- function() {
             )
           ),
           if (active_tabs$m6_RnD) {
-            tabPanel("\xE2\x96\xB6 Investment in Innovation", ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2))
+            tabPanel("\xE2\x96\xB6 Private sector investment in innovation", ui_m6_RnD(df_m6_RnD_1, df_m6_RnD_2))
           },
           if (active_tabs$m6_VAEX) {
-            tabPanel("\xE2\x96\xB6 Value-added Export", ui_m6_VAEX(df_m6_VAEX_1))
+            tabPanel("\xE2\x96\xB6 Value-added in goods and services exports", ui_m6_VAEX(df_m6_VAEX_1))
           },
           if (active_tabs$m6_nRinv) {
-            tabPanel("\xE2\x96\xB6 Non-residential Investment", ui_m6_nRinv(df_m6_nRinv_1))
+            tabPanel("\xE2\x96\xB6 Investment in non-residential structures, machinery & equipment, and intellectual property products", ui_m6_nRinv(df_m6_nRinv_1))
           },
           if (active_tabs$m6_LP) {
             tabPanel("\xE2\x96\xB6 Labour Productivity", ui_m6_LP(df_m6_LP_1))
           },
           if (active_tabs$m6_EXP) {
-            tabPanel("\xE2\x96\xB6 Export", ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3))
+            tabPanel("\xE2\x96\xB6 Exports share", ui_m6_EXP(df_m6_EXP_1, df_m6_EXP_3))
           }
         )
       },

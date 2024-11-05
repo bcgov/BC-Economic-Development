@@ -746,20 +746,20 @@
 
     
     ## map ----
-    m6_LP_map_data <- function(df, year, labourtype, industry){
+    m6_LP_map_data <- function(df, year, industry){
       df |>
         filter(
           GEO != "Canada",
           Year == year,
-          measure == labourtype,
+          measure == "Labour productivity",
           Industry == industry
         ) |>
         select(
           GEO, measure, Industry, VALUE
         )}
-    
+
     m6_LP_render_map <- function(df, input){
-          df_map <- m6_LP_map_data(df, input$m6_LP_map_year, input$m6_LP_map_labourtype, input$m6_LP_map_industry)
+          df_map <- m6_LP_map_data(df, input$m6_LP_map_year, input$m6_LP_map_industry)
           mapchart(df_map, input)
     }
     

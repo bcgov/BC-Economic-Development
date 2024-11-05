@@ -303,7 +303,28 @@ Exesum_m6_RnD_main <- HTML("
   </ul>
 ")
 
-Exesum_m6_RnD <- HTML("
+Exesum_m6_RnD_flows <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
+    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+  </ul>
+")
+
+Exesum_m6_RnD_table <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
+    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+  </ul>
+")
+
+Exesum_m6_RnD_jurisdictions <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
+    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+  </ul>
+")
+
+Exesum_m6_RnD_barplot <- HTML("
   <ul style='text-align: justify; font-size: 15px;'>
     <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
     <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
@@ -328,6 +349,24 @@ Exesum_m6_VAEX <- HTML("
     <span style='color: blue;'>Provincial comparison:</span>
     <li>B.C.’s value-added in goods and services exports’ GDP contribution was 18.5 percent in 2019, down from 19.8 percent in 2018. Saskatchewan's economy has been the most reliant on exports in Canada, with value-added exports accounting for 34.1 percent of GDP in 2018 and 34.9 percent in 2019. In 2019, value-added exports accounted for 19.7% of Ontario's GDP and 18.2% of Quebec's GDP.</li> 
     <li>Value-added in goods and services exports contributed to 448,253 jobs in B.C. in 2019, third highest in Canada, after Ontario (1,341,866) and Quebec (660,157). </li>
+  </ul>
+")
+
+Exesum_m6_VAEX_pie <- HTML("
+  <ul style='text-align: justify; font-size: 12px;padding: 20px;'>
+    <li>B.C.’s labour productivity in 2023 was $64.6 per hour, ramaining at the same level of 2022.</li>
+    <hr style='border: 1px solid #d3d3d3;' />
+    <li>At $64.6, B.C. ranked second among large provinces, and was the only large provinces that did not see a drop in labour productivity in 2023. Labour productivity was $77.1 per hour in Alberta, $62.2 per hour in Ontario and $58.8 per hour in Quebec in 2023.</li>
+    <hr style='border: 1px solid #d3d3d3;' />
+  </ul>
+")
+
+Exesum_m6_VAEX_barplot <- HTML("
+  <ul style='text-align: justify; font-size: 12px;padding: 20px;'>
+    <li>B.C.’s labour productivity in 2023 was $64.6 per hour, ramaining at the same level of 2022.</li>
+    <hr style='border: 1px solid #d3d3d3;' />
+    <li>At $64.6, B.C. ranked second among large provinces, and was the only large provinces that did not see a drop in labour productivity in 2023. Labour productivity was $77.1 per hour in Alberta, $62.2 per hour in Ontario and $58.8 per hour in Quebec in 2023.</li>
+    <hr style='border: 1px solid #d3d3d3;' />
   </ul>
 ")
 
@@ -357,7 +396,42 @@ Exesum_m6_LP_main <- HTML("
   </ul>
 ")
 
+Exesum_m6_nRinv_lines <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>Investment in non-residential structures, machinery and equipment, and intellectual property products increased to 13.3 percent of GDP in 2022 [most recent year], the highest level since 2000 [start year]. It increased by 0.2% from 13.2% in 2021.[previous year]. </li>
+    <li>In 2022, investments in fixed non-residential capital totaled $55 billion in B.C., with the private sector accounted for 77.6 percent. Transportation and warehousing investments accounted for 26 percent of total fixed non-residential capital in 2022, the most among all sectors, followed by government sector (22%) and mining, quarrying and oil and gas extraction (14%). </li>
+    <li>At 13.3 percent, B.C. has the fourth highest percentage in Canada, trailing Alberta (16.7%), Newfoundland and Labrador (15.4%) and Saskatchewan (14.3%). Non-residential structures made up most of non-residential investments in Canada. In B.C. non-residential structures accounted for around 60 percent in 2022 while intellectual property products accounting for 15 percent and machinery and equipment 25 percent. Non-residential investments in Ontario were more evenly distributed, with each category accounting for approximately 30 percent in 2022. </li>
+  </ul>
+")
+
+Exesum_m6_nRinv_barplot <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>Investment in non-residential structures, machinery and equipment, and intellectual property products increased to 13.3 percent of GDP in 2022 [most recent year], the highest level since 2000 [start year]. It increased by 0.2% from 13.2% in 2021.[previous year]. </li>
+    <li>In 2022, investments in fixed non-residential capital totaled $55 billion in B.C., with the private sector accounted for 77.6 percent. Transportation and warehousing investments accounted for 26 percent of total fixed non-residential capital in 2022, the most among all sectors, followed by government sector (22%) and mining, quarrying and oil and gas extraction (14%). </li>
+    <li>At 13.3 percent, B.C. has the fourth highest percentage in Canada, trailing Alberta (16.7%), Newfoundland and Labrador (15.4%) and Saskatchewan (14.3%). Non-residential structures made up most of non-residential investments in Canada. In B.C. non-residential structures accounted for around 60 percent in 2022 while intellectual property products accounting for 15 percent and machinery and equipment 25 percent. Non-residential investments in Ontario were more evenly distributed, with each category accounting for approximately 30 percent in 2022. </li>
+  </ul>
+")
+
 Exesum_m6_LP <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
+    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+  </ul>
+")
+
+Exesum_m6_LP_growth <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+  </ul>
+")
+
+Exesum_m6_LP_sectors <- HTML("
+  <ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
+  </ul>
+")
+
+Exesum_m6_LP_map <- HTML("
   <ul style='text-align: justify; font-size: 15px;'>
     <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
     <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
@@ -374,6 +448,33 @@ Exesum_m6_EXP_main <- HTML("
 ")
 
 Exesum_m6_EXP <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>B.C. contributed for 7.9 percent of overall Canadian exports in 2023. B.C.’s export volume was $56.5 billion in 2023, down 13.1 percent from $64.9 billion in 2022. B.C. was the fourth largest contributor to Canadian exports in 2023, behind Ontario 35.4 percent), Alberta (24.6 percent) and Quebec (16.3 percent).  </li>
+    <li>Exports from B.C. to major trading partners have decreased in 2023. While the United States remained B.C.’s top exports destination, accounting for 54.6 percent of overall exports from B.C., shipments to the U.S. fell 17.57 percent, from $37.4 billion in 2022 to $30.8 billion in 2023. B.C.’s exports to Australia increased by 39.98  percent in 2023, highest among all major trading partners. </li> 
+    <li>Energy product exports from B.C. totaled $20 billion in 2023, accounting for 35.4 percent of B.C.’s exports, highest among all commodities. B.C. led in wood products exports, accounting for 37.5 percent of total Canadian wood products exports. </li> 
+    <li>In 2022, B.C.’s environmental and clean technology products exports totaled $3.3 billion, ranking third in Canada behind Ontario ($10.5 billion) and Quebec ($3.8 billion). At 31.8 percent, B.C. has the fastest-growing rate of environmental and clean technology products exports in Canada. Largely driven by clean electricity, environmental products accounted for 76.1 percent of the overall environmental and clean technology products exports in B.C.</li>      
+  </ul>
+")
+
+Exesum_m6_EXP_heatmap <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>B.C. contributed for 7.9 percent of overall Canadian exports in 2023. B.C.’s export volume was $56.5 billion in 2023, down 13.1 percent from $64.9 billion in 2022. B.C. was the fourth largest contributor to Canadian exports in 2023, behind Ontario 35.4 percent), Alberta (24.6 percent) and Quebec (16.3 percent).  </li>
+    <li>Exports from B.C. to major trading partners have decreased in 2023. While the United States remained B.C.’s top exports destination, accounting for 54.6 percent of overall exports from B.C., shipments to the U.S. fell 17.57 percent, from $37.4 billion in 2022 to $30.8 billion in 2023. B.C.’s exports to Australia increased by 39.98  percent in 2023, highest among all major trading partners. </li> 
+    <li>Energy product exports from B.C. totaled $20 billion in 2023, accounting for 35.4 percent of B.C.’s exports, highest among all commodities. B.C. led in wood products exports, accounting for 37.5 percent of total Canadian wood products exports. </li> 
+    <li>In 2022, B.C.’s environmental and clean technology products exports totaled $3.3 billion, ranking third in Canada behind Ontario ($10.5 billion) and Quebec ($3.8 billion). At 31.8 percent, B.C. has the fastest-growing rate of environmental and clean technology products exports in Canada. Largely driven by clean electricity, environmental products accounted for 76.1 percent of the overall environmental and clean technology products exports in B.C.</li>      
+  </ul>
+")
+
+Exesum_m6_EXP_stackbar <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>B.C. contributed for 7.9 percent of overall Canadian exports in 2023. B.C.’s export volume was $56.5 billion in 2023, down 13.1 percent from $64.9 billion in 2022. B.C. was the fourth largest contributor to Canadian exports in 2023, behind Ontario 35.4 percent), Alberta (24.6 percent) and Quebec (16.3 percent).  </li>
+    <li>Exports from B.C. to major trading partners have decreased in 2023. While the United States remained B.C.’s top exports destination, accounting for 54.6 percent of overall exports from B.C., shipments to the U.S. fell 17.57 percent, from $37.4 billion in 2022 to $30.8 billion in 2023. B.C.’s exports to Australia increased by 39.98  percent in 2023, highest among all major trading partners. </li> 
+    <li>Energy product exports from B.C. totaled $20 billion in 2023, accounting for 35.4 percent of B.C.’s exports, highest among all commodities. B.C. led in wood products exports, accounting for 37.5 percent of total Canadian wood products exports. </li> 
+    <li>In 2022, B.C.’s environmental and clean technology products exports totaled $3.3 billion, ranking third in Canada behind Ontario ($10.5 billion) and Quebec ($3.8 billion). At 31.8 percent, B.C. has the fastest-growing rate of environmental and clean technology products exports in Canada. Largely driven by clean electricity, environmental products accounted for 76.1 percent of the overall environmental and clean technology products exports in B.C.</li>      
+  </ul>
+")
+
+Exesum_m6_EXP_bubble <- HTML("
   <ul style='text-align: justify; font-size: 20px;'>
     <li>B.C. contributed for 7.9 percent of overall Canadian exports in 2023. B.C.’s export volume was $56.5 billion in 2023, down 13.1 percent from $64.9 billion in 2022. B.C. was the fourth largest contributor to Canadian exports in 2023, behind Ontario 35.4 percent), Alberta (24.6 percent) and Quebec (16.3 percent).  </li>
     <li>Exports from B.C. to major trading partners have decreased in 2023. While the United States remained B.C.’s top exports destination, accounting for 54.6 percent of overall exports from B.C., shipments to the U.S. fell 17.57 percent, from $37.4 billion in 2022 to $30.8 billion in 2023. B.C.’s exports to Australia increased by 39.98  percent in 2023, highest among all major trading partners. </li> 

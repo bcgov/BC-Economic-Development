@@ -226,28 +226,32 @@ ui_m6_RnD <- function(df1, df2) {
                                    tab_name = "Funding flows",
                                    title = "Research and Develoment funding flows",
                                    tab_feature_chart = ui_m6_RnD_feature_sankey,
-                                   chart = "m6_RnD_sankey")
+                                   chart = "m6_RnD_sankey",
+                                   summary = "Exesum_m6_RnD_flows")
               ),
               tabPanel("table",
                        feature_tab(df1,
                                    tab_name = "table",
                                    title = "Research and Development Spending Growth",
                                    tab_feature_chart = ui_m6_RnD_feature_table,
-                                   chart = "m6_RnD_table")
+                                   chart = "m6_RnD_table",
+                                   summary = "Exesum_m6_RnD_table")
               ),
               tabPanel("R&D by jurisdiction",
                        feature_tab(df2,
                                    tab_name = "R&D by jurisdiction",
                                    title = "Research and Development Spending Growth",
                                    tab_feature_chart = ui_m6_RnD_feature_map,
-                                   chart = "m6_RnD_map")
+                                   chart = "m6_RnD_map",
+                                   summary = "Exesum_m6_RnD_jurisdictions")
               ),
               tabPanel("barplot",
                        feature_tab(df2,
                                    tab_name = "barplot",
                                    title = "R&D intensity",
                                    tab_feature_chart = ui_m6_RnD_feature_barplot,
-                                   chart = "m6_RnD_barplot")
+                                   chart = "m6_RnD_barplot",
+                                   summary = "Exesum_m6_RnD_barplot")
               )
             )
           ),
@@ -309,14 +313,16 @@ ui_m6_VAEX <- function(df) {
                                    tab_name = "pie",
                                    title = "Value-added exports GDP contribution",
                                    tab_feature_chart = ui_m6_VAEX_feature_pie,
-                                   chart = "m6_VAEX_pie")
+                                   chart = "m6_VAEX_pie",
+                                   summary = "Exesum_m6_VAEX_pie")
               ),
               tabPanel("barplot",
                        feature_tab(df,
                                    tab_name = "barplot",
                                    title = "Value-added exports by industry in B.C.",
                                    tab_feature_chart = ui_m6_VAEX_feature_barplot,
-                                   chart = "m6_VAEX_barplot")
+                                   chart = "m6_VAEX_barplot",
+                                   summary = "Exesum_m6_VAEX_barplot")
               )
             )
           ),
@@ -430,14 +436,16 @@ ui_m6_nRinv <- function(df) {
                                    tab_name = "Capital Breakdown",
                                    title = "Gross fixed capital formation breakdown",
                                    tab_feature_chart = ui_m6_nRinv_feature_lines,
-                                   chart = "m6_nRinv_lines")
+                                   chart = "m6_nRinv_lines",
+                                   summary = "Exesum_m6_nRinv_lines")
               ),
               tabPanel("Jurisdictions",
                        feature_tab(df,
                                    tab_name = "Jurisdictions",
                                    title = "Non-residential investment breakdown by jurisdictions",
                                    tab_feature_chart = ui_m6_nRinv_feature_barplot,
-                                   chart = "m6_nRinv_barplot")
+                                   chart = "m6_nRinv_barplot",
+                                   summary = "Exesum_m6_nRinv_barplot")
               )
             )
           ),
@@ -498,6 +506,21 @@ ui_m6_LP_feature_treemap <- function(chart, df){
                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_LP_treemap_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt"))))
   )
 }
+ui_m6_LP_feature_map <- function(chart, df){
+  column(9,
+         leafletOutput(chart , height = "calc(100vh - 420px)"),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m6_LP_map_year", "", choices = unique(df$Year), selected = 2022))),
+                  column(4, div(class = "upward-dropdown", selectInput("m6_LP_map_industry", "", choices = unique(df$Industry), selected = "All industries"))),
+                  column(2),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", 
+                         downloadButton("m6_LP_map_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt"))))
+  )
+}
 ui_m6_LP <- function(df) {
   tabItem(tabName = "LP",
           ui_main_chart(
@@ -512,26 +535,37 @@ ui_m6_LP <- function(df) {
             h3("Labour Productivity Deep-dive", style = "text-align: center;"),  # Title for the tabsetPanel
 
             tabsetPanel(
-              tabPanel("Growth",
+              tabPanel("Growth by sector",
                        feature_tab(df,
-                                   tab_name = "Growth",
+                                   tab_name = "Growth by sector",
                                    title = "Labour productivity growth rate",
                                    tab_feature_chart = ui_m6_LP_feature_lines,
-                                   chart = "m6_LP_lines")
+                                   chart = "m6_LP_lines",
+                                   summary = "Exesum_m6_LP_growth")
               ),
-              tabPanel("Sectors",
+              tabPanel("Growth by jurisdiction",
                        feature_tab(df,
-                                   tab_name = "Sectors",
+                                   tab_name = "Growth by jurisdiction",
                                    title = "Labour productivity SECTOR growth rate",
                                    tab_feature_chart = ui_m6_LP_feature_growthsectors,
-                                   chart = "m6_LP_growthsectors")
+                                   chart = "m6_LP_growthsectors",
+                                   summary = "Exesum_m6_LP_sectors")
               ),
-              tabPanel("TREEMAP",
+              # tabPanel("TREEMAP",
+              #          feature_tab(df,
+              #                      tab_name = "TREEMAP",
+              #                      title = "Labour productivity TREEMAP",
+              #                      tab_feature_chart = ui_m6_LP_feature_treemap,
+              #                      chart = "m6_LP_treemap",
+              #                      summary = "Exesum_m6_LP_map")
+              # )
+              tabPanel("Productivity by jurisdiction",
                        feature_tab(df,
-                                   tab_name = "TREEMAP",
-                                   title = "Labour productivity TREEMAP",
-                                   tab_feature_chart = ui_m6_LP_feature_treemap,
-                                   chart = "m6_LP_treemap")
+                                   tab_name = "Productivity by jurisdiction",
+                                   title = "Labour productivity MAP",
+                                   tab_feature_chart = ui_m6_LP_feature_map,
+                                   chart = "m6_LP_map",
+                                   summary = "Exesum_m6_LP_map")
               )
             )
           ),
@@ -608,21 +642,24 @@ ui_m6_EXP <- function(df1, df3) {
                                    tab_name = "Heatmap",
                                    title = "Exports as a share of total Canadian exports by commodity types",
                                    tab_feature_chart = ui_m6_EXP_feature_heatmap,
-                                   chart = "m6_EXP_heatmap")
+                                   chart = "m6_EXP_heatmap",
+                                   summary = "Exesum_m6_EXP_heatmap")
               ),
               tabPanel("stackbar",
                        feature_tab(df3,
                                    tab_name = "stackbar",
                                    title = "Environmental and clean technology products exports",
                                    tab_feature_chart = ui_m6_EXP_feature_stackbar,
-                                   chart = "m6_EXP_stackbar")
+                                   chart = "m6_EXP_stackbar",
+                                   summary = "Exesum_m6_EXP_stackbar")
               ),
               tabPanel("TREEMAP",
                        feature_tab(df3,
                                    tab_name = "bubble",
                                    title = "Exports by destinations",
                                    tab_feature_chart = ui_m6_EXP_feature_bubble,
-                                   chart = "m6_EXP_bubble")
+                                   chart = "m6_EXP_bubble",
+                                   summary = "Exesum_m6_EXP_bubble")
               )
             )
           ),
