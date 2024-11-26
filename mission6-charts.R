@@ -154,6 +154,10 @@
       p2 <- df2 |> 
         plot_ly(x = ~VALUE,y=~GEO, color=~GEO, type = 'bar',
                 colors = ~color, showlegend = FALSE)  |>
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2'
+        )|>
         add_text(x = ~adjusted_VALUE,text = ~formatted_VALUE, textposition = 'outside')
       validate(need(nrow(df2) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
       return(p2)
@@ -334,7 +338,11 @@
       p2 <- df2 |>
         plot_ly(x = ~EXP_GDP, y=~GEO, color=~GEO, type = 'bar',
                 showlegend = FALSE)  |>
-        add_text(x = ~adjusted_VALUE,text = ~formatted_VALUE, textposition = 'outside') 
+        add_text(x = ~adjusted_VALUE,text = ~formatted_VALUE, textposition = 'outside') |>
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2'
+        )
       
       validate(need(nrow(df2) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
       return(p2)
@@ -357,7 +365,10 @@
       
       # Create a pie chart
       fig <- plot_ly(sorted_data, labels = ~Industry, values = ~VALUE, type = 'pie', textposition = 'inside')
-      fig <- fig |> layout(showlegend = FALSE)
+      fig <- fig |> layout(
+        plot_bgcolor = '#F2F2F2',
+        paper_bgcolor = '#F2F2F2',
+        showlegend = FALSE)
       
       return(fig)
     }
@@ -385,7 +396,8 @@
                  "Business gross fixed capital formation",
                  "General governments final consumption expenditure",
                  "Non-residential structures, machinery and equipment",
-                 "Residential structures"
+                 "Residential structures",
+                 "Intellectual property products"
                ))
     }
     
@@ -393,7 +405,9 @@
       dflines <- m6_nRinv_lines_data(df, input$m6_nRinv_lines_geo, input$m6_nRinv_lines_prices)
       plines <- dflines |>
         plot_ly(x = ~Year, y = ~VALUE, color = ~Estimates , type = 'scatter', mode = 'lines')|>
-        layout(yaxis = list(title = ""),
+        layout(plot_bgcolor = '#F2F2F2',
+               paper_bgcolor = '#F2F2F2',
+               yaxis = list(title = ""),
                xaxis = list(title = ""),
                legend = list(y = -0.3, x=0))
       
@@ -423,25 +437,20 @@
 
       p2 <- df2 |> 
         plot_ly(x = ~VALUE, y = ~GEO, color = ~Estimates, type = 'bar', 
-                orientation = 'h', stackgroup = 'group', text = ~VALUE, 
-                width = 800, height = 600) |>
-        layout(yaxis = list(title = ""),
+                orientation = 'h', stackgroup = 'group', text = ~VALUE 
+                # width = 800, 
+                # height = 600
+                ) |>
+        layout(
+               plot_bgcolor = '#F2F2F2',
+               paper_bgcolor = '#F2F2F2',
+               yaxis = list(title = ""),
                xaxis = list(title = ""),
                bargap = 0.2,
                barmode = "stack",
                barnorm = "percent",
-               legend = list(y = -0.3, x = 0, orientation = 'h'))
-      
-            # p2 <- df2 |> 
-      #   plot_ly(x = ~VALUE,y=~GEO, color=~Estimates, type = 'bar', 
-      #           orientation = 'h', stackgroup = 'group', text = ~VALUE) |>
-      #   layout(yaxis = list(title = ""),
-      #          xaxis = list(title = ""),
-      #          bargap = 0.2,
-      #          barmode = "stack",
-      #          barnorm = "percent",
-      #          legend = list(y = -0.3, x=0, orientation = 'h'),
-      #          autosize = TRUE)
+               legend = list(y = -0.1, x = 0, orientation = 'h'))
+
       
       validate(need(nrow(df2) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
       return(p2)
@@ -907,7 +916,10 @@
         z = ~Value,
         type = "heatmap",
         colorscale = "Plasma" )|>
-        layout(title = "Exports as a share of total Canadian exports in 2023 ")
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
+          title = "Exports as a share of total Canadian exports in 2023 ")
       p1
     }
     ##Stacked Bar Chart ----
@@ -925,7 +937,10 @@
                     color = ~Type,
                     type='bar',
                     orientation = 'h') |> 
-        layout(barmode = 'stack',
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
+          barmode = 'stack',
                legend = list(x = 0, y = -0.1, orientation = 'h'))
       p1
     }
@@ -952,6 +967,8 @@
         marker = list(sizemode = "diameter"),
         text = ~GEO) %>%
         layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
           xaxis = list(title = "Export Level"),
           yaxis = list(title = "Export Growth"),
           showlegend = TRUE

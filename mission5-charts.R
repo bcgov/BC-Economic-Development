@@ -22,6 +22,13 @@
       df <- na.omit(df)
       return(df)
     }
+    
+    load_m5_xyz1 <- function() {
+      url <- "..."
+      df <- read.csv(url, header = TRUE)
+      df <- na.omit(df)
+      return(df)
+    }
 
 # CEG Dash----
     ## Line plot----
@@ -41,30 +48,65 @@
     m5_CEG_render_lineplot <- function(df, input){
       dash_lineplot(m5_CEG_lineplot_data, df, input)}
     
-    ##Stacked Bar Chart ----
-    m5_CEG_stackbar_data <- function(df, geo, class){
+    
+    ## sources plot data----
+    m5_CEG_sources_data <- function(df, geo){
       df |>
-        filter(GEO == geo,
-               Class.of.electricity.producer == class,
-               Type.of.electricity.generation %in% c("Solar", "Wind power turbine", "Tidal power turbine", "Hydraulic turbine")
-               )
+        filter(Year >= 2015,
+               GEO == geo,
+               Class.of.electricity.producer == "Total all classes of electricity producer",
+               Type.of.electricity.generation %in% c("Hydraulic turbine",
+                                                     "Tidal power turbine",
+                                                     "Wind power turbine",
+                                                     "Solar"))|>
+        arrange(Year) |>
+        mutate(
+          Type = Type.of.electricity.generation,
+          VALUE = VALUE / 1000000)
+               
     }
     
-    m5_CEG_render_stackbar <- function(df, input){
-      df1 <- m5_CEG_stackbar_data(df, input$m5_CEG_stackbar_geo, input$m5_CEG_stackbar_class) |>
-        filter(Year >= 2015)
-
-      p1 <- plot_ly(data = df1, 
-                    y = ~VALUE, 
-                    x = ~Year,
-                    color = ~Type.of.electricity.generation,
-                    type='bar') |> 
-        layout(barmode = 'stack',
-               legend = list(x = 0, y = -0.1, orientation = 'h'),
-               xaxis = list(title = "",
-                            tickmode = 'array',
-                            tickvals = ~Year),
-               yaxis = list(title = "Megawatt hours"))
+    m5_CEG_render_sources <- function(df, input){
+      dfsources <- m5_CEG_sources_data(df, input$m5_CEG_sources_geo)
+      psources <- dfsources |>
+        plot_ly(x = ~Year, y = ~VALUE, color = ~Type, type = 'bar')|>
+        layout(
+          barmode = 'stack',
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
+          yaxis = list(title = "MWh"),
+          xaxis = list(title = ""),
+          legend = list(y = -0.3, x=0))
       
-      p1
+      validate(need(nrow(dfsources) > 0, "The data for this set of inputs is inadequate. To obtain a proper visualization, please adjust the inputs in the sidebar."))
+      
+      psources <- ggplotly(psources)
+      return(psources)
+    }
+    
+    
+    
+    ## map plot data----
+    m5_CEG_map_data <- function(df, year){
+      df <-   df |>
+        filter(
+               GEO != "Canada",
+               Year == year,
+               Class.of.electricity.producer == "Total all classes of electricity producer",
+               Type.of.electricity.generation %in% c("Hydraulic turbine",
+                                                     "Tidal power turbine",
+                                                     "Wind power turbine",
+                                                     "Solar"))|>
+        arrange(Year) |>
+        mutate(
+          Type = Type.of.electricity.generation,
+          VALUE = VALUE / 1000000) |>
+        group_by(Year, GEO) |>
+        summarize (VALUE = sum(VALUE, na.rm = TRUE), .groups = 'drop')
+      
+    }
+    
+    m5_CEG_render_map <- function(df, input){
+      df_map <- m5_CEG_map_data(df, input$m5_CEG_map_year)
+      mapchart(df_map, input)
     }

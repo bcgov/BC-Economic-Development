@@ -5179,3 +5179,461 @@
 2023,"Yukon","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",71690
 2023,"Yukon","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",71690
 2023,"Yukon","Total all classes of electricity producer","Wind power turbine","Megawatt hours",622
+2024,"Alberta","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",1180506
+2024,"Alberta","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",14819
+2024,"Alberta","Electricity producers, electric utilities","Solar","Megawatt hours",2015780
+2024,"Alberta","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",41099073
+2024,"Alberta","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",211174
+2024,"Alberta","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",29989818
+2024,"Alberta","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",29778644
+2024,"Alberta","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",7898150
+2024,"Alberta","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, industries","Hydraulic turbine","Megawatt hours",0
+2024,"Alberta","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Alberta","Electricity producers, industries","Other types of electricity generation","Megawatt hours",86906
+2024,"Alberta","Electricity producers, industries","Solar","Megawatt hours",132817
+2024,"Alberta","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",11094890
+2024,"Alberta","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",687249
+2024,"Alberta","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",10848665
+2024,"Alberta","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",10161416
+2024,"Alberta","Electricity producers, industries","Wind power turbine","Megawatt hours",26502
+2024,"Alberta","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Alberta","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Alberta","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",1180506
+2024,"Alberta","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Alberta","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",101725
+2024,"Alberta","Total all classes of electricity producer","Solar","Megawatt hours",2148597
+2024,"Alberta","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",52193963
+2024,"Alberta","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",898423
+2024,"Alberta","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",40838483
+2024,"Alberta","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",39940060
+2024,"Alberta","Total all classes of electricity producer","Wind power turbine","Megawatt hours",7924652
+2024,"British Columbia","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",28442198
+2024,"British Columbia","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"British Columbia","Electricity producers, electric utilities","Solar","Megawatt hours",175
+2024,"British Columbia","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"British Columbia","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",30814093
+2024,"British Columbia","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",350647
+2024,"British Columbia","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",1243335
+2024,"British Columbia","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",892688
+2024,"British Columbia","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",1128385
+2024,"British Columbia","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, industries","Hydraulic turbine","Megawatt hours",3956703
+2024,"British Columbia","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"British Columbia","Electricity producers, industries","Solar","Megawatt hours",2692
+2024,"British Columbia","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"British Columbia","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",6483426
+2024,"British Columbia","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",2305913
+2024,"British Columbia","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",2524030
+2024,"British Columbia","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",218117
+2024,"British Columbia","Electricity producers, industries","Wind power turbine","Megawatt hours",1
+2024,"British Columbia","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"British Columbia","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",32398901
+2024,"British Columbia","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"British Columbia","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"British Columbia","Total all classes of electricity producer","Solar","Megawatt hours",2867
+2024,"British Columbia","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"British Columbia","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",37297519
+2024,"British Columbia","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",2656560
+2024,"British Columbia","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",3767365
+2024,"British Columbia","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",1110805
+2024,"British Columbia","Total all classes of electricity producer","Wind power turbine","Megawatt hours",1128386
+2024,"Canada","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",212327684
+2024,"Canada","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, electric utilities","Nuclear steam turbine","Megawatt hours",53279012
+2024,"Canada","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",99649
+2024,"Canada","Electricity producers, electric utilities","Solar","Megawatt hours",3550911
+2024,"Canada","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"Canada","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",369600411
+2024,"Canada","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",1909556
+2024,"Canada","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",71600093
+2024,"Canada","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",69690537
+2024,"Canada","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",28743062
+2024,"Canada","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, industries","Hydraulic turbine","Megawatt hours",16994385
+2024,"Canada","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Canada","Electricity producers, industries","Other types of electricity generation","Megawatt hours",86906
+2024,"Canada","Electricity producers, industries","Solar","Megawatt hours",402831
+2024,"Canada","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"Canada","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",35236148
+2024,"Canada","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",4097364
+2024,"Canada","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",17530892
+2024,"Canada","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",13433528
+2024,"Canada","Electricity producers, industries","Wind power turbine","Megawatt hours",221134
+2024,"Canada","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Canada","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Canada","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",229322069
+2024,"Canada","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Canada","Total all classes of electricity producer","Nuclear steam turbine","Megawatt hours",53279012
+2024,"Canada","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",186555
+2024,"Canada","Total all classes of electricity producer","Solar","Megawatt hours",3953742
+2024,"Canada","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"Canada","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",404836559
+2024,"Canada","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",6006920
+2024,"Canada","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",89130985
+2024,"Canada","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",83124065
+2024,"Canada","Total all classes of electricity producer","Wind power turbine","Megawatt hours",28964196
+2024,"Manitoba","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Manitoba","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Manitoba","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",19079368
+2024,"Manitoba","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Manitoba","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Manitoba","Electricity producers, electric utilities","Solar","Megawatt hours",0
+2024,"Manitoba","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",19672618
+2024,"Manitoba","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Manitoba","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",10920
+2024,"Manitoba","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",10920
+2024,"Manitoba","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",582330
+2024,"Manitoba","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Manitoba","Electricity producers, industries","Hydraulic turbine","Megawatt hours",0
+2024,"Manitoba","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Manitoba","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Manitoba","Electricity producers, industries","Solar","Megawatt hours",1438
+2024,"Manitoba","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",66063
+2024,"Manitoba","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",57140
+2024,"Manitoba","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",64625
+2024,"Manitoba","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",7485
+2024,"Manitoba","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"Manitoba","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Manitoba","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Manitoba","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",19079368
+2024,"Manitoba","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Manitoba","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Manitoba","Total all classes of electricity producer","Solar","Megawatt hours",1438
+2024,"Manitoba","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",19738681
+2024,"Manitoba","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",57140
+2024,"Manitoba","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",75545
+2024,"Manitoba","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",18405
+2024,"Manitoba","Total all classes of electricity producer","Wind power turbine","Megawatt hours",582330
+2024,"New Brunswick","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",2102712
+2024,"New Brunswick","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, electric utilities","Nuclear steam turbine","Megawatt hours",1526693
+2024,"New Brunswick","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"New Brunswick","Electricity producers, electric utilities","Solar","Megawatt hours",1107
+2024,"New Brunswick","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"New Brunswick","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",7698002
+2024,"New Brunswick","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"New Brunswick","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",3459163
+2024,"New Brunswick","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",3459163
+2024,"New Brunswick","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",608327
+2024,"New Brunswick","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, industries","Hydraulic turbine","Megawatt hours",NA
+2024,"New Brunswick","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"New Brunswick","Electricity producers, industries","Solar","Megawatt hours",700
+2024,"New Brunswick","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"New Brunswick","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",393614
+2024,"New Brunswick","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",380167
+2024,"New Brunswick","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",392914
+2024,"New Brunswick","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",12747
+2024,"New Brunswick","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"New Brunswick","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"New Brunswick","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"New Brunswick","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",2102712
+2024,"New Brunswick","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"New Brunswick","Total all classes of electricity producer","Nuclear steam turbine","Megawatt hours",1526693
+2024,"New Brunswick","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"New Brunswick","Total all classes of electricity producer","Solar","Megawatt hours",1807
+2024,"New Brunswick","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"New Brunswick","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",8091616
+2024,"New Brunswick","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",380167
+2024,"New Brunswick","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",3852077
+2024,"New Brunswick","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",3471910
+2024,"New Brunswick","Total all classes of electricity producer","Wind power turbine","Megawatt hours",608327
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",28758416
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Solar","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",29289681
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",412251
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",412251
+2024,"Newfoundland and Labrador","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",119014
+2024,"Newfoundland and Labrador","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, industries","Hydraulic turbine","Megawatt hours",497680
+2024,"Newfoundland and Labrador","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, industries","Solar","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"Newfoundland and Labrador","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",759530
+2024,"Newfoundland and Labrador","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",1635
+2024,"Newfoundland and Labrador","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",261850
+2024,"Newfoundland and Labrador","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",260215
+2024,"Newfoundland and Labrador","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",29256096
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Solar","Megawatt hours",0
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",30049211
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",1635
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",674101
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",672466
+2024,"Newfoundland and Labrador","Total all classes of electricity producer","Wind power turbine","Megawatt hours",119014
+2024,"Northwest Territories","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",74974
+2024,"Northwest Territories","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Electricity producers, electric utilities","Solar","Megawatt hours",860
+2024,"Northwest Territories","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",195151
+2024,"Northwest Territories","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Northwest Territories","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",116415
+2024,"Northwest Territories","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",116415
+2024,"Northwest Territories","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",2902
+2024,"Northwest Territories","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Electricity producers, industries","Hydraulic turbine","Megawatt hours",NA
+2024,"Northwest Territories","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Electricity producers, industries","Solar","Megawatt hours",1795
+2024,"Northwest Territories","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",238507
+2024,"Northwest Territories","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",0
+2024,"Northwest Territories","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",229798
+2024,"Northwest Territories","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",229798
+2024,"Northwest Territories","Electricity producers, industries","Wind power turbine","Megawatt hours",6914
+2024,"Northwest Territories","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",74974
+2024,"Northwest Territories","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Northwest Territories","Total all classes of electricity producer","Solar","Megawatt hours",2655
+2024,"Northwest Territories","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",433658
+2024,"Northwest Territories","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",0
+2024,"Northwest Territories","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",346213
+2024,"Northwest Territories","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",346213
+2024,"Northwest Territories","Total all classes of electricity producer","Wind power turbine","Megawatt hours",9816
+2024,"Nova Scotia","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Nova Scotia","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Nova Scotia","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",631519
+2024,"Nova Scotia","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Nova Scotia","Electricity producers, electric utilities","Solar","Megawatt hours",1927
+2024,"Nova Scotia","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"Nova Scotia","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",5911776
+2024,"Nova Scotia","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",210843
+2024,"Nova Scotia","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",4315766
+2024,"Nova Scotia","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",4104923
+2024,"Nova Scotia","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",962564
+2024,"Nova Scotia","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Nova Scotia","Electricity producers, industries","Hydraulic turbine","Megawatt hours",NA
+2024,"Nova Scotia","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Nova Scotia","Electricity producers, industries","Solar","Megawatt hours",52
+2024,"Nova Scotia","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"Nova Scotia","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",24182
+2024,"Nova Scotia","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",3278
+2024,"Nova Scotia","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",3278
+2024,"Nova Scotia","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",0
+2024,"Nova Scotia","Electricity producers, industries","Wind power turbine","Megawatt hours",20852
+2024,"Nova Scotia","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Nova Scotia","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Nova Scotia","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",631519
+2024,"Nova Scotia","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Nova Scotia","Total all classes of electricity producer","Solar","Megawatt hours",1979
+2024,"Nova Scotia","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"Nova Scotia","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",5935958
+2024,"Nova Scotia","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",214121
+2024,"Nova Scotia","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",4319044
+2024,"Nova Scotia","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",4104923
+2024,"Nova Scotia","Total all classes of electricity producer","Wind power turbine","Megawatt hours",983416
+2024,"Nunavut","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",0
+2024,"Nunavut","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Electricity producers, electric utilities","Solar","Megawatt hours",0
+2024,"Nunavut","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",127133
+2024,"Nunavut","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Nunavut","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",127133
+2024,"Nunavut","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",127133
+2024,"Nunavut","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",0
+2024,"Nunavut","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Electricity producers, industries","Hydraulic turbine","Megawatt hours",NA
+2024,"Nunavut","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Electricity producers, industries","Solar","Megawatt hours",72
+2024,"Nunavut","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",72
+2024,"Nunavut","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",0
+2024,"Nunavut","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",0
+2024,"Nunavut","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",0
+2024,"Nunavut","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"Nunavut","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",0
+2024,"Nunavut","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Nunavut","Total all classes of electricity producer","Solar","Megawatt hours",72
+2024,"Nunavut","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",127205
+2024,"Nunavut","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",0
+2024,"Nunavut","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",127133
+2024,"Nunavut","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",127133
+2024,"Nunavut","Total all classes of electricity producer","Wind power turbine","Megawatt hours",0
+2024,"Ontario","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",26757565
+2024,"Ontario","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, electric utilities","Nuclear steam turbine","Megawatt hours",51752319
+2024,"Ontario","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Ontario","Electricity producers, electric utilities","Solar","Megawatt hours",1458917
+2024,"Ontario","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",106342096
+2024,"Ontario","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",591085
+2024,"Ontario","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",17601809
+2024,"Ontario","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",17010724
+2024,"Ontario","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",8771486
+2024,"Ontario","Electricity producers, industries","Combustion turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, industries","Hydraulic turbine","Megawatt hours",259030
+2024,"Ontario","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Ontario","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Ontario","Electricity producers, industries","Solar","Megawatt hours",260409
+2024,"Ontario","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",2828301
+2024,"Ontario","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",152945
+2024,"Ontario","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",2248690
+2024,"Ontario","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",2095745
+2024,"Ontario","Electricity producers, industries","Wind power turbine","Megawatt hours",60172
+2024,"Ontario","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Ontario","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Ontario","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",27016595
+2024,"Ontario","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Ontario","Total all classes of electricity producer","Nuclear steam turbine","Megawatt hours",51752319
+2024,"Ontario","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Ontario","Total all classes of electricity producer","Solar","Megawatt hours",1719326
+2024,"Ontario","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",109170397
+2024,"Ontario","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",744030
+2024,"Ontario","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",19850499
+2024,"Ontario","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",19106469
+2024,"Ontario","Total all classes of electricity producer","Wind power turbine","Megawatt hours",8831658
+2024,"Prince Edward Island","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, electric utilities","Solar","Megawatt hours",21601
+2024,"Prince Edward Island","Electricity producers, electric utilities","Tidal power turbine","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",354221
+2024,"Prince Edward Island","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",471
+2024,"Prince Edward Island","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",471
+2024,"Prince Edward Island","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",332149
+2024,"Prince Edward Island","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, industries","Solar","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, industries","Tidal power turbine","Megawatt hours",0
+2024,"Prince Edward Island","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",2879
+2024,"Prince Edward Island","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",2244
+2024,"Prince Edward Island","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",2879
+2024,"Prince Edward Island","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",635
+2024,"Prince Edward Island","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"Prince Edward Island","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",0
+2024,"Prince Edward Island","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Prince Edward Island","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Prince Edward Island","Total all classes of electricity producer","Solar","Megawatt hours",21601
+2024,"Prince Edward Island","Total all classes of electricity producer","Tidal power turbine","Megawatt hours",0
+2024,"Prince Edward Island","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",357100
+2024,"Prince Edward Island","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",2244
+2024,"Prince Edward Island","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",3350
+2024,"Prince Edward Island","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",1106
+2024,"Prince Edward Island","Total all classes of electricity producer","Wind power turbine","Megawatt hours",332149
+2024,"Quebec","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",103417764
+2024,"Quebec","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, electric utilities","Nuclear steam turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Quebec","Electricity producers, electric utilities","Solar","Megawatt hours",10646
+2024,"Quebec","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",111428252
+2024,"Quebec","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",545807
+2024,"Quebec","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",896110
+2024,"Quebec","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",350303
+2024,"Quebec","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",7103732
+2024,"Quebec","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, industries","Hydraulic turbine","Megawatt hours",12280972
+2024,"Quebec","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Quebec","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Quebec","Electricity producers, industries","Solar","Megawatt hours",0
+2024,"Quebec","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",13041724
+2024,"Quebec","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",465156
+2024,"Quebec","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",693896
+2024,"Quebec","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",228740
+2024,"Quebec","Electricity producers, industries","Wind power turbine","Megawatt hours",66856
+2024,"Quebec","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Quebec","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Quebec","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",115698736
+2024,"Quebec","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Quebec","Total all classes of electricity producer","Nuclear steam turbine","Megawatt hours",NA
+2024,"Quebec","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Quebec","Total all classes of electricity producer","Solar","Megawatt hours",10646
+2024,"Quebec","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",124469976
+2024,"Quebec","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",1010963
+2024,"Quebec","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",1590006
+2024,"Quebec","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",579043
+2024,"Quebec","Total all classes of electricity producer","Wind power turbine","Megawatt hours",7170588
+2024,"Saskatchewan","Electricity producers, electric utilities","Combustion turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",1586246
+2024,"Saskatchewan","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",84830
+2024,"Saskatchewan","Electricity producers, electric utilities","Solar","Megawatt hours",39980
+2024,"Saskatchewan","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",16309034
+2024,"Saskatchewan","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Saskatchewan","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",13367229
+2024,"Saskatchewan","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",13367229
+2024,"Saskatchewan","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",1230749
+2024,"Saskatchewan","Electricity producers, industries","Conventional steam turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, industries","Hydraulic turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Saskatchewan","Electricity producers, industries","Other types of electricity generation","Megawatt hours",0
+2024,"Saskatchewan","Electricity producers, industries","Solar","Megawatt hours",2106
+2024,"Saskatchewan","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",302210
+2024,"Saskatchewan","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",41637
+2024,"Saskatchewan","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",260267
+2024,"Saskatchewan","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",218630
+2024,"Saskatchewan","Electricity producers, industries","Wind power turbine","Megawatt hours",39837
+2024,"Saskatchewan","Total all classes of electricity producer","Combustion turbine","Megawatt hours",NA
+2024,"Saskatchewan","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Saskatchewan","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",1586246
+2024,"Saskatchewan","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Saskatchewan","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",84830
+2024,"Saskatchewan","Total all classes of electricity producer","Solar","Megawatt hours",42086
+2024,"Saskatchewan","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",16611244
+2024,"Saskatchewan","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",41637
+2024,"Saskatchewan","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",13627496
+2024,"Saskatchewan","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",13585859
+2024,"Saskatchewan","Total all classes of electricity producer","Wind power turbine","Megawatt hours",1270586
+2024,"Yukon","Electricity producers, electric utilities","Conventional steam turbine","Megawatt hours",NA
+2024,"Yukon","Electricity producers, electric utilities","Hydraulic turbine","Megawatt hours",296416
+2024,"Yukon","Electricity producers, electric utilities","Internal combustion turbine","Megawatt hours",NA
+2024,"Yukon","Electricity producers, electric utilities","Other types of electricity generation","Megawatt hours",0
+2024,"Yukon","Electricity producers, electric utilities","Solar","Megawatt hours",-82
+2024,"Yukon","Electricity producers, electric utilities","Total all types of electricity generation","Megawatt hours",359281
+2024,"Yukon","Electricity producers, electric utilities","Total electricity production from biomass","Megawatt hours",0
+2024,"Yukon","Electricity producers, electric utilities","Total electricity production from combustible fuels","Megawatt hours",59673
+2024,"Yukon","Electricity producers, electric utilities","Total electricity production from non-renewable combustible fuels","Megawatt hours",59673
+2024,"Yukon","Electricity producers, electric utilities","Wind power turbine","Megawatt hours",3274
+2024,"Yukon","Electricity producers, industries","Internal combustion turbine","Megawatt hours",NA
+2024,"Yukon","Electricity producers, industries","Solar","Megawatt hours",750
+2024,"Yukon","Electricity producers, industries","Total all types of electricity generation","Megawatt hours",750
+2024,"Yukon","Electricity producers, industries","Total electricity production from biomass","Megawatt hours",0
+2024,"Yukon","Electricity producers, industries","Total electricity production from combustible fuels","Megawatt hours",0
+2024,"Yukon","Electricity producers, industries","Total electricity production from non-renewable combustible fuels","Megawatt hours",0
+2024,"Yukon","Electricity producers, industries","Wind power turbine","Megawatt hours",0
+2024,"Yukon","Total all classes of electricity producer","Conventional steam turbine","Megawatt hours",NA
+2024,"Yukon","Total all classes of electricity producer","Hydraulic turbine","Megawatt hours",296416
+2024,"Yukon","Total all classes of electricity producer","Internal combustion turbine","Megawatt hours",NA
+2024,"Yukon","Total all classes of electricity producer","Other types of electricity generation","Megawatt hours",0
+2024,"Yukon","Total all classes of electricity producer","Solar","Megawatt hours",668
+2024,"Yukon","Total all classes of electricity producer","Total all types of electricity generation","Megawatt hours",360031
+2024,"Yukon","Total all classes of electricity producer","Total electricity production from biomass","Megawatt hours",0
+2024,"Yukon","Total all classes of electricity producer","Total electricity production from combustible fuels","Megawatt hours",59673
+2024,"Yukon","Total all classes of electricity producer","Total electricity production from non-renewable combustible fuels","Megawatt hours",59673
+2024,"Yukon","Total all classes of electricity producer","Wind power turbine","Megawatt hours",3274

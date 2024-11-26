@@ -119,6 +119,7 @@ if (active_tabs$mission2) {
   df_m2_PRHC_1 <- load_m2_PRHC1()
   df_m2_GII_1 <- load_m2_GII1()}
 
+# Mission 5 ----
 if (active_tabs$mission5) {  
   df_m5_CEG_1 <- load_m5_CEG1()}
   
@@ -225,6 +226,30 @@ ui <- function() {
     )
   )
   
+  # scroll_buttons_script----
+  scroll_buttons_script <- tags$head(
+    tags$style(HTML("
+    #go_to_main_chart, #go_to_deep_dive {
+      outline: none;
+      border: none;
+    }
+    #go_to_main_chart:focus, #go_to_deep_dive:focus {
+      outline: none;
+      border: none;
+    }
+  ")),
+    tags$script(HTML("
+    $(document).on('click', '#go_to_main_chart', function() {
+      $('html, body').animate({scrollTop: 0}, 800); // Scroll to top
+    });
+
+    $(document).on('click', '#go_to_deep_dive', function() {
+      $('html, body').animate({scrollTop: $(document).height()}, 800); // Scroll to bottom
+    });
+  "))
+  )
+  
+  
   # Build the navbarPage----
   ui <- tagList(
     tags$style(HTML("
@@ -244,6 +269,7 @@ ui <- function() {
   ")),
     header_content,
     custom_header,
+    scroll_buttons_script,
     navbarPage(
       title = NULL,
       id = "tabs",
@@ -381,12 +407,14 @@ ui <- function() {
   )
   
   return(ui)
+  
 }
 
 
 
 # Server----
 server <- function(input, output, session) {
+  
   ##HOMEPAGE----
   # observeEvent(input$RnD_mission6, {updateTabItems(session, "tabs", "m6_home")})
   # observeEvent(input$VAEX_mission6, {updateTabItems(session, "tabs", "m6_home")})
@@ -538,7 +566,12 @@ server <- function(input, output, session) {
   mission6_nRinv_server(Exesum_m6_nRinv_main, Exesum_m6_nRinv, df_m6_nRinv_1, output, input)
   mission6_LP_server(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, output, input)
   mission6_EXP_server(Exesum_m6_EXP_main, Exesum_m6_EXP, df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input)
-  }}
+
+  
+  
+  
+  
+    }}
 
 
 

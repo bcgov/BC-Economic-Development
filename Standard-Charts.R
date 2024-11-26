@@ -53,7 +53,6 @@ ui_main_chart <- function(title, chart_name, button_name, source, summary){
                             column(3,
                                    actionButton("go_to_deep_dive", 
                                                 label = tagList(icon("angle-double-down"), ""),                                                
-                                                class = "scroll-button", 
                                                 style = "background-color: #003366; height: 18px; text-align: left; color: white; margin-top: 0px; margin-bottom: 0px; padding : 0px;"),
                             ),
 
@@ -840,7 +839,6 @@ feature_tab <- function(df, tab_name, title, tab_feature_chart, chart, summary){
                column(8, h3(title )),
                column(1, actionButton("go_to_main_chart", 
                                       label = tagList(icon("angle-double-up"), ""), 
-                                      class = "scroll-button", 
                                       style = "background-color: white; color: #003366; margin-bottom: 0px; text-align: right; padding-right: 0px;"),
                       column(3))),
              fluidRow(
@@ -854,4 +852,7 @@ feature_tab <- function(df, tab_name, title, tab_feature_chart, chart, summary){
                       )
                )
              )))}
+
+
+
 

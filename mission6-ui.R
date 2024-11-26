@@ -196,7 +196,6 @@ ui_m6_RnD_feature_map <- function(chart, df2){
                   column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", downloadButton("m6_RnD_map_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
   )
 }
-
 ui_m6_RnD_feature_barplot <- function(chart, df2){
   column(9,
          plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
@@ -245,27 +244,16 @@ ui_m6_RnD <- function(df1, df2) {
                                    chart = "m6_RnD_map",
                                    summary = "Exesum_m6_RnD_jurisdictions")
               ),
-              tabPanel("barplot",
+              tabPanel("R&D Intensity",
                        feature_tab(df2,
-                                   tab_name = "barplot",
+                                   tab_name = "R&D Intensity",
                                    title = "R&D intensity",
                                    tab_feature_chart = ui_m6_RnD_feature_barplot,
                                    chart = "m6_RnD_barplot",
                                    summary = "Exesum_m6_RnD_barplot")
               )
             )
-          ),
-          
-          # Scroll buttons for navigation
-          tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
+          )
   )
 }
 
@@ -325,71 +313,9 @@ ui_m6_VAEX <- function(df) {
                                    summary = "Exesum_m6_VAEX_barplot")
               )
             )
-          ),
-          
-          # Scroll buttons for navigation
-          tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
+          )
   )
 }
-
-#### VAEX----
-# ui_m6_VAEX <- function(df){
-#   tabItem(tabName = "VAEX",
-#           go_to_button("VAEX_mission6", "Mission 6","VAEX_home", "Home Page"),
-#           
-#           ##### Line Plot----
-#           ui_main_chart(title = "Value-added in goods and services exports",
-#                         chart_name = "m6_VAEX_lineplot",
-#                         button_name = "m6_VAEX_lineplot_dwnbtt",
-#                         source = "Statistics Canada, Table 36-10-0480-01",
-#                         summary = "Exesum_m6_VAEX_main"),
-#           ##### EXESUM ----
-#           fluidPage(
-#             style = "background-color: aliceblue ; margin: 20px;",
-#             fluidRow(
-#               column(12, h2("Executive Summary"))
-#             ),
-#             fluidRow(
-#               column(12, uiOutput("Exesum_m6_VAEX"))
-#             )
-#           ),
-#           ##### Pie Chart ----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 6-2-2: Value-added exports GDP contribution" ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m6_VAEX_pie")),
-#               column(3,
-#                      selectInput("m6_VAEX_pie_geo", "Region", choices = unique(df$GEO), selected = "British Columbia"),
-#                      selectInput("m6_VAEX_pie_year", "Year", choices = unique(df$Year), selected = 2019),
-#                      downloadButton("m6_VAEX_pie_dwnbtt", "Download Filtered Data in CSV"))
-#             )
-#           ),
-#           ##### Bar Plot ----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 6-2-3: Value-added exports by industry in B.C." ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m6_VAEX_barplot")),
-#               column(3,
-#                      selectInput("m6_VAEX_barplot_year", "Year", choices = unique(df$Year), selected = 2019),
-#                      selectInput("m6_VAEX_barplot_industry", "Industry", choices = unique(df$Industry), selected = "Total industries")
-#               )
-#             )
-#           )
-#   )}
 
 #### Non residential investment ----
 ui_m6_nRinv_feature_lines <- function(chart, df){
@@ -431,9 +357,9 @@ ui_m6_nRinv <- function(df) {
             h3("Non-residential investment Deep-dive", style = "text-align: center;"),
 
             tabsetPanel(
-              tabPanel("Capital Breakdown",
+              tabPanel("Sector",
                        feature_tab(df,
-                                   tab_name = "Capital Breakdown",
+                                   tab_name = "Sector",
                                    title = "Gross fixed capital formation breakdown",
                                    tab_feature_chart = ui_m6_nRinv_feature_lines,
                                    chart = "m6_nRinv_lines",
@@ -448,18 +374,7 @@ ui_m6_nRinv <- function(df) {
                                    summary = "Exesum_m6_nRinv_barplot")
               )
             )
-          ),
-
-          # Scroll buttons for navigation
-          tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
+          )
   )
 }
 
@@ -568,18 +483,7 @@ ui_m6_LP <- function(df) {
                                    summary = "Exesum_m6_LP_map")
               )
             )
-          ),
-
-          # Scroll buttons for navigation
-          tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
+          )
   )
 }
 
@@ -637,43 +541,32 @@ ui_m6_EXP <- function(df1, df3) {
             h3("Exports Deep-dive", style = "text-align: center;"),  
             
             tabsetPanel(
-              tabPanel("Heatmap",
+              tabPanel("Commodity type",
                        feature_tab(df3,
-                                   tab_name = "Heatmap",
+                                   tab_name = "Commodity type",
                                    title = "Exports as a share of total Canadian exports by commodity types",
                                    tab_feature_chart = ui_m6_EXP_feature_heatmap,
                                    chart = "m6_EXP_heatmap",
                                    summary = "Exesum_m6_EXP_heatmap")
               ),
-              tabPanel("stackbar",
+              tabPanel("Destination",
                        feature_tab(df3,
-                                   tab_name = "stackbar",
-                                   title = "Environmental and clean technology products exports",
-                                   tab_feature_chart = ui_m6_EXP_feature_stackbar,
-                                   chart = "m6_EXP_stackbar",
-                                   summary = "Exesum_m6_EXP_stackbar")
-              ),
-              tabPanel("TREEMAP",
-                       feature_tab(df3,
-                                   tab_name = "bubble",
+                                   tab_name = "Destination",
                                    title = "Exports by destinations",
                                    tab_feature_chart = ui_m6_EXP_feature_bubble,
                                    chart = "m6_EXP_bubble",
                                    summary = "Exesum_m6_EXP_bubble")
+              ),
+              tabPanel("Green Exports ",
+                       feature_tab(df3,
+                                   tab_name = "Green exports ",
+                                   title = "Environmental and clean technology products exports",
+                                   tab_feature_chart = ui_m6_EXP_feature_stackbar,
+                                   chart = "m6_EXP_stackbar",
+                                   summary = "Exesum_m6_EXP_stackbar")
               )
             )
-          ),
-          
-          # Scroll buttons for navigation
-          tags$script(HTML("
-            $(document).on('click', '#go_to_main_chart', function() {
-              $('html, body').animate({scrollTop: $('.scroll-section:eq(0)').offset().top}, 800);
-            });
-
-            $(document).on('click', '#go_to_deep_dive', function() {
-              $('html, body').animate({scrollTop: $(document).height()}, 800);
-            });
-          "))
+          )
   )
 }
 

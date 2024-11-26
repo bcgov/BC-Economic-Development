@@ -281,7 +281,8 @@ Exesum_m2_PRHC <- HTML("
 
 
 # Mission5 ----
-Exesum_m5_CEG <- HTML("
+
+Exesum_m5_CEG_main <- HTML("
   <ul style='text-align: justify; font-size: 20px;'>
     <li>In 2022, B.C. has generated 64.02 million megawatt hours for clean energy types, with a 11.6 percent increase from 57.37 million megawatt hours in 2015.</li> 
     <li>B.C. recorded the highest annual growth rate in clean energy generated in 2020 at 11.6 percent.</li>
@@ -291,7 +292,15 @@ Exesum_m5_CEG <- HTML("
   </ul>
 ")
 
-
+Exesum_m5_CEG_sources <- HTML("
+  <ul style='text-align: justify; font-size: 20px;'>
+    <li>In 2022, B.C. has generated 64.02 million megawatt hours for clean energy types, with a 11.6 percent increase from 57.37 million megawatt hours in 2015.</li> 
+    <li>B.C. recorded the highest annual growth rate in clean energy generated in 2020 at 11.6 percent.</li>
+    <li>Clean energy generated in B.C. has seen decreases in the past two years, with a drop of 2.7 percent in 2022 and 1.6 percent in 2021.</li>
+    <li>Hydraulic turbine accounts for the majority of clean energy generated in B.C. Dry conditions across much of Canada were largely responsible for reduced hydroelectric generation and decreases in overall clean energy generated.</li>
+    <li>B.C. ranked 2nd among all provinces for clean energy types in 2022, only second to Quebec (214 million megawatt hours). Between January and September 2023, B.C. generated 38 million megawatt hours for clean energy types, making it 3rd among all provinces, following Quebec (147 million megawatt hours) and Ontario (40 million megawatt hours).</li>
+  </ul>
+")
 # Mission6 ----
 
 Exesum_m6_RnD_main <- HTML("
@@ -390,9 +399,6 @@ Exesum_m6_nRinv <- HTML("
 Exesum_m6_LP_main <- HTML("
   <ul style='text-align: justify; font-size: 15px;padding: 15px;'>
     <li>B.C.’s labour productivity in 2023 was $64.6 per hour, ramaining at the same level of 2022.</li>
-    <hr style='border: 1px solid #d3d3d3;' />
-    <li>At $64.6, B.C. ranked second among large provinces, and was the only large provinces that did not see a drop in labour productivity in 2023. Labour productivity was $77.1 per hour in Alberta, $62.2 per hour in Ontario and $58.8 per hour in Quebec in 2023.</li>
-    <hr style='border: 1px solid #d3d3d3;' />
   </ul>
 ")
 
@@ -432,12 +438,12 @@ Exesum_m6_LP_sectors <- HTML("
 ")
 
 Exesum_m6_LP_map <- HTML("
-  <ul style='text-align: justify; font-size: 15px;'>
-    <div><span style='color: #FEB70D;'>Labour productivity growth rate:</span> Labour productivity has been improving over the last two decades, peaking at $68 per hour in 2020. B.C.’s labour productivity grew by 5.7 percent over the last five years, highest among large provinces. Quebec grew by 3.5 percent while Ontario dropped by 0.5 percent and Alberta by 2.0 percent over the last five years.  </div>
-    <div><span style='color: #FEB70D;'>Industry breakdown:</span> Labour productivity in the information and communication sector in B.C. has been fast-growing in the past two years. It grew by 8.9 percent in 2022 and 3.5 percent in 2023. At $281.8 per hour, energy sector has the highest labour productivity among all sectors in B.C. </div>
+<ul style='text-align: justify; font-size: 15px;'>
+    <div><span style='color: #FEB70D;'>Labour Productivity Map:</span> At $64.6, B.C. ranked second among large provinces, and was the only large province that did not see a drop in labour productivity in 2023. Labour productivity was $77.1 per hour in Alberta, $62.2 per hour in Ontario and $58.8 per hour in Quebec in 2023.  </div>
   </ul>
 ")
 
+  
 Exesum_m6_EXP_main <- HTML("
   <ul style='text-align: justify; font-size: 12px;padding: 20px;'>
     <li>B.C.’s labour productivity in 2023 was $64.6 per hour, ramaining at the same level of 2022.</li>
