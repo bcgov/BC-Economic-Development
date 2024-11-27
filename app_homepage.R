@@ -121,7 +121,9 @@ if (active_tabs$mission2) {
 
 # Mission 5 ----
 if (active_tabs$mission5) {  
-  df_m5_CEG_1 <- load_m5_CEG1()}
+  df_m5_CEG_1 <- load_m5_CEG1()
+  df_m5_CEG_2 <- load_m5_CEG2()}
+
   
 if (active_tabs$mission6) {  
   df_m6_RnD_1 <- load_m6_RnD1()

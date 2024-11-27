@@ -17,14 +17,14 @@
 
     ## CEG----
     load_m5_CEG1 <- function() {
-      url <- "https://github.com/mehdi-naji/StrongerBC-Project/raw/main/Data/Clean_Energy_Generated_1.csv"
+      url <- "https://raw.githubusercontent.com/bcgov/BC-Economic-Development/refs/heads/main/Data/Clean_Energy_Generated_1.csv"
       df <- read.csv(url, header = TRUE)
       df <- na.omit(df)
       return(df)
     }
     
-    load_m5_xyz1 <- function() {
-      url <- "..."
+    load_m5_CEG2 <- function() {
+      url <- "https://raw.githubusercontent.com/bcgov/BC-Economic-Development/refs/heads/main/Data/Clean_Energy_Generated_2.csv"
       df <- read.csv(url, header = TRUE)
       df <- na.omit(df)
       return(df)
@@ -110,3 +110,42 @@
       df_map <- m5_CEG_map_data(df, input$m5_CEG_map_year)
       mapchart(df_map, input)
     }
+
+    ## EGC plot data----
+    m5_CEG_EGC_data <- function(df, geo){
+     df |>
+        filter(
+          GEO == geo,
+          Electric.power..components %in% c("Total generation", "Total electricity available for use within specific geographic border")
+        ) |>
+        mutate(Component = Electric.power..components) |>
+        arrange(Year) 
+    }
+    
+    m5_CEG_render_EGC <- function(df2, input){
+      df <- m5_CEG_EGC_data(df2, input$m5_CEG_EGC_geo)
+      
+      df_wide <- df %>%
+        tidyr::pivot_wider(names_from = Component, values_from = VALUE)
+      
+      # Create the plotly area chart
+      plot <- plot_ly(df_wide, x = ~Year) %>%
+        add_trace(y = ~`Total generation`, name = "Total generation",  type = 'scatter', mode = 'lines', fill = 'tozeroy') %>%
+        add_trace(y = ~`Total electricity available for use within specific geographic border`, 
+                  name = "Total electricity available",type = 'scatter', mode = 'lines', fill = 'tozeroy') %>%
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
+          xaxis = list(title = "Year"),
+          yaxis = list(title = "Value"),
+          legend = list(
+            x = 0.5,
+            y = -0.2,
+            xanchor = "center",
+            orientation = "h"
+          ),
+          showlegend = TRUE
+        )
+      plot
+    }
+    

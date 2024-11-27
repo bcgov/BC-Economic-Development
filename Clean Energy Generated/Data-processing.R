@@ -26,9 +26,9 @@ df1_1 <- df1 |>
   summarise(VALUE = sum(VALUE))
 
 
-df2_1 <- df2 |>
-  group_by(Year, GEO, `Electric power, components`) |>
-  summarise(VALUE = sum(VALUE))
+# df2_1 <- df2 |>
+#   group_by(Year, GEO, `Electric power, components`) |>
+#   summarise(VALUE = sum(VALUE))
 
 write.csv(df1_1, here("Data", "Clean_Energy_Generated_1.csv"), row.names = FALSE)
-write.csv(df2_1, here("Data", "Clean_Energy_Generated_2.csv"), row.names = FALSE)
+write.csv(df2, here("Data", "Clean_Energy_Generated_2.csv"), row.names = FALSE)

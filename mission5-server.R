@@ -47,6 +47,7 @@ mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, output, input){
       write.csv(df, file)
     }
   )
+  ### Map Plot----
   
   output$m5_CEG_map <- renderLeaflet({
     p1 <- m5_CEG_render_map(df_m5_CEG_1, input)
@@ -61,5 +62,19 @@ mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, output, input){
     }
   )
   
+  ### EGC Plot----
+  
+  output$m5_CEG_EGC <- renderPlotly({
+    p1 <- m5_CEG_render_EGC(df_m5_CEG_2, input)
+    p1
+  })
+  
+  output$m5_CEG_renderPlotly_dwnbtt <- downloadHandler(
+    filename = "StrongerBC_Mission5_CEG_renderPlotly_filteredData.csv",
+    content = function(file) {
+      df <- m5_CEG_renderPlotly_data(df_m5_CEG_2, input$m5_CEG_renderPlotly_geo)
+      write.csv(df, file)
+    }
+  )
 
 }
