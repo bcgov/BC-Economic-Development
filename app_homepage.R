@@ -15,34 +15,34 @@
 
 #activetabs----
 active_tabs <- list(
-  mission1 = TRUE,
-              m1_PI =  TRUE,
-              m1_CHN = TRUE,
-              m1_GC =  TRUE,
-              m1_UR =  TRUE,
-              m1_FE =  TRUE,
-              m1_TS =  TRUE,
-              m1_MI =  TRUE,
-              m1_SB =  TRUE,
-              m1_LE =  TRUE,
-              m1_MH =  TRUE,
-  mission2 = TRUE,
-              m2_NBO = TRUE,
-              m2_HA  = TRUE,
-              m2_LMPR= TRUE,
-              m2_OVC = TRUE,
-              m2_GII = TRUE,
-              m2_PRHC= TRUE,
-  mission3 = TRUE,
-  mission4 = TRUE,
+  mission1 = FALSE,
+              m1_PI =  FALSE,
+              m1_CHN = FALSE,
+              m1_GC =  FALSE,
+              m1_UR =  FALSE,
+              m1_FE =  FALSE,
+              m1_TS =  FALSE,
+              m1_MI =  FALSE,
+              m1_SB =  FALSE,
+              m1_LE =  FALSE,
+              m1_MH =  FALSE,
+  mission2 = FALSE,
+              m2_NBO = FALSE,
+              m2_HA  = FALSE,
+              m2_LMPR= FALSE,
+              m2_OVC = FALSE,
+              m2_GII = FALSE,
+              m2_PRHC= FALSE,
+  mission3 = FALSE,
+  mission4 = FALSE,
   mission5 = TRUE,
               m5_CEG = TRUE,
-  mission6 = TRUE,
-              m6_RnD = TRUE,
-              m6_VAEX= TRUE,
-              m6_nRinv= TRUE,
-              m6_LP = TRUE,
-              m6_EXP = TRUE
+  mission6 = FALSE,
+              m6_RnD = FALSE,
+              m6_VAEX= FALSE,
+              m6_nRinv= FALSE,
+              m6_LP = FALSE,
+              m6_EXP = FALSE
 )
 
 ## load libraries ----
@@ -85,7 +85,6 @@ source("mission6-charts.R")
 source("mission6-ui.R")
 source("ui_m6_RnD.R")
 source("mission6-server.R")
-
 source("Executive_summaries.R")
 
 
@@ -122,7 +121,8 @@ if (active_tabs$mission2) {
 # Mission 5 ----
 if (active_tabs$mission5) {  
   df_m5_CEG_1 <- load_m5_CEG1()
-  df_m5_CEG_2 <- load_m5_CEG2()}
+  df_m5_CEG_2 <- load_m5_CEG2()
+  df_m5_CEG_3 <- load_m5_CEG3()}
 
   
 if (active_tabs$mission6) {  
@@ -368,8 +368,13 @@ ui <- function() {
       if (active_tabs$mission5) {
         navbarMenu(
           "Mission 5",
+          tabPanel(
+            "Mission 5 Overview",
+            ui_m5_home(
+              m5_CEG_lineplot_data(df_m5_CEG_1))
+          ),
           if (active_tabs$m5_CEG) {
-            tabPanel("Clean Energy Generated", ui_m5_CEG(df_m5_CEG_1))
+            tabPanel("\xE2\x96\xB6 Clean Energy Generated", ui_m5_CEG(df_m5_CEG_1,df_m5_CEG_2,df_m5_CEG_3 ))
           }
         )
       },
@@ -548,7 +553,8 @@ server <- function(input, output, session) {
   mission2_GII_server(Exesum_m2_GII_main, Exesum_m2_GII, df_m2_GII_1, output, input)}
 
   if (active_tabs$mission5){
-  mission5_CEG_server(Exesum_m5_CEG, df_m5_CEG_1, output, input)}
+  server_m5_home(df_m5_CEG_1, output, input, session)
+  mission5_CEG_server(Exesum_m5_CEG, df_m5_CEG_1, df_m5_CEG_2, df_m5_CEG_3, output, input)}
 
   if (active_tabs$mission6){
   observeEvent(input$m6_RnD_Button, {

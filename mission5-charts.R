@@ -29,7 +29,56 @@
       df <- na.omit(df)
       return(df)
     }
+    
+    load_m5_CEG3 <- function() {
+      df1 <- load_m5_CEG1()
+      df1_1 <- df1 |>
+        filter(
+          Class.of.electricity.producer == "Total all classes of electricity producer",
+          Type.of.electricity.generation %in% c("Hydraulic turbine", "Tidal power turbine", "Wind power turbine", "Solar")
+        ) |>
+        group_by(Year, GEO) |>
+        summarise( CEG = sum(VALUE) ) |>
+        group_by(GEO) |>
+        arrange(Year, .by_group = TRUE) |>
+        mutate(CEG_growth = round((CEG - lag(CEG))/lag(CEG) * 100,1) ) |>
+        ungroup()
+      
+      
+      df1_2 <- df1 |>
+        filter(
+          Class.of.electricity.producer == "Total all classes of electricity producer",
+          Type.of.electricity.generation == "Hydraulic turbine"
+        ) |>
+        mutate (Hydro = VALUE)|>
+        select(Year, GEO, Hydro) |>
+        group_by(GEO) |>
+        arrange(Year, .by_group = TRUE) |>
+        mutate(Hydro_growth = round((Hydro - lag(Hydro))/lag(Hydro) * 100, 1) ) |>
+        ungroup()
+        
+      df2 <- load_m5_CEG2()
+      df2_1 <- df2 |>
+        filter (Electric.power..components == "Total electricity available for use within specific geographic border") |>
+        group_by(Year, GEO) |>
+        summarise(TEA = sum(VALUE)) |>
+        group_by(GEO) |>
+        arrange(Year, .by_group = TRUE) |>
+        mutate(TEA_growth = round((TEA - lag(TEA))/lag(TEA) * 100, 1) ) |>
+        ungroup()
+      
+      merged_df <- merge(df1_1, df1_2, by = c("Year", "GEO"))
+      merged_df <- merge(merged_df, df2_1, by = c("Year", "GEO"))
+      return(merged_df)
+    }
 
+    
+# Homepage----
+    
+    server_m5_home <- function(df_m5_CEG_1, 
+                               output, input, session) {
+      plot_and_triangle(df_m5_CEG_1, m5_CEG_lineplot_data, "m5_homepage_worm_CEG", "m5_homepage_button_CEG", "CEG", "m5_homepage_triangle_CEG", output, input, session)
+    }
 # CEG Dash----
     ## Line plot----
     m5_CEG_lineplot_data <- function(df) {
@@ -51,9 +100,9 @@
     
     ## sources plot data----
     m5_CEG_sources_data <- function(df, geo){
-      df |>
+    df |>
         filter(Year >= 2015,
-               GEO == geo,
+               GEO == "British Columbia",
                Class.of.electricity.producer == "Total all classes of electricity producer",
                Type.of.electricity.generation %in% c("Hydraulic turbine",
                                                      "Tidal power turbine",
@@ -77,7 +126,7 @@
           yaxis = list(title = "MWh"),
           xaxis = list(title = ""),
           legend = list(y = -0.3, x=0))
-      
+
       validate(need(nrow(dfsources) > 0, "The data for this set of inputs is inadequate. To obtain a proper visualization, please adjust the inputs in the sidebar."))
       
       psources <- ggplotly(psources)
@@ -115,28 +164,30 @@
     m5_CEG_EGC_data <- function(df, geo){
      df |>
         filter(
+          Year >= 2015,
           GEO == geo,
           Electric.power..components %in% c("Total generation", "Total electricity available for use within specific geographic border")
         ) |>
         mutate(Component = Electric.power..components) |>
-        arrange(Year) 
+        select(DATE, GEO, Component, VALUE) |>
+        arrange(DATE) 
     }
     
     m5_CEG_render_EGC <- function(df2, input){
       df <- m5_CEG_EGC_data(df2, input$m5_CEG_EGC_geo)
-      
+
       df_wide <- df %>%
         tidyr::pivot_wider(names_from = Component, values_from = VALUE)
       
       # Create the plotly area chart
-      plot <- plot_ly(df_wide, x = ~Year) %>%
+      plot <- plot_ly(df_wide, x = ~DATE) %>%
         add_trace(y = ~`Total generation`, name = "Total generation",  type = 'scatter', mode = 'lines', fill = 'tozeroy') %>%
         add_trace(y = ~`Total electricity available for use within specific geographic border`, 
                   name = "Total electricity available",type = 'scatter', mode = 'lines', fill = 'tozeroy') %>%
         layout(
           plot_bgcolor = '#F2F2F2',
           paper_bgcolor = '#F2F2F2',
-          xaxis = list(title = "Year"),
+          xaxis = list(title = ""),
           yaxis = list(title = "Value"),
           legend = list(
             x = 0.5,
@@ -148,4 +199,43 @@
         )
       plot
     }
+    
+
+    
+    ## growth plot data----
+    m5_CEG_growth_data <- function(df, geo){
+      df |>
+        filter(
+          Year >= 2015,
+          GEO == geo
+        ) |>
+        select(Year, GEO, CEG_growth, Hydro_growth, TEA_growth) |>
+        arrange(Year) 
+    }
+    
+    m5_CEG_render_growth <- function(df3, input){
+      df <- m5_CEG_growth_data(df3, input$m5_CEG_growth_geo)
+      
+      
+      # Create the plotly area chart
+      plot <- plot_ly(df, x = ~Year) %>%
+        add_trace(y = ~CEG_growth, name = "Clean Energy Generated",  type = 'scatter', mode = 'lines') %>%
+        add_trace(y = ~TEA_growth, name = "Total Electricity Available ",  type = 'scatter', mode = 'lines') %>%
+        add_trace(y = ~Hydro_growth, name = "Electricity Generated from Hydro ",  type = 'scatter', mode = 'lines') %>%
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2',
+          xaxis = list(title = ""),
+          yaxis = list(title = "Value"),
+          legend = list(
+            x = 0.5,
+            y = -0.2,
+            xanchor = "center",
+            orientation = "h"
+          ),
+          showlegend = TRUE
+        )
+      plot
+    }
+    
     

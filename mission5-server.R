@@ -15,7 +15,7 @@
 
 # m5 ----
 ## CEG----
-mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, output, input){
+mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, df_m5_CEG_2,df_m5_CEG_3, output, input){
   ### Executive Summary----
   output$exesum_m5_CEG_main <- renderUI(Exesum_m5_CEG_main)
   output$exesum_m5_CEG_sources <- renderUI(Exesum_m5_CEG_sources)
@@ -69,12 +69,32 @@ mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, output, input){
     p1
   })
   
-  output$m5_CEG_renderPlotly_dwnbtt <- downloadHandler(
-    filename = "StrongerBC_Mission5_CEG_renderPlotly_filteredData.csv",
+  output$m5_CEG_EGC_dwnbtt <- downloadHandler(
+    filename = "StrongerBC_Mission5_CEG_EGC_filteredData.csv",
     content = function(file) {
-      df <- m5_CEG_renderPlotly_data(df_m5_CEG_2, input$m5_CEG_renderPlotly_geo)
+      df <- m5_CEG_EGC_data(df_m5_CEG_2, input$m5_CEG_EGC_geo)
       write.csv(df, file)
     }
   )
+  
+  ### growth Plot----
+  
+  output$m5_CEG_growth <- renderPlotly({
+    p1 <- m5_CEG_render_growth(df_m5_CEG_3, input)
+    p1
+  })
+  
+  output$m5_CEG_growth_dwnbtt <- downloadHandler(
+    filename = "StrongerBC_Mission5_CEG_growth_filteredData.csv",
+    content = function(file) {
+      df <- m5_CEG_growth_data(df_m5_CEG_2, input$m5_CEG_growth_geo)
+      write.csv(df, file)
+    }
+  )
+  
 
 }
+
+
+
+

@@ -142,7 +142,7 @@ ui_m5_CEG_feature_sources <- function(chart, df1){
 }
 ui_m5_CEG_feature_map <- function(chart, df1){
   column(9,
-         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         leafletOutput(chart ,height = "calc(100vh - 420px)" ),
          # Source
          fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
                   "Source: Statistics Canada, Table 36-10-0480-01"),
@@ -168,8 +168,21 @@ ui_m5_CEG_feature_EGC <- function(chart, df2){
                          downloadButton("m5_CEG_EGC_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
   )
 }
-
-ui_m5_CEG <- function(df1) {
+ui_m5_CEG_feature_growth <- function(chart, df3){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;", 
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m5_CEG_growth_geo", "", choices = unique(df3$GEO), selected = "British Columbia"))), 
+                  column(6),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;", 
+                         downloadButton("m5_CEG_growth_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m5_CEG <- function(df1, df2, df3) {
   tabItem(tabName = "CEG",
           ui_main_chart(title = "Clean energy generated",
                         chart_name = "m5_CEG_lineplot",
@@ -198,12 +211,21 @@ ui_m5_CEG <- function(df1) {
                                    )
               ),
               tabPanel("Electricity generation and consumption ",
-                       feature_tab(df1,
+                       feature_tab(df2,
                                    tab_name = "EGC",
                                    title = "Electricity generation and consumption",
                                    tab_feature_chart = ui_m5_CEG_feature_EGC,
                                    chart = "m5_CEG_EGC",
                                    summary = "Exesum_m5_CEG_EGC"
+                       )
+              ),
+              tabPanel("Changes in electricity generation and consumption",
+                       feature_tab(df3,
+                                   tab_name = "growth",
+                                   title = "Changes in electricity generation and consumption",
+                                   tab_feature_chart = ui_m5_CEG_feature_growth,
+                                   chart = "m5_CEG_growth",
+                                   summary = "Exesum_m5_CEG_growth"
                        )
               )
             )

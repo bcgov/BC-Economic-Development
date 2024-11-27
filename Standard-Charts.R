@@ -792,28 +792,28 @@ mapchart <- function(df_map, input){
   library(htmlwidgets)
 
 
-  p2 <- p2 %>% htmlwidgets::onRender("
-    function(el, x) {
-      el.style.width = '700px';
-      el.style.height = '600px';
-      el.style.backgroundColor = 'rgb(0, 51, 102)';
-
-      // Remove zoom controls
-      var zoomControl = document.getElementsByClassName('leaflet-control-zoom')[0];
-      if (zoomControl) {
-        zoomControl.parentNode.removeChild(zoomControl);
-      }
-
-      var css = '.custom-legend .legend-scale { font-size: 5px; } .custom-legend .legend-labels { font-size: 5px; padding: 4px; }';
-      var style = document.createElement('style');
-      if (style.styleSheet) {
-        style.styleSheet.cssText = css;
-      } else {
-        style.appendChild(document.createTextNode(css));
-      }
-      document.head.appendChild(style);
-    }
-  ")
+  # p2 <- p2 %>% htmlwidgets::onRender("
+  #   function(el, x) {
+  #     el.style.width = '700px';
+  #     el.style.height = '600px';
+  #     el.style.backgroundColor = 'rgb(0, 51, 102)';
+  # 
+  #     // Remove zoom controls
+  #     var zoomControl = document.getElementsByClassName('leaflet-control-zoom')[0];
+  #     if (zoomControl) {
+  #       zoomControl.parentNode.removeChild(zoomControl);
+  #     }
+  # 
+  #     var css = '.custom-legend .legend-scale { font-size: 5px; } .custom-legend .legend-labels { font-size: 5px; padding: 4px; }';
+  #     var style = document.createElement('style');
+  #     if (style.styleSheet) {
+  #       style.styleSheet.cssText = css;
+  #     } else {
+  #       style.appendChild(document.createTextNode(css));
+  #     }
+  #     document.head.appendChild(style);
+  #   }
+  # ")
 
   return(p2)
 }
