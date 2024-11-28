@@ -93,6 +93,7 @@
     m5_CEG_lineplot_data <- function(df) {
       df |>
         filter(Year >= 2015,
+               Year < 2024,
                GEO == "British Columbia",
                Class.of.electricity.producer == "Total all classes of electricity producer",
                Type.of.electricity.generation %in% c("Hydraulic turbine",
@@ -128,9 +129,10 @@
       dfsources <- m5_CEG_sources_data(df, input$m5_CEG_sources_geo)
 
       latest_year <- max(dfsources$Year)
+      latest_month <- unique(dfsources$lastmonth)
 
       dfsources <- dfsources |>
-        mutate(Year = ifelse(Year == latest_year, paste(Year, "\n(likely incomplete)"), as.character(Year)))
+        mutate(Year = ifelse(Year == latest_year, paste(Year, "\n(up until", month.name[latest_month], ")"), as.character(Year)))
       
       # Plot using the updated Year labels
       psources <- dfsources |>
