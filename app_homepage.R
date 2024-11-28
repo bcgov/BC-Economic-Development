@@ -37,12 +37,12 @@ active_tabs <- list(
   mission4 = FALSE,
   mission5 = TRUE,
               m5_CEG = TRUE,
-  mission6 = FALSE,
-              m6_RnD = FALSE,
-              m6_VAEX= FALSE,
-              m6_nRinv= FALSE,
-              m6_LP = FALSE,
-              m6_EXP = FALSE
+  mission6 = TRUE,
+              m6_RnD = TRUE,
+              m6_VAEX= TRUE,
+              m6_nRinv= TRUE,
+              m6_LP = TRUE,
+              m6_EXP = TRUE
 )
 
 ## load libraries ----
@@ -554,7 +554,7 @@ server <- function(input, output, session) {
 
   if (active_tabs$mission5){
   server_m5_home(df_m5_CEG_1, output, input, session)
-  mission5_CEG_server(Exesum_m5_CEG, df_m5_CEG_1, df_m5_CEG_2, df_m5_CEG_3, output, input)}
+  mission5_CEG_server(df_m5_CEG_1, df_m5_CEG_2, df_m5_CEG_3, output, input)}
 
   if (active_tabs$mission6){
   observeEvent(input$m6_RnD_Button, {
@@ -569,11 +569,11 @@ server <- function(input, output, session) {
     updateTabItems(session, "tabs", selected = "EXP")})
   
   server_m6_home(df_m6_RnD_1, df_m6_LP_1, df_m6_VAEX_1, df_m6_nRinv_1, df_m6_EXP_1, output, input, session)
-  mission6_RnD_server( Exesum_m6_RnD_main,Exesum_m6_RnD, df_m6_RnD_1, df_m6_RnD_2, output, input)
-  mission6_VAEX_server(Exesum_m6_VAEX_main, Exesum_m6_VAEX, df_m6_VAEX_1, output, input)
-  mission6_nRinv_server(Exesum_m6_nRinv_main, Exesum_m6_nRinv, df_m6_nRinv_1, output, input)
-  mission6_LP_server(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, output, input)
-  mission6_EXP_server(Exesum_m6_EXP_main, Exesum_m6_EXP, df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input)
+  mission6_RnD_server( df_m6_RnD_1, df_m6_RnD_2, output, input)
+  mission6_VAEX_server(df_m6_VAEX_1, output, input)
+  mission6_nRinv_server(df_m6_nRinv_1, output, input)
+  mission6_LP_server(df_m6_LP_1, output, input)
+  mission6_EXP_server(df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input)
 
   
   

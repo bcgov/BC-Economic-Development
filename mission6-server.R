@@ -39,7 +39,7 @@ server_m6_home <- function(df_m6_RnD_1,
 
 
 ## RnD----
-mission6_RnD_server <- function(Exesum_m6_RnD_main, Exesum_m6_RnD, df_m6_RnD_1, df_m6_RnD_2, output, input){
+mission6_RnD_server <- function(df_m6_RnD_1, df_m6_RnD_2, output, input){
   output$Exesum_m6_RnD_main <- renderUI(Exesum_m6_RnD_main)
 
   ### Executive Summary----
@@ -116,7 +116,7 @@ mission6_RnD_server <- function(Exesum_m6_RnD_main, Exesum_m6_RnD, df_m6_RnD_1, 
 
 ## VAEX----
 
-mission6_VAEX_server <- function(Exesum_m6_VAEX_main, Exesum_m6_VAEX, df_m6_VAEX_1, output, input){
+mission6_VAEX_server <- function(df_m6_VAEX_1, output, input){
   output$Exesum_m6_VAEX_main <- renderUI(Exesum_m6_VAEX_main)
   
   ### Executive Summary----
@@ -169,7 +169,7 @@ mission6_VAEX_server <- function(Exesum_m6_VAEX_main, Exesum_m6_VAEX, df_m6_VAEX
 }
 ## non-residential Investment----
 
-mission6_nRinv_server <- function(Exesum_m6_nRiv_main, Exesum_m6_nRinv, df_m6_nRinv_1, output, input){
+mission6_nRinv_server <- function(df_m6_nRinv_1, output, input){
   output$Exesum_m6_nRinv_main <- renderUI(Exesum_m6_nRinv_main)
   
   ### Executive Summary----
@@ -224,7 +224,7 @@ mission6_nRinv_server <- function(Exesum_m6_nRiv_main, Exesum_m6_nRinv, df_m6_nR
 }
 
 ## labour Productivity----
-mission6_LP_server <- function(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, output, input){
+mission6_LP_server <- function(df_m6_LP_1, output, input){
   
   output$Exesum_m6_LP_main <- renderUI(Exesum_m6_LP_main)
   output$Exesum_m6_LP_growth <- renderUI(Exesum_m6_LP_growth)
@@ -330,7 +330,7 @@ mission6_LP_server <- function(Exesum_m6_LP_main, Exesum_m6_LP, df_m6_LP_1, outp
 }
 
 ## EXPORT----
-mission6_EXP_server <- function(Exesum_m6_EXP_main, Exesum_m6_EXP, df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input){
+mission6_EXP_server <- function(df_m6_EXP_1, df_m6_EXP_2, df_m6_EXP_3, df_m6_EXP_4, output, input){
   output$Exesum_m6_EXP_main <- renderUI(Exesum_m6_EXP_main)
   output$Exesum_m6_EXP_heatmap <- renderUI(Exesum_m6_EXP_heatmap)
   output$Exesum_m6_EXP_stackbar <- renderUI(Exesum_m6_EXP_stackbar)

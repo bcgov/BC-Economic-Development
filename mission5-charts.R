@@ -31,12 +31,29 @@
     }
     
     load_m5_CEG3 <- function() {
+      
+      df2 <- load_m5_CEG2()
+      recentmonth <- df2[which.max(as.Date(df2$DATE)), ]$Month
+      recentyear <- df2[which.max(as.Date(df2$DATE)), ]$Year
+      df2_1 <- df2 |>
+        filter (Electric.power..components == "Total electricity available for use within specific geographic border") |>
+        group_by(Year, GEO) |>
+        summarise(TEA = sum(VALUE)) |>
+        filter(if (recentmonth < 12) Year != recentyear) |>
+        group_by(GEO) |>
+        arrange(Year, .by_group = TRUE) |>
+        mutate(TEA_growth = round((TEA - lag(TEA))/lag(TEA) * 100, 1) ) |>
+        ungroup()
+      
+      
+      
       df1 <- load_m5_CEG1()
       df1_1 <- df1 |>
         filter(
           Class.of.electricity.producer == "Total all classes of electricity producer",
           Type.of.electricity.generation %in% c("Hydraulic turbine", "Tidal power turbine", "Wind power turbine", "Solar")
-        ) |>
+        ) |> 
+        
         group_by(Year, GEO) |>
         summarise( CEG = sum(VALUE) ) |>
         group_by(GEO) |>
@@ -57,15 +74,7 @@
         mutate(Hydro_growth = round((Hydro - lag(Hydro))/lag(Hydro) * 100, 1) ) |>
         ungroup()
         
-      df2 <- load_m5_CEG2()
-      df2_1 <- df2 |>
-        filter (Electric.power..components == "Total electricity available for use within specific geographic border") |>
-        group_by(Year, GEO) |>
-        summarise(TEA = sum(VALUE)) |>
-        group_by(GEO) |>
-        arrange(Year, .by_group = TRUE) |>
-        mutate(TEA_growth = round((TEA - lag(TEA))/lag(TEA) * 100, 1) ) |>
-        ungroup()
+      
       
       merged_df <- merge(df1_1, df1_2, by = c("Year", "GEO"))
       merged_df <- merge(merged_df, df2_1, by = c("Year", "GEO"))
@@ -102,7 +111,7 @@
     m5_CEG_sources_data <- function(df, geo){
     df |>
         filter(Year >= 2015,
-               GEO == "British Columbia",
+               GEO == geo,
                Class.of.electricity.producer == "Total all classes of electricity producer",
                Type.of.electricity.generation %in% c("Hydraulic turbine",
                                                      "Tidal power turbine",
@@ -117,15 +126,30 @@
     
     m5_CEG_render_sources <- function(df, input){
       dfsources <- m5_CEG_sources_data(df, input$m5_CEG_sources_geo)
+
+      latest_year <- max(dfsources$Year)
+
+      dfsources <- dfsources |>
+        mutate(Year = ifelse(Year == latest_year, paste(Year, "\n(likely incomplete)"), as.character(Year)))
+      
+      # Plot using the updated Year labels
       psources <- dfsources |>
-        plot_ly(x = ~Year, y = ~VALUE, color = ~Type, type = 'bar')|>
+        plot_ly(
+          x = ~Year,
+          y = ~VALUE,
+          color = ~Type,
+          type = 'bar'
+        ) |>
         layout(
           barmode = 'stack',
           plot_bgcolor = '#F2F2F2',
           paper_bgcolor = '#F2F2F2',
           yaxis = list(title = "MWh"),
           xaxis = list(title = ""),
-          legend = list(y = -0.3, x=0))
+          legend = list(y = -0.3, x = 0)
+        )
+      
+      
 
       validate(need(nrow(dfsources) > 0, "The data for this set of inputs is inadequate. To obtain a proper visualization, please adjust the inputs in the sidebar."))
       

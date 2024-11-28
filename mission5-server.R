@@ -15,11 +15,13 @@
 
 # m5 ----
 ## CEG----
-mission5_CEG_server <- function(Exesum_m5_CEG, df_m5_CEG_1, df_m5_CEG_2,df_m5_CEG_3, output, input){
+mission5_CEG_server <- function(df_m5_CEG_1, df_m5_CEG_2,df_m5_CEG_3, output, input){
   ### Executive Summary----
-  output$exesum_m5_CEG_main <- renderUI(Exesum_m5_CEG_main)
-  output$exesum_m5_CEG_sources <- renderUI(Exesum_m5_CEG_sources)
-  
+  output$Exesum_m5_CEG_main <- renderUI(Exesum_m5_CEG_main)
+  output$Exesum_m5_CEG_sources <- renderUI(Exesum_m5_CEG_sources)
+  output$Exesum_m5_CEG_map <- renderUI(Exesum_m5_CEG_map)
+  output$Exesum_m5_CEG_EGC <- renderUI(Exesum_m5_CEG_EGC)
+  output$Exesum_m5_CEG_growth <- renderUI(Exesum_m5_CEG_growth)
   ### Line Plot----
   output$m5_CEG_lineplot <- renderPlotly({
     p1 <- m5_CEG_render_lineplot(df_m5_CEG_1, input)

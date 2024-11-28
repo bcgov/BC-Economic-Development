@@ -283,22 +283,33 @@ Exesum_m2_PRHC <- HTML("
 # Mission5 ----
 
 Exesum_m5_CEG_main <- HTML("
-  <ul style='text-align: justify; font-size: 20px;'>
-    <li>In 2022, B.C. has generated 64.02 million megawatt hours for clean energy types, with a 11.6 percent increase from 57.37 million megawatt hours in 2015.</li> 
-    <li>B.C. recorded the highest annual growth rate in clean energy generated in 2020 at 11.6 percent.</li>
-    <li>Clean energy generated in B.C. has seen decreases in the past two years, with a drop of 2.7 percent in 2022 and 1.6 percent in 2021.</li>
-    <li>Hydraulic turbine accounts for the majority of clean energy generated in B.C. Dry conditions across much of Canada were largely responsible for reduced hydroelectric generation and decreases in overall clean energy generated.</li>
-    <li>B.C. ranked 2nd among all provinces for clean energy types in 2022, only second to Quebec (214 million megawatt hours). Between January and September 2023, B.C. generated 38 million megawatt hours for clean energy types, making it 3rd among all provinces, following Quebec (147 million megawatt hours) and Ontario (40 million megawatt hours).</li>
+  <ul style='text-align: justify; font-size: 16px;'>
+    <li>In 2023, B.C. has generated 50.8 million megawatt hours for clean energy types, lowest since 2015.</li> 
+    <li>Clean energy generated in B.C. has seen decreases in the past three years, with a drop of 20.6 percent in 2023.</li>
+
   </ul>
 ")
 
 Exesum_m5_CEG_sources <- HTML("
-  <ul style='text-align: justify; font-size: 20px;'>
-    <li>In 2022, B.C. has generated 64.02 million megawatt hours for clean energy types, with a 11.6 percent increase from 57.37 million megawatt hours in 2015.</li> 
-    <li>B.C. recorded the highest annual growth rate in clean energy generated in 2020 at 11.6 percent.</li>
-    <li>Clean energy generated in B.C. has seen decreases in the past two years, with a drop of 2.7 percent in 2022 and 1.6 percent in 2021.</li>
-    <li>Hydraulic turbine accounts for the majority of clean energy generated in B.C. Dry conditions across much of Canada were largely responsible for reduced hydroelectric generation and decreases in overall clean energy generated.</li>
-    <li>B.C. ranked 2nd among all provinces for clean energy types in 2022, only second to Quebec (214 million megawatt hours). Between January and September 2023, B.C. generated 38 million megawatt hours for clean energy types, making it 3rd among all provinces, following Quebec (147 million megawatt hours) and Ontario (40 million megawatt hours).</li>
+  <ul style='text-align: justify; font-size: 16px;'>
+    <li>Hydraulic turbine accounts for the majority of clean energy generated in B.C. Dry conditions across much of Canada were largely responsible for reduced hydroelectric generation and decreases in overall clean energy generated. </li>
+    </ul>
+")
+
+Exesum_m5_CEG_growth <- HTML("
+  <ul style='text-align: justify; font-size: 16px;'>
+    <li>B.C. recorded the highest annual growth rate in clean energy generated in 2020 at 11.6 percent. </li>
+  </ul>
+")
+Exesum_m5_CEG_map <- HTML("
+  <ul style='text-align: justify; font-size: 16px;'>
+    <li>B.C. ranked third among all provinces for clean energy types in 2023, behind Quebec (194 million megawatt hours) and Ontario (54 million megawatt hours). </li> 
+  </ul>
+")
+
+Exesum_m5_CEG_EGC <- HTML("
+  <ul style='text-align: justify; font-size: 16px;'>
+    <li>Electricity generated from clean sources in B.C. was able to cover most of the electricity demand in the province between 2020 and 2022. Nonetheless, the trend started to change in 2023 when electricity generated from clean sources in B.C. decreased by 20.6% while the total electricity consumption increased by 6%. </li>
   </ul>
 ")
 # Mission6 ----
