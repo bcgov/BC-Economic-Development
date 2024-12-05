@@ -118,6 +118,13 @@ ui_m5_home <- function(df_m5_CEG_1){
                            worm = "m5_homepage_worm_CEG",
                            triangle = "m5_homepage_triangle_CEG")
             ),
+            fluidRow(
+              wormchart_ui(df = df_m5_GDPE_1, 
+                           button = "m5_homepage_button_GDPE",
+                           title = "Real GDP per employed person",
+                           worm = "m5_homepage_worm_GDPE",
+                           triangle = "m5_homepage_triangle_GDPE")
+            ),
             div(style = "height: 20px;"),  # Space between first and second rows of boxes
             fluidRow(
              )
