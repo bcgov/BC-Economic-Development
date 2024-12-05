@@ -13,7 +13,7 @@
 # limitations under the License.
 
 ### Home ----
-ui_m5_home <- function(df_m5_CEG_1){
+ui_m5_home <- function(df_m5_CEG_1, df_m5_GDPE_1){
   tabItem(tabName = "m5_home",
           fluidPage(
             #CSS Code ----
@@ -241,48 +241,42 @@ ui_m5_CEG <- function(df1, df2, df3) {
 }
 
 
+### GDPE ----
+ui_m5_GDPE_feature_bar <- function(chart, df1){
+  column(9,
+         plotlyOutput(chart ,height = "calc(100vh - 420px)" ),
+         # Source
+         fluidRow(style = "background-color: #f2f2f2; padding-left: 80px; padding-right: 40px; margin-right: 0px; margin-left: 0px; margin-buttom: 0px; height: 12px; font-size: 12px;",
+                  "Source: Statistics Canada, Table 36-10-0480-01"),
+         # inputs
+         fluidRow(style = "background-color: #f2f2f2;margin-right: 0px; margin-left: 0px;margin-top: 0px; margin-left: 0px;",
+                  column(4, div(class = "upward-dropdown", selectInput("m5_GDPE_bar_year", "", choices = unique(df1$Year), selected = 2023))),
+                  column(6),
+                  column(2, style = "background-color: #f2f2f2; height: 20px; padding-top: 40px; display: flex; justify-content: center; align-items: center;",
+                         downloadButton("m5_GDPE_bar_dwnbtt", label = NULL, class = "btn-custom-black", icon = icon("cloud-download-alt")))),
+  )
+}
+ui_m5_GDPE <- function(df1) {
+  tabItem(tabName = "GDPE",
+          ui_main_chart(title = "Real GDP per employed person",
+                        chart_name = "m5_GDPE_lineplot",
+                        button_name = "m5_GDPE_lineplot_dwnbtt",
+                        source = "Statistics Canada, Table 36-10-0480-01",
+                        summary = "Exesum_m5_GDPE_main"),
+          fluidRow(
+            h3("R&D Deep-dive", style = "text-align: center;"),
 
-
-### CEG ----
-# ui_m5_CEG <- function(df1){
-#   tabItem(tabName = "CEG",
-#           ##### Line Plot----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 5-1-1: Clean Energy Generated" ))
-#             ),
-#             fluidRow(
-#               column(1),
-#               column(10,plotlyOutput("m5_CEG_lineplot")),
-#               column(1,downloadButton("m5_CEG_lineplot_dwnbtt", ""))
-#             )
-#           ),
-#           ##### EXESUM ----
-#           fluidPage(
-#             style = "background-color: aliceblue ; margin: 20px;",
-#             fluidRow(
-#               column(12, h2("Executive Summary"))
-#             ),
-#             fluidRow(
-#               column(12, uiOutput("exesum_m5_CEG"))
-#             )
-#           ),
-#           ##### Stack Bar Plot----
-#           fluidPage(
-#             style = "background-color: white;margin: 20px;",
-#             fluidRow(
-#               column(9, h3("Figure 5-1-2: Hydro-electricity accounts for the majority of clean energy generated in B.C." ))
-#             ),
-#             fluidRow(
-#               column(9,plotlyOutput("m5_CEG_stackbar")),
-#               column(3,
-#                      selectInput("m5_CEG_stackbar_geo", "Region", choices = unique(df1$GEO), selected = "British Columbia"),
-#                      selectInput("m5_CEG_stackbar_class", "Class of electricity producer", choices = unique(df1$Class.of.electricity.producer),
-#                                  selected = "Total all classes of electricity producer"),
-#                      downloadButton("m5_CEG_stackbar_dwnbtt", "Download Filtered Data in CSV"))
-#             )
-#           ),
-#           
-#   )}
+            tabsetPanel(
+              tabPanel("Jurisdictional Comparison",
+                       feature_tab(df1,
+                                   tab_name = "bar",
+                                   title = "Jurisdictional Comparison",
+                                   tab_feature_chart = ui_m5_GDPE_feature_bar,
+                                   chart = "m5_GDPE_bar",
+                                   summary = "Exesum_m5_GDPE_bar")
+              )
+            )
+          )
+  )
+}
 

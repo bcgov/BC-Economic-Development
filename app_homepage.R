@@ -15,7 +15,7 @@
 
 #activetabs----
 active_tabs <- list(
-  mission1 = TRUE,
+  mission1 = FALSE,
               m1_PI =  FALSE,
               m1_CHN = FALSE,
               m1_GC =  FALSE,
@@ -26,18 +26,19 @@ active_tabs <- list(
               m1_SB =  FALSE,
               m1_LE =  FALSE,
               m1_MH =  FALSE,
-  mission2 = TRUE,
+  mission2 = FALSE,
               m2_NBO = FALSE,
               m2_HA  = FALSE,
               m2_LMPR= FALSE,
               m2_OVC = FALSE,
               m2_GII = FALSE,
               m2_PRHC= FALSE,
-  mission3 = TRUE,
-  mission4 = TRUE,
+  mission3 = FALSE,
+  mission4 = FALSE,
   mission5 = TRUE,
               m5_CEG = TRUE,
-  mission6 = TRUE,
+              m5_GDPE = TRUE,
+  mission6 = FALSE,
               m6_RnD = FALSE,
               m6_VAEX= FALSE,
               m6_nRinv= FALSE,
@@ -122,7 +123,9 @@ if (active_tabs$mission2) {
 if (active_tabs$mission5) {  
   df_m5_CEG_1 <- load_m5_CEG1()
   df_m5_CEG_2 <- load_m5_CEG2()
-  df_m5_CEG_3 <- load_m5_CEG3()}
+  df_m5_CEG_3 <- load_m5_CEG3()
+  df_m5_GDPE_1 <- load_m5_GDPE1()
+}
 
   
 if (active_tabs$mission6) {  
@@ -371,10 +374,14 @@ ui <- function() {
           tabPanel(
             "Mission 5 Overview",
             ui_m5_home(
-              m5_CEG_lineplot_data(df_m5_CEG_1))
+              m5_CEG_lineplot_data(df_m5_CEG_1),
+              m5_GDPE_lineplot_data(df_m5_GDPE_1))
           ),
           if (active_tabs$m5_CEG) {
             tabPanel("\xE2\x96\xB6 Clean Energy Generated", ui_m5_CEG(df_m5_CEG_1,df_m5_CEG_2,df_m5_CEG_3 ))
+          },
+          if (active_tabs$m5_GDPE) {
+            tabPanel("\xE2\x96\xB6 Real GDP per employed person", ui_m5_GDPE(df_m5_GDPE_1))
           }
         )
       },
@@ -553,8 +560,9 @@ server <- function(input, output, session) {
   mission2_GII_server(Exesum_m2_GII_main, Exesum_m2_GII, df_m2_GII_1, output, input)}
 
   if (active_tabs$mission5){
-  server_m5_home(df_m5_CEG_1, output, input, session)
-  mission5_CEG_server(df_m5_CEG_1, df_m5_CEG_2, df_m5_CEG_3, output, input)}
+  server_m5_home(df_m5_CEG_1, df_m5_GDPE_1, output, input, session)
+  mission5_CEG_server(df_m5_CEG_1, df_m5_CEG_2, df_m5_CEG_3, output, input)
+  mission5_GDPE_server(df_m5_GDPE_1, output, input)}
 
   if (active_tabs$mission6){
   observeEvent(input$m6_RnD_Button, {

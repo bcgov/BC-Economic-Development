@@ -81,13 +81,16 @@
       return(merged_df)
     }
 
-    
-# Homepage----
-    
-    server_m5_home <- function(df_m5_CEG_1, 
-                               output, input, session) {
-      plot_and_triangle(df_m5_CEG_1, m5_CEG_lineplot_data, "m5_homepage_worm_CEG", "m5_homepage_button_CEG", "CEG", "m5_homepage_triangle_CEG", output, input, session)
+    ## GDPE----
+    load_m5_GDPE1 <- function(){
+      url <- "https://raw.githubusercontent.com/bcgov/BC-Economic-Development/refs/heads/main/Data/Real_GDP_per_Employment_1.csv"
+      df <- read.csv(url, header = TRUE)
+      df <- na.omit(df)
+      return(df)
     }
+    
+
+    
 # CEG Dash----
     ## Line plot----
     m5_CEG_lineplot_data <- function(df) {
@@ -262,6 +265,41 @@
           showlegend = TRUE
         )
       plot
+    }
+    
+    
+
+# GDPE Dash----
+    ## Line plot----
+    m5_GDPE_lineplot_data <- function(df) {
+      df |>
+        filter(GEO == "British Columbia") |>
+        mutate(VALUE = GDPE)
+    }
+    
+    m5_GDPE_render_lineplot <- function(df, input){
+      dash_lineplot(m5_GDPE_lineplot_data, df, input)}
+
+    ## Bar Plot ----
+    m5_GDPE_bar_data <- function(df, year){
+      df |> 
+        filter (Year == year)    }
+    
+    m5_GDPE_render_bar <- function(df, input){
+      df2 <- m5_GDPE_bar_data(df, input$m5_GDPE_bar_year)
+      df2$GEO <- reorder(df2$GEO, df2$GDPE)
+      df2$formatted_VALUE <- sprintf("%.2f%%", df2$GDPE)
+      p2 <- df2 |>
+        plot_ly(x = ~GDPE, y=~GEO, color=~GEO, type = 'bar',
+                showlegend = FALSE)  |>
+        add_text(x = ~formatted_VALUE,text = ~formatted_VALUE, textposition = 'outside') |>
+        layout(
+          plot_bgcolor = '#F2F2F2',
+          paper_bgcolor = '#F2F2F2'
+        )
+      
+      validate(need(nrow(df2) > 0, "The data for this year is inadequate. To obtain a proper visualization, please modify the year selection in the sidebar."))
+      return(p2)
     }
     
     

@@ -13,7 +13,15 @@
 # limitations under the License.
 
 
-# m5 ----
+# m5 Homepage----
+
+server_m5_home <- function(df_m5_CEG_1, 
+                           df_m5_GDPE_1,
+                           output, input, session) {
+  plot_and_triangle(df_m5_CEG_1, m5_CEG_lineplot_data, "m5_homepage_worm_CEG", "m5_homepage_button_CEG", "CEG", "m5_homepage_triangle_CEG", output, input, session)
+  plot_and_triangle(df_m5_GDPE_1, m5_GDPE_lineplot_data, "m5_homepage_worm_GDPE", "m5_homepage_button_GDPE", "GDPE", "m5_homepage_triangle_GDPE", output, input, session)
+  
+}
 ## CEG----
 mission5_CEG_server <- function(df_m5_CEG_1, df_m5_CEG_2,df_m5_CEG_3, output, input){
   ### Executive Summary----
@@ -93,6 +101,43 @@ mission5_CEG_server <- function(df_m5_CEG_1, df_m5_CEG_2,df_m5_CEG_3, output, in
       write.csv(df, file)
     }
   )
+}
+  
+  
+## GDPE----
+  mission5_GDPE_server <- function(df_m5_GDPE_1, output, input){
+    ### Executive Summary----
+    output$Exesum_m5_GDPE_main <- renderUI(Exesum_m5_GDPE_main)
+    output$Exesum_m5_GDPE_bar <- renderUI(Exesum_m5_GDPE_bar)
+    ### Line Plot----
+    output$m5_GDPE_lineplot <- renderPlotly({
+      p1 <- m5_GDPE_render_lineplot(df_m5_GDPE_1, input)
+      p1
+    })
+    
+    output$m5_GDPE_lineplot_dwnbtt <- downloadHandler(
+      filename = "StrongerBC_Mission6_Real_GDP_per_Employment_filteredData.csv",
+      content = function(file) {
+        df <- m5_GDPE_lineplot_data(df_m5_GDPE_1)
+        write.csv(df, file)
+      }
+    )
+    
+  
+    ### Bar Plot----
+    output$m5_GDPE_bar <- renderPlotly({
+      p1 <- m5_GDPE_render_bar(df_m5_GDPE_1, input)
+      p1
+    })
+    
+    output$m5_GDPE_bar_dwnbtt <- downloadHandler(
+      filename = "StrongerBC_Mission5_GDPE_filteredData.csv",
+      content = function(file) {
+        df <- m5_GDPE_bar_data(df_m5_GDPE_1, input$m5_GDPE_bar_year)
+        write.csv(df, file)
+      }
+    )
+  
   
 
 }
